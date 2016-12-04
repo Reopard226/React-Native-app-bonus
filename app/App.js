@@ -9,6 +9,7 @@ import {
 
 import Login from './components/Login';
 import Register from './components/Register';
+import Home from './components/Home';
 
 import Swiper from 'react-native-swiper';
 
@@ -33,6 +34,7 @@ export default class App extends Component
 			<Image source={require('./img/bg.jpg')} style={styles.backgroundImage}>
 				<StatusBar barStyle="light-content" />
 				<Swiper showsButtons={false} showsPagination={false}>
+					<Home />
 					<Login />
 					<Register />
 				</Swiper>
