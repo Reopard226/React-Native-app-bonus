@@ -7,7 +7,7 @@ import {
 	View
 } from 'react-native';
 
-import { CheckBox , Container, Content, InputGroup, Input, Icon, Text, Picker, Button } from 'native-base';
+import { CheckBox , Container, Content, InputGroup, Input, Icon, Tabs, Text, Picker, Button } from 'native-base';
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 
@@ -30,24 +30,37 @@ export default class Login extends Component
 						<Text style={{color: 'rgba(255,255,255,.9)', fontSize: 12}}>001896379-1</Text>
 					</View>
 				</View>
-				<View style={{backgroundColor: '#FFF', top:-10,paddingLeft:65,paddingRight:65,paddingTop:40}}>
-					<Grid>
+				<View style={{backgroundColor: '#FFF', top:-10,paddingLeft:30,paddingRight:30,paddingTop:30}}>
+					<Grid style={styles.boxwrapper}>
 						<Col>
-							<View style={{borderColor: 'black'}}>
-								<Text style={{textAlign: 'center',fontWeight: 'bold', paddingBottom:5,fontSize:18}}>566</Text>
-								<Text style={{textAlign: 'center', color: 'rgba(0,0,0,.3)', fontSize:14}}>Soles</Text>
+							<View style={[styles.box,styles.leftbox]}>
+								<Text style={{textAlign: 'center',fontWeight: 'bold', paddingBottom:5,fontSize:16}}>566</Text>
+								<Text style={{textAlign: 'center', color: 'rgba(0,0,0,.3)', fontSize:13}}>Soles</Text>
 							</View>
 						</Col>
 						<Col>
-							<Text style={{textAlign: 'center',fontWeight: 'bold', paddingBottom:5,fontSize:18}}>167</Text>
-							<Text style={{textAlign: 'center', color: 'rgba(0,0,0,.3)', fontSize:14}}>Puntos</Text>
+							<View style={[styles.box, styles.centerbox]}>
+								<Text style={{textAlign: 'center',fontWeight: 'bold', paddingBottom:5,fontSize:16}}>167</Text>
+								<Text style={{textAlign: 'center', color: 'rgba(0,0,0,.3)', fontSize:13}}>Puntos</Text>
+							</View>
 						</Col>
 						<Col>
-							<Text style={{textAlign: 'center',fontWeight: 'bold', paddingBottom:5,fontSize:18}}>0</Text>
-							<Text style={{textAlign: 'center', color: 'rgba(0,0,0,.3)', fontSize:14}}>Cupones</Text>
+							<View style={[styles.box,styles.rightbox]}>
+								<Text style={{textAlign: 'center',fontWeight: 'bold', paddingBottom:5,fontSize:16}}>0</Text>
+								<Text style={{textAlign: 'center', color: 'rgba(0,0,0,.3)', fontSize:13}}>Cupones</Text>
+							</View>
 						</Col>
 					</Grid>
 				</View>
+				<Container style={{top:-10}} theme={theme}>
+					<Content>
+						<Tabs>
+							<Text tabLabel="CATÁLOGO">One</Text>
+							<Text tabLabel="PROMOCIONES">Two</Text>
+							<Text tabLabel="CUPONES">Three</Text>
+						</Tabs>
+					</Content>
+				</Container>
 			</ScrollView>
 
 		);
@@ -56,5 +69,27 @@ export default class Login extends Component
 }
 
 let styles = StyleSheet.create({
+	boxwrapper:{
+		borderColor: 'rgba(0,0,0,.15)',
+		borderWidth: 1,
+		borderRadius: 40,
+	},
+	box:{
+		paddingTop: 8,
+		paddingBottom: 8,
+		paddingLeft:16,
+		paddingRight: 16,
+	},
+	leftBox: {
 
+	},
+	centerbox:{
+		borderLeftColor: 'rgba(0,0,0,.15)',
+		borderRightColor: 'rgba(0,0,0,.15)',
+		borderLeftWidth: 1,
+		borderRightWidth: 1,
+	},
+	rightbox:{
+
+	}
 });
