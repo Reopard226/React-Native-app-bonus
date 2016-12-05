@@ -56,7 +56,7 @@ export default class Register extends Component
 							<InputGroup style={styles.inputGroup} borderType={'regular'}>
 								<Input style={styles.textInput} placeholder="Teléfono" />
 							</InputGroup>
-							<InputGroup style={styles.inputGroup} borderType={'regular'}>
+							<InputGroup style={styles.inputGroup} borderType={'regular'} secureTextEntry >
 								<Input style={styles.textInput} placeholder="Contraseña" />
 							</InputGroup>
 							<InputGroup style={styles.inputGroup} borderType={'regular'}>

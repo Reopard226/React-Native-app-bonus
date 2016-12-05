@@ -1,17 +1,6 @@
 import React, { Component } from 'react';
-import {
-	Image,
-	StatusBar,
-	StyleSheet,
-	Text,
-	View
-} from 'react-native';
 
-import Login from './components/Login';
-import Register from './components/Register';
-import Home from './components/Home';
-
-import Swiper from 'react-native-swiper';
+import AppNavigator from './components/AppNavigator';
 
 export default class App extends Component
 {
@@ -27,31 +16,11 @@ export default class App extends Component
 	render()
 	{
 
-		if ( this.state.loggedIn )
-			return null;
-
 		return (
-			<Image source={require('./img/bg.jpg')} style={styles.backgroundImage}>
-				<StatusBar barStyle="light-content" />
-				<Swiper showsButtons={false} showsPagination={false}>
-					<Home />
-					<Login />
-					<Register />
-				</Swiper>
-			</Image>
+			<AppNavigator 
+				initialRoute={{name: "Login"}}
+			/>
 		);
 
 	}
 }
-
-let styles = StyleSheet.create({
-	backgroundImage: {
-	  flex: 1,
-	  resizeMode: 'cover', // or 'stretch'
-	  justifyContent: 'center',
-	  alignItems: 'center',
-	  width: null,
-	  height: null,
-	  backgroundColor: 'rgba(0,0,0,0)',
-	}
-});

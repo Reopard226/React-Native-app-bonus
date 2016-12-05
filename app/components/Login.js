@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
 	Image,
 	StyleSheet,
+	Navigator,
 	// Text,
 	View
 } from 'react-native';
@@ -26,9 +27,6 @@ export default class Login extends Component
 
 	render(){
 
-		if ( this.state.loggedIn )
-			return null;
-
 		return (
 
 			<Grid>
@@ -45,7 +43,7 @@ export default class Login extends Component
 								<Input style={styles.textInput} placeholder="Usuario" />
 							</InputGroup>
 							<InputGroup style={styles.inputGroup} borderType={'regular'}>
-								<Input style={styles.textInput} placeholder="Clave" />
+								<Input style={styles.textInput} placeholder="Clave" secureTextEntry/>
 							</InputGroup>
 							<Grid>
 								<Col>
@@ -57,7 +55,14 @@ export default class Login extends Component
 							</Grid>
 							<Grid>
 								<Col>
-									<Button textStyle={{fontSize: 12}} style={{marginTop: 10, backgroundColor: 'rgb(32,76,165)',borderRadius: 20,shadowColor: 'transparent'}} block>Ingresar</Button>
+									<Button onPress={(event) => {
+
+											this.props.navigator.push({
+												name: "LoggedIn",
+												sceneConfig: Navigator.SceneConfigs.FloatFromBottom
+											});
+
+										}} textStyle={{fontSize: 12}} style={{marginTop: 10, backgroundColor: 'rgb(32,76,165)',borderRadius: 20,shadowColor: 'transparent'}} block>Ingresar</Button>
 								</Col>
 							</Grid>
 							<View style={{alignSelf: 'center', padding: 30}}>
