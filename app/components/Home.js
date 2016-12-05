@@ -17,7 +17,7 @@ import Catalogo from './Catalogo';
 
 import theme from '../themes/bonus';
 
-import Drawer from 'react-native-drawer';
+// import Drawer from 'react-native-drawer';
 
 import ScrollableTabView, { DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
@@ -27,10 +27,6 @@ export default class Login extends Component
 	render(){
 
 		return (
-
-			<Drawer
-				open
-			>
 
 			<View style={{padding: 0}}>
 				<TouchableOpacity style={{width:20,height:20,position: 'absolute', top: 28, left: 15,zIndex:50}}><Image style={{width:20,height:20,resizeMode: 'contain',}} source={require('../img/icon-menu.png')}/></TouchableOpacity>
@@ -79,8 +75,6 @@ export default class Login extends Component
 					</Content>
 				</Container>
 			</View>
-
-			</Drawer>
 
 		);
 
