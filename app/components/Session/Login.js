@@ -1,23 +1,20 @@
 'use strict'
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
 	Image,
 	StyleSheet,
 	Navigator,
-	// Text,
 	View
 } from 'react-native';
 
-import { CheckBox , Container, Content, InputGroup, Input, Icon, Text, Picker, Button } from 'native-base';
+import { Container, Content, InputGroup, Input, Icon, Text, Button } from 'native-base';
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 
-import StatusBarBackground from '../Partials/StatusBarBackground';
-
 import theme from '../../themes/bonus';
 
-export default class Login extends Component
+export default class Login extends React.Component
 {
 
 	constructor( props ){
@@ -32,7 +29,6 @@ export default class Login extends Component
 		return (
 
 			<Grid>
-				<StatusBarBackground />
 				<Row size={4} style={styles.row}>
 					<View style={styles.logoContainer} >
 						<Image style={styles.logo} source={require('../../img/bonus-logoBlanco300.png')} />
@@ -60,7 +56,7 @@ export default class Login extends Component
 									<Button onPress={(event) => {
 
 											this.props.navigator.push({
-												name: "LoggedIn",
+												name: "Home",
 												sceneConfig: Navigator.SceneConfigs.FloatFromBottom
 											});
 

@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import Catalog from './Catalog/Catalog';
 import BaseContainer from './Containers/BaseContainer'
+import Catalog from './Catalog/Catalog';
 
 export default ( props ) => (
 	<BaseContainer>

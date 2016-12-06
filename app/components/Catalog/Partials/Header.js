@@ -13,7 +13,7 @@ export default ( props ) => (
 
 	<View>
 		<View>
-			<Image style={ styles.logo } source={require('../../../img/bonus-logoBlanco300.png')} />
+			<Image style={ styles.logo } source={ require('../../../img/bonus-logoBlanco300.png') } />
 		</View>
 		<View style={ styles.titleSection }>
 			<Text style={ styles.titleText }>Para Ellas</Text>
@@ -25,7 +25,7 @@ export default ( props ) => (
 
 let styles = StyleSheet.create({
 	logo: {
-		width:80,
+		width: 80,
 		alignSelf: 'center',
 		resizeMode: 'contain'
 	},
@@ -33,7 +33,7 @@ let styles = StyleSheet.create({
 		color: '#FFF',
 		fontSize: 12,
 		textAlign: 'center'
-	}
+	},
 	titleSection: {
 		paddingBottom: 0
 	},

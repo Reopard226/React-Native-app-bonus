@@ -14,8 +14,6 @@ import Catalogue from './Sections/Catalog';
 import Header from './Partials/Header';
 import MenuIcon from './Partials/MenuIcon';
 
-// import Drawer from 'react-native-drawer';
-
 export default ( props ) => (
 
 	<View>

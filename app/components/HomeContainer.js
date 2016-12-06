@@ -2,11 +2,12 @@
 
 import React from 'react';
 
+import DrawerContainer from './Containers/DrawerContainer'
 import Home from './Home/Home';
-import BaseContainer from './Containers/BaseContainer'
+import DrawerContent from './Home/Partials/DrawerContent';
 
 export default ( props ) => (
-	<BaseContainer>
+	<DrawerContainer content={ <DrawerContent /> }>
 		<Home navigator={ props.navigator }/>
-	</BaseContainer>
+	</DrawerContainer>
 );

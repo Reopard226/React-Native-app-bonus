@@ -2,65 +2,56 @@
 
 import React from 'react'
 import {
-  Navigator,
-  Image,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View
+	Navigator,
+	Text,
 } from 'react-native';
 
-import SessionContainer from './SessionContainer';
-import HomeContainer from './HomeContainer';
 import CatalogContainer from './CatalogContainer';
+import HomeContainer from './HomeContainer';
+import SessionContainer from './SessionContainer';
 
 export default class AppNavigator extends React.Component
 {
 
-  _renderScene( route , navigator) {
+	_renderScene( route , navigator ) {
 
-    const globalNavigatorProps = {navigator}
+		const globalNavigatorProps = {navigator}
 
-    switch(route.name) {
+		switch(route.name) {
 
-      case "Productos":
-        return(
-          <CatalogContainer navigator={navigator}/>
-        )
+			case "Catalog":
+				return <CatalogContainer navigator={navigator}/>;
 
-      case "LoggedIn":
-        return(
-          <HomeContainer navigator={navigator}/>
-        )
+			case "Home":
+				return <HomeContainer navigator={navigator}/>;
 
-      case "Login":
-        return (
-          <SessionContainer navigator={navigator}/>
-        )
+			case "Login":
+				return <SessionContainer show="login" navigator={navigator}/>;
 
-      default:
-        return (
-          <Text style={{marginTop:25}}>
-            {`Navigator went to undefiend route ${route.name}`}
-          </Text>
-        )
+			case "Register":
+				return <SessionContainer show="register" navigator={navigator}/>;
 
-    }
+			default:
+				return (
+					<Text style={{marginTop:25}}>
+						{`Navigator went to undefiend route ${route.name}`}
+					</Text>
+				);
 
-  }
+		}
 
-  render() {
+	}
 
-    console.log("Rendering Component::Navigator");
+	render() {
 
-    return(
-      <Navigator
-        configureScene={(route) => ({...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight})}
-        initialRoute={this.props.initialRoute}
-        renderScene={(route,navigator) => this._renderScene(route,navigator)}
-      />
-    )
+		return(
+			<Navigator
+				configureScene={(route) => ({...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight})}
+				initialRoute={this.props.initialRoute}
+				renderScene={(route,navigator) => this._renderScene(route,navigator)}
+			/>
+		);
 
-  }
+	}
 
 }

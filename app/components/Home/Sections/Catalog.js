@@ -60,7 +60,7 @@ export default ( props ) => {
 				<TouchableOpacity onPress={ ( event ) => {
 
 						props.navigator.push({
-							name: "Productos",
+							name: "Catalog",
 							sceneConfig: Navigator.SceneConfigs.FloatFromRight
 						});
 
