@@ -1,7 +1,6 @@
 'use strict'
 
-import React, { Component }             from 'react'
-
+import React from 'react'
 import {
   Navigator,
   Image,
@@ -11,13 +10,14 @@ import {
   View
 } from 'react-native';
 
-import First from './First';
-import LoggedIn from './LoggedIn';
-import ProductosWrapper from './ProductosWrapper';
+import SessionContainer from './SessionContainer';
+import HomeContainer from './HomeContainer';
+import CatalogContainer from './CatalogContainer';
 
-export default class AppNavigator extends Component {
+export default class AppNavigator extends React.Component
+{
 
-  _renderScene(route, navigator) {
+  _renderScene( route , navigator) {
 
     const globalNavigatorProps = {navigator}
 
@@ -25,17 +25,17 @@ export default class AppNavigator extends Component {
 
       case "Productos":
         return(
-          <ProductosWrapper navigator={navigator}/>
+          <CatalogContainer navigator={navigator}/>
         )
 
       case "LoggedIn":
         return(
-          <LoggedIn navigator={navigator}/>
+          <HomeContainer navigator={navigator}/>
         )
 
       case "Login":
         return (
-          <First navigator={navigator}/>
+          <SessionContainer navigator={navigator}/>
         )
 
       default:

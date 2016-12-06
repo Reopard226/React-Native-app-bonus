@@ -1,3 +1,5 @@
+'use strict'
+
 import React, { Component } from 'react';
 import {
 	Image,
@@ -10,9 +12,9 @@ import { CheckBox , Container, Content, InputGroup, Input, Icon, Text, Picker, B
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 
-import StatusBarBackground from './StatusBarBackground';
+import StatusBarBackground from '../Partials/StatusBarBackground';
 
-import theme from '../themes/bonus';
+import theme from '../../themes/bonus';
 
 export default class Register extends Component
 {
@@ -35,7 +37,7 @@ export default class Register extends Component
 				<StatusBarBackground />
 				<Row size={3} style={styles.row}>
 					<View style={styles.logoContainer} >
-						<Image style={styles.logo} source={require('../img/bonus-logoBlanco300.png')} />
+						<Image style={styles.logo} source={require('../../img/bonus-logoBlanco300.png')} />
 					</View>
 				</Row>
 				<Row size={10} style={styles.row}>

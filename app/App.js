@@ -17,7 +17,7 @@ export default class App extends Component
 	{
 
 		return (
-			<AppNavigator 
+			<AppNavigator
 				initialRoute={{name: "Login"}}
 			/>
 		);

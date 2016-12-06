@@ -1,7 +1,6 @@
 'use strict'
 
-import React, { Component } from 'react';
-
+import React from 'react';
 import {
   Navigator,
   Image,
@@ -13,12 +12,10 @@ import {
 
 import Swiper from 'react-native-swiper';
 
-import Login from './Login';
-import Register from './Register';
-import Home from './Home';
-import Productos from './Productos';
+import Login from './Session/Login';
+import Register from './Session/Register';
 
-export default class First extends Component
+export default class SessionContainer extends React.Component
 {
 
 	render()
@@ -27,7 +24,10 @@ export default class First extends Component
 		return (
 			<Image source={require('../img/bg.jpg')} style={styles.backgroundImage}>
 				<StatusBar barStyle="light-content" />
-        <Home navigator={this.props.navigator}/>
+				<Swiper showsButtons={false} showsPagination={false}>
+					<Login navigator={this.props.navigator} />
+					<Register navigator={this.props.navigator} />
+				</Swiper>
 			</Image>
 		);
 
