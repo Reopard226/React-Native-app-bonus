@@ -7,7 +7,7 @@ import Home from './Home/Home';
 import DrawerContent from './Home/Partials/DrawerContent';
 
 export default ( props ) => (
-	<DrawerContainer content={ <DrawerContent /> }>
-		<Home navigator={ props.navigator }/>
+	<DrawerContainer { ...props } content={ <DrawerContent /> }>
+		<Home { ...props } navigator={ props.navigator }/>
 	</DrawerContainer>
 );

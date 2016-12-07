@@ -11,13 +11,15 @@ import {
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import Catalogue from './Sections/Catalog';
+import CartIcon from '../Partials/CartIcon';
 import Header from './Partials/Header';
 import MenuIcon from './Partials/MenuIcon';
 
 export default ( props ) => (
 
 	<View>
-		<MenuIcon />
+		<CartIcon />
+		<MenuIcon { ...props } />
 		<Header />
 		<ScrollableTabView 
 			style={ styles.scrollableTabView } 

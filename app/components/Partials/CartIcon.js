@@ -8,12 +8,8 @@ import {
 } from 'react-native';
 
 export default ( props ) => (
-	<TouchableOpacity style={ styles.touchable }
-		onPress={() => {
-			props.openDrawer();
-		}}
-	>
-		<Image style={ styles.image } source={ require( '../../../img/icon-menu.png' ) }/>
+	<TouchableOpacity style={ styles.touchable }>
+		<Image style={ styles.image } source={ require( '../../img/lista-categoria/icon-cart.png' ) }/>
 	</TouchableOpacity>
 );
 
@@ -23,7 +19,7 @@ let styles = StyleSheet.create({
 		height:20,
 		position: 'absolute',
 		top: 8,
-		left: 15,
+		right: 20,
 		zIndex:50
 	},
 	image:{

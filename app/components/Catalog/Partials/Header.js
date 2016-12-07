@@ -25,9 +25,12 @@ export default ( props ) => (
 
 let styles = StyleSheet.create({
 	logo: {
-		width: 80,
+		width: 300/4,
+		height: 58/4,
 		alignSelf: 'center',
-		resizeMode: 'contain'
+		resizeMode: 'contain',
+		marginTop: 10,
+		marginBottom: 24,
 	},
 	itemCountText: {
 		color: '#FFF',

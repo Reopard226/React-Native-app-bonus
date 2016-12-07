@@ -8,7 +8,7 @@ import {
 	View
 } from 'react-native';
 
-import { Container, Content, InputGroup, Input, Icon, Text, Button } from 'native-base';
+import { CheckBox, Container, Content, InputGroup, Input, Icon, Text, Button } from 'native-base';
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 
@@ -44,7 +44,8 @@ export default class Login extends React.Component
 								<Input style={styles.textInput} placeholder="Clave" secureTextEntry/>
 							</InputGroup>
 							<Grid>
-								<Col>
+								<Col style={{flexDirection: 'row'}}>
+									<CheckBox style={{marginTop:10,paddingLeft:2,paddingRight:2,paddingTop:1,paddingBottom:1,height: 15,borderColor: 'rgba(255,255,255,.3)', borderWidth: 1, backgroundColor: 'transparent',borderRadius: 3}} checked={{ true }}/>
 									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF'}} small transparent>Recordar usuario</Button>
 								</Col>
 								<Col>

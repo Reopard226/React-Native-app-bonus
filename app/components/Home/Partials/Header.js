@@ -18,7 +18,10 @@ export default () => (
 			<Image source={ require( '../../../img/home/foto-perfil.png' ) } style={ styles.userImage }/>
 			<View style={ styles.userInfo }>
 				<Text style={ styles.userNameText }>Franco Paolo Carranza</Text>
-				<Text style={ styles.userIdText }>001896379-1</Text>
+				<View style={{flex:1,flexDirection: 'row'}}>
+					<Image source={ require( '../../../img/home/icon-id.png' ) } style={{marginTop: 4, marginRight: 4, width: 10, height: 10}}/>
+					<Text style={ styles.userIdText }>001896379-1</Text>
+				</View>
 			</View>
 		</View>
 		<View style={ styles.summarySection }>
@@ -77,9 +80,9 @@ let styles = StyleSheet.create({
 		borderRightWidth: 1,
 	},
 	profile: {
-		paddingTop: 34,
+		paddingTop: 30,
 		paddingLeft:35,
-		paddingRight:35,
+		paddingRight: 35,
 		flexDirection: 'row',
 		zIndex: 5
 	},

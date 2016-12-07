@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 export default () => (
-	<View>
+	<View style={{borderBottomWidth: 2, borderBottomColor: 'rgba(0,0,0,.15)'}}>
 		<Image source={require('../../../img/lista-categoria/icon-filtros.png')} style={ styles.tempImg }/>
 	</View>
 );

@@ -2,9 +2,9 @@
 
 import React from 'react'
 import {
+	Dimensions,
 	Navigator,
 	Text,
-  Dimensions
 } from 'react-native';
 
 import CatalogContainer from './CatalogContainer';
@@ -24,7 +24,7 @@ export default class AppNavigator extends React.Component
 				return <CatalogContainer navigator={navigator}/>;
 
 			case "Home":
-				return <HomeContainer navigator={navigator}/>;
+				return <HomeContainer { ...this.props } navigator={navigator}/>;
 
 			case "Login":
 				return <SessionContainer show="login" navigator={navigator}/>;
@@ -49,7 +49,7 @@ export default class AppNavigator extends React.Component
 			<Navigator
 				configureScene={(route) => ({...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight})}
 				initialRoute={this.props.initialRoute}
-        //style={{width:Dimensions.get('window').width}}
+		        style={{width:Dimensions.get('window').width}}
 				renderScene={(route,navigator) => this._renderScene(route,navigator)}
 			/>
 		);

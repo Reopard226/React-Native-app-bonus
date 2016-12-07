@@ -55,8 +55,12 @@ export default ( props ) => {
 
 	const items = from_redux.categories.map( ( item , index ) => {
 		return (
-			<ListItem key={ index } iconRight style={ styles.listItem }>
-				<Icon name="ios-arrow-dropright-circle" style={ styles.icon } />
+			<ListItem 
+				key={ index } 
+				style={ styles.listItem }
+				// iconRight
+			>
+				<Image style={{height:31,resizeMode: 'contain',position:'absolute', top: 35,right:13, zIndex: 5}} source={ require( '../../../img/home/btn-category.png' ) } />
 				<TouchableOpacity onPress={ ( event ) => {
 
 						props.navigator.push({
@@ -90,6 +94,8 @@ export default ( props ) => {
 	)
 
 }
+
+//<Icon name="ios-arrow-dropright-circle" style={ styles.icon } />
 
 let styles = StyleSheet.create({
 	container: {

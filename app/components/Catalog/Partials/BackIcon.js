@@ -26,7 +26,7 @@ let styles = StyleSheet.create({
 		width:20,
 		height:20,
 		position: 'absolute',
-		top: 8,
+		top: 10,
 		left: 15,
 		zIndex:50
 	},
