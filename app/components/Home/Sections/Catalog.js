@@ -6,6 +6,7 @@ import {
 	Navigator,
 	StyleSheet,
 	TouchableOpacity,
+	TouchableHighlight,
 } from 'react-native';
 
 import { Container, Content, List, ListItem, Text , Icon } from 'native-base';
@@ -21,32 +22,32 @@ const from_redux = {
 		{
 			name: 'PARA ELLAS',
 			number_of_articles: 34,
-			img: require('../../../img/home/ellas-bg.png')
+			img: require('../../../img/home/ellas-bg350x100.jpg')
 		},
 		{
 			name: 'PARA ELLOS',
 			number_of_articles: 24,
-			img: require('../../../img/home/ellos-bg.png')
+			img: require('../../../img/home/ellos-bg350x100.jpg')
 		},
 		{
 			name: 'INFANTIL Y JÓVENES',
 			number_of_articles: 123,
-			img: require('../../../img/home/infantil-bg.png')
+			img: require('../../../img/home/infantil-bg350x100.png')
 		},
 		{
 			name: 'PARA EL HOGAR',
 			number_of_articles: 46,
-			img: require('../../../img/home/home-bg.png')
+			img: require('../../../img/home/home-bg350x100.jpg')
 		},
 		{
 			name: 'FITNESS Y SALUD',
 			number_of_articles: 52,
-			img: require('../../../img/home/fitnnesbg.png')
+			img: require('../../../img/home/fitnnesbg350x100.jpg')
 		},
 		{
 			name: 'NAVIDAD',
 			number_of_articles: 52,
-			img: require('../../../img/home/navidad-bg.png')
+			img: require('../../../img/home/navidad-bg350x100.png')
 		}
 	]
 }
@@ -61,7 +62,7 @@ export default ( props ) => {
 				// iconRight
 			>
 				<Image style={{height:31,resizeMode: 'contain',position:'absolute', top: 35,right:13, zIndex: 5}} source={ require( '../../../img/home/btn-category.png' ) } />
-				<TouchableOpacity onPress={ ( event ) => {
+				<TouchableHighlight onPress={ ( event ) => {
 
 						props.navigator.push({
 							name: "Catalog",
@@ -69,6 +70,7 @@ export default ( props ) => {
 						});
 
 					}}
+					underlayColor='rgba(0,0,0,.99)'
 				>
 					<Image source={ item.img } style={ styles.image }>
 					    <Text style={ styles.itemName }>
@@ -78,7 +80,7 @@ export default ( props ) => {
 					    	{ item.number_of_articles } articulos
 					    </Text>
 				    </Image>
-			    </TouchableOpacity>
+			    </TouchableHighlight>
 			</ListItem>
 		);
 	});
@@ -106,13 +108,29 @@ let styles = StyleSheet.create({
 		paddingRight: 20 
 	},
 	image: {
-		height: 100
+		height: 100,
+		width: 400
 	},
 	itemCount: {
-		color: 'rgba(255,255,255,.6)', paddingLeft: 20, fontSize: 12
+		color: 'rgba(255,255,255,.9)',
+		// paddingLeft: 20,
+		fontSize: 13,
+		zIndex: 15,
+		position: 'absolute',
+		left: 20,
+		top: 50
 	},
 	itemName: {
-		fontWeight: 'bold', color: '#FFF', paddingTop: 30, paddingLeft: 20
+		fontWeight: 'bold',
+		fontFamily: 'Oswald',
+		color: '#FFF',
+		// paddingTop: 30,
+		// paddingLeft: 20,
+		fontSize: 19,
+		zIndex: 15,
+		position: 'absolute',
+		left: 20,
+		top: 30,
 	},
 	listItem: {
 		padding: 0, marginLeft: -2, marginBottom: -2

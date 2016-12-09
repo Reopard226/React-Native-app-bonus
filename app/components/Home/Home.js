@@ -12,6 +12,7 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import Catalogue from './Sections/Catalog';
 import CartIcon from '../Partials/CartIcon';
+import CustomTabBar from './Partials/CustomTabBar';
 import Header from './Partials/Header';
 import MenuIcon from './Partials/MenuIcon';
 
@@ -27,6 +28,7 @@ export default ( props ) => (
 			tabBarTextStyle={ styles.tabBarTextStyle }
 			tabBarActiveTextColor={ styles.tabBarActiveTextColor.color }
 			tabBarInactiveTextColor={ styles.tabBarInactiveTextColor.color }
+			renderTabBar={() => <CustomTabBar />}
 		>
 			<Catalogue tabLabel="CATÁLOGO" navigator={ props.navigator }/>
 			<Text tabLabel="PROMOCIONES">PROMOCIONES</Text>
@@ -39,7 +41,7 @@ export default ( props ) => (
 let styles = StyleSheet.create({
 	scrollableTabView: {
 		backgroundColor: '#FFF',
-		paddingTop: 10
+		paddingTop: 0
 	},
 	tabBarUnderlineStyle: {
 		height: 2,

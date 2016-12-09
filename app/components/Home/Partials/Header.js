@@ -15,7 +15,7 @@ export default () => (
 
 	<View>
 		<View style={ styles.profile }>
-			<Image source={ require( '../../../img/home/foto-perfil.png' ) } style={ styles.userImage }/>
+			<Image source={ require( '../../../img/home/foto-perfil2.png' ) } style={ styles.userImage }/>
 			<View style={ styles.userInfo }>
 				<Text style={ styles.userNameText }>Franco Paolo Carranza</Text>
 				<View style={{flex:1,flexDirection: 'row'}}>
@@ -55,11 +55,12 @@ let styles = StyleSheet.create({
 		borderColor: 'rgba(0,0,0,.15)',
 		borderWidth: 1,
 		borderRadius: 40,
-		height: 400
+		height: 60,
+		flex: 0
 	},
 	box: {
 		paddingTop: 8,
-		paddingBottom: 8,
+		paddingBottom: 10,
 		paddingLeft:16,
 		paddingRight: 16,
 	},
@@ -71,7 +72,8 @@ let styles = StyleSheet.create({
 	boxValue: {
 		textAlign: 'center',
 		fontWeight: 'bold',
-		paddingBottom:5,fontSize:16
+		paddingBottom:3,
+		fontSize:16
 	},
 	centerbox:{
 		borderLeftColor: 'rgba(0,0,0,.15)',
@@ -91,7 +93,7 @@ let styles = StyleSheet.create({
 		backgroundColor: '#FFF',
 		paddingLeft:30,
 		paddingRight:30,
-		paddingTop:30
+		paddingTop:26
 	},
 	userIdText: {
 		color: 'rgba(255,255,255,.9)',
@@ -100,7 +102,7 @@ let styles = StyleSheet.create({
 		left: 2
 	},
 	userImage: {
-		top:35,left:35,
+		top:34,left:35,
 		position:'absolute',
 		width:74,
 		height:74,

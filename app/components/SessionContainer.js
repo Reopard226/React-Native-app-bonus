@@ -8,11 +8,27 @@ import BaseContainer from './Containers/BaseContainer'
 import Login from './Session/Login';
 import Register from './Session/Register';
 
-export default ( props ) => (
-	<BaseContainer>
-		<Swiper showsButtons={ false } showsPagination={ false }>
-			{ props.show === 'login' ? ( <Login navigator={ props.navigator } /> ) : (<Register navigator={ props.navigator } />) }
-			{ props.show === 'login' ? ( <Register navigator={ props.navigator } /> ) : (<Login navigator={ props.navigator } />) }
-		</Swiper>
-	</BaseContainer>
-);
+export default class SessionContainer extends React.Component {
+
+	constructor( props ){
+		super( props );
+	}
+
+	render(){
+
+		return <BaseContainer>
+				<Swiper ref={ (swiper) => { this._swiper = swiper }} showsButtons={ false } showsPagination={ false }>
+					{ this.props.show === 'login' ? ( <Login changeScreen={ ( index ) => this._changeScreen( index ) } navigator={ this.props.navigator } /> ) : (<Register changeScreen={ ( index ) => this._changeScreen( index ) } navigator={ this.props.navigator } />) }
+					{ this.props.show === 'login' ? ( <Register changeScreen={ ( index ) => this._changeScreen( index ) } navigator={ this.props.navigator } /> ) : (<Login changeScreen={ ( index ) => this._changeScreen( index ) } navigator={ this.props.navigator } />) }
+				</Swiper>
+			</BaseContainer>;
+
+	}
+
+	_changeScreen( index ){
+
+		this._swiper.scrollBy( index );
+
+	}
+
+}

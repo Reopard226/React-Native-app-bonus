@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import {
 	Image,
+	Navigator,
 	StyleSheet,
 	// Text,
 	View
@@ -13,6 +14,7 @@ import { CheckBox , Container, Content, InputGroup, Input, Icon, Text, Picker, B
 import { Col, Row, Grid } from "react-native-easy-grid";
 
 import StatusBarBackground from '../Partials/StatusBarBackground';
+import BackIcon from './Partials/BackIcon';
 
 import theme from '../../themes/bonus';
 
@@ -35,13 +37,14 @@ export default class Register extends Component
 
 			<Grid>
 				<StatusBarBackground />
+				<BackIcon index={ -1 } changeScreen={this.props.changeScreen} />
 				<Row size={3} style={styles.row}>
 					<View style={styles.logoContainer} >
 						<Image style={styles.logo} source={require('../../img/bonus-logoBlanco300.png')} />
 					</View>
 				</Row>
-				<Row size={10} style={styles.row}>
-					<Container style={[styles.formContainer,{paddingTop: 5}]} theme={theme}>
+				<Row size={12} style={styles.row}>
+					<Container style={[styles.formContainer,{paddingTop: 6}]} theme={theme}>
 						<Content>
 							<View style={{marginBottom: 10}}>
 								<Text style={{textAlign: 'center', color: 'rgba(255,255,255,.9)', fontSize: 18}}>Crear Cuenta</Text>
@@ -66,13 +69,20 @@ export default class Register extends Component
 							</InputGroup>
 							<Grid>
 								<Col>
-									<Button textStyle={{fontSize: 12}} style={{marginTop: 15, backgroundColor: 'rgb(32,76,165)',borderRadius: 20,shadowColor: 'transparent'}} block>
+									<Button onPress={(event) => {
+
+											this.props.navigator.push({
+												name: "Home",
+												sceneConfig: Navigator.SceneConfigs.FloatFromBottom
+											});
+
+										}} textStyle={{fontSize: 12}} style={{marginTop: 28, backgroundColor: 'rgb(32,76,165)',borderRadius: 20,shadowColor: 'transparent'}} block>
 										Registrar mi cuenta
 									</Button>
 								</Col>
 							</Grid>
-							<View style={{alignSelf: 'center', padding: 30, paddingTop: 40}}>
-								<Text style={{color: 'rgba(255,255,255,.5)', fontSize: 9, textAlign: 'center', lineHeight: 12}}>{"Al presionar << Registrar mi cuenta >> acepta nuestros Terminos y Servicios"}</Text>
+							<View style={{alignSelf: 'center', padding: 30, paddingTop: 32}}>
+								<Text style={{color: 'rgba(255,255,255,.5)', fontSize: 9, textAlign: 'center', lineHeight: 12}}>{"Al presionar << Registrar mi cuenta >> acepta nuestros"}<Text style={{fontSize: 9,color:'#FFF', lineHeight: 12}}> Terminos y Servicios</Text></Text>
 							</View>
 				    	</Content>
 				    </Container>
@@ -99,17 +109,17 @@ let styles = StyleSheet.create({
 	inputGroup: {
 		borderColor: 'rgba(255,255,255,.15)',
 		borderRadius: 6,
-		marginBottom: 10,
+		marginBottom: 8,
 	},
 	textInput: {
-
+		fontSize: 11
 	},
 	logo: {
 		resizeMode: 'contain',
-		height: 58/1.8, // 58
-		width: 300/1.8, // 300
+		height: 58/1.7, // 58
+		width: 300/1.7, // 300
 		// alignSelf: 'center',
-		marginTop: 26,
+		top: 4
 	},
 	logoContainer: {
 		flex: 1,

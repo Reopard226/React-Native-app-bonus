@@ -17,7 +17,7 @@ export default ( props ) => (
 				sceneConfig: Navigator.SceneConfigs.FloatFromLeft
 			});
 		}}>
-		<Image style={ styles.image } source={ require( '../../../img/lista-categoria/icon-back.png' ) }/>
+		<Image style={ styles.image } source={ require( '../../img/lista-categoria/icon-back.png' ) }/>
 	</TouchableOpacity>
 );
 

@@ -8,7 +8,7 @@ import {
 
 import { Text } from 'native-base';
 
-import BackIcon from './Partials/BackIcon';
+import BackIcon from '../Partials/BackIcon';
 import CartIcon from '../Partials/CartIcon';
 import CustomTabBar from './Partials/CustomTabBar'
 import Header from './Partials/Header';

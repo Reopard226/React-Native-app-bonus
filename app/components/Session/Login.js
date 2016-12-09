@@ -45,11 +45,15 @@ export default class Login extends React.Component
 							</InputGroup>
 							<Grid>
 								<Col style={{flexDirection: 'row'}}>
-									<CheckBox style={{marginTop:10,paddingLeft:2,paddingRight:2,paddingTop:1,paddingBottom:1,height: 15,borderColor: 'rgba(255,255,255,.3)', borderWidth: 1, backgroundColor: 'transparent',borderRadius: 3}} checked={{ true }}/>
-									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF'}} small transparent>Recordar usuario</Button>
+									<CheckBox style={styles.checkBox} checked={{ true }}/>
+									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF'}} small transparent>
+										Recordar usuario
+									</Button>
 								</Col>
 								<Col>
-									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF'}} small transparent>¿Olvidó su clave?</Button>
+									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF'}} small transparent>
+										¿Olvidó su clave?
+									</Button>
 								</Col>
 							</Grid>
 							<Grid>
@@ -61,21 +65,14 @@ export default class Login extends React.Component
 												sceneConfig: Navigator.SceneConfigs.FloatFromBottom
 											});
 
-										}} textStyle={{fontSize: 12}} style={{marginTop: 10, backgroundColor: 'rgb(32,76,165)',borderRadius: 20,shadowColor: 'transparent'}} block>Ingresar</Button>
-								</Col>
-							</Grid>
-							<View style={{alignSelf: 'center', padding: 30}}>
-								<Text style={{color: '#FFF', fontSize: 12}}>o contectar con</Text>
-							</View>
-							<Grid>
-								<Col style={{paddingRight: 8}}>
-									<Button style={{backgroundColor: '#3B5998',shadowColor: 'transparent'}} rounded block>
-										<Icon name='logo-facebook' />
+										}}
+									textStyle={styles.loginButtonText}
+									style={styles.loginButton} 
+									block>
+										Ingresar
 									</Button>
-								</Col>
-								<Col style={{paddingLeft: 8}}>
-									<Button style={{backgroundColor: 'rgb(86,172,239)',shadowColor: 'transparent'}} rounded block>
-										<Icon name='logo-twitter' />
+									<Button onPress={ () => this.props.changeScreen( 1 ) } textStyle={{color:'rgba(255,255,255,.7)',fontSize: 12}} style={{marginTop: 28,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgba(255,255,255,.2)'}} block bordered transparent>
+										Crear tu cuenta
 									</Button>
 								</Col>
 							</Grid>
@@ -83,17 +80,7 @@ export default class Login extends React.Component
 				    </Container>
 			    </Row>
 			    <Row size={3} style={styles.row}>
-					<Container style={styles.formContainer} theme={theme}>
-						<Content style={{top:-10}}>
-							<Grid>
-								<Col>
-									<Button textStyle={{color:'rgba(255,255,255,.7)',fontSize: 12}} style={{borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgba(255,255,255,.2)'}} block bordered transparent>
-										Crear tu cuenta
-									</Button>
-								</Col>
-							</Grid>
-						</Content>
-					</Container>
+					
 			    </Row>
 			</Grid>
 
@@ -103,9 +90,20 @@ export default class Login extends React.Component
 }
 
 let styles = StyleSheet.create({
+	checkBox: {
+		marginTop:10,
+		paddingLeft:2,
+		paddingRight:2,
+		paddingTop:1,
+		paddingBottom:1,
+		height: 15,
+		borderColor: 'rgba(255,255,255,.3)',
+		borderWidth: 1,
+		backgroundColor: 'transparent',borderRadius: 3
+	},
 	formContainer: {
 		// backgroundColor: 'green',
-		marginTop: 0 ,
+		marginTop: 24 ,
 		marginRight: 40,
 		marginBottom: 0,
 		marginLeft: 40,
@@ -119,15 +117,24 @@ let styles = StyleSheet.create({
 		borderRadius: 6,
 		marginBottom: 10,
 	},
+	loginButton: {
+		marginTop: 32,
+		backgroundColor: 'rgb(32,76,165)', 
+		borderRadius: 20,
+		shadowColor: 'transparent'
+	},
+	loginButtonText: {
+		fontSize: 11,
+	},
 	textInput: {
-
+		fontSize: 11
 	},
 	logo: {
 		resizeMode: 'contain',
-		height: 58/1.8, // 58
-		width: 300/1.8, // 300
+		height: 58/1.7, // 58
+		width: 300/1.7, // 300
 		// alignSelf: 'center',
-		marginTop: 26,
+		marginTop: 34,
 	},
 	logoContainer: {
 		flex: 1,
@@ -142,3 +149,22 @@ let styles = StyleSheet.create({
 
 	},
 });
+/*
+	
+	<View style={{alignSelf: 'center', padding: 30}}>
+		<Text style={{color: '#FFF', fontSize: 12}}>o contectar con</Text>
+	</View>
+	<Grid>
+		<Col style={{paddingRight: 8}}>
+			<Button style={{backgroundColor: '#3B5998',shadowColor: 'transparent'}} rounded block>
+				<Icon name='logo-facebook' />
+			</Button>
+		</Col>
+		<Col style={{paddingLeft: 8}}>
+			<Button style={{backgroundColor: 'rgb(86,172,239)',shadowColor: 'transparent'}} rounded block>
+				<Icon name='logo-twitter' />
+			</Button>
+		</Col>
+	</Grid>
+
+ */

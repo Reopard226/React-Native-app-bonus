@@ -35,7 +35,8 @@ let styles = StyleSheet.create({
 	itemCountText: {
 		color: '#FFF',
 		fontSize: 12,
-		textAlign: 'center'
+		textAlign: 'center',
+		fontFamily: 'Oswald',
 	},
 	titleSection: {
 		paddingBottom: 0
