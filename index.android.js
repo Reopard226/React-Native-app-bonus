@@ -1,5 +1,5 @@
 /**
- * Sample React Native App
+ * Bonus Android
  * https://github.com/facebook/react-native
  * @flow
  */
@@ -14,7 +14,7 @@ import {
 
 import App from './app/App'
 
-export default class bonus extends Component {
+export default class Bonus extends Component {
   render() {
     return (
       <App />
@@ -23,4 +23,4 @@ export default class bonus extends Component {
 }
 
 
-AppRegistry.registerComponent('bonus', () => bonus);
+AppRegistry.registerComponent('bonus', () => Bonus);

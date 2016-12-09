@@ -10,6 +10,7 @@ import {
 import CatalogContainer from './CatalogContainer';
 import HomeContainer from './HomeContainer';
 import SessionContainer from './SessionContainer';
+import WalletContainer from './WalletContainer';
 
 export default class AppNavigator extends React.Component
 {
@@ -32,9 +33,12 @@ export default class AppNavigator extends React.Component
 			case "Register":
 				return <SessionContainer show="register" navigator={navigator}/>;
 
+			case "Wallet":
+				return <WalletContainer { ...this.props } navigator={navigator}/>;
+
 			default:
 				return (
-					<Text style={{marginTop:25}}>
+					<Text style={{marginTop:25, texAlign: 'center'}}>
 						{`Navigator went to undefiend route ${route.name}`}
 					</Text>
 				);

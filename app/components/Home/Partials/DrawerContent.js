@@ -4,6 +4,7 @@ import React from 'react';
 import {
 	Image,
 	ListView,
+	Navigator,
 	StyleSheet,
 	Text,
 	TouchableOpacity,
@@ -36,6 +37,8 @@ export default ( props ) => (
 					<DrawIcon 
 						icon={require("../../../img/menu/icon-saldo.png")}
 						text="Mi Saldo"
+						goto="Wallet"
+						{ ...props }
 					/>
 				</View>
 				<View style={styles.Item}>

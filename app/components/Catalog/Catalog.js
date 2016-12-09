@@ -38,7 +38,8 @@ export default ( props ) => (
 
 let styles = StyleSheet.create({
 	container: {
-		flex: 1,justifyContent: 'center',
+		flex: 1,
+		justifyContent: 'center',
 		alignItems: 'center',
 		paddingTop: 0
 	},

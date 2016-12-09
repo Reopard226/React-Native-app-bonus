@@ -3,22 +3,27 @@
 import React from 'react';
 import {
 	Image,
+	Navigator,
 	Text,
 	StyleSheet,
 	TouchableOpacity,
 } from 'react-native';
 
-export default class DrawIcon extends React.Component {
+export default ( props ) => (
+		<TouchableOpacity 
+			onPress={ ( event ) => {
 
-	render(){
-		return(
-		<TouchableOpacity style={ styles.touchableOpacity }>
-			<Image style={ styles.image } source={ this.props.icon}/>
-			<Text style={styles.text}> {this.props.text} </Text>
+				props.navigator.push({
+					name: props.goto,
+					sceneConfig: Navigator.SceneConfigs.FloatFromRight
+				});
+
+			}}
+			style={ styles.touchableOpacity }>
+			<Image style={ styles.image } source={ props.icon}/>
+			<Text style={styles.text}> {props.text} </Text>
 		</TouchableOpacity>
-		);
-	}
-}
+);
 
 var box = 20;
 
