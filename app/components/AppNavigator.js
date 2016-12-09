@@ -53,7 +53,7 @@ export default class AppNavigator extends React.Component
 			<Navigator
 				configureScene={(route) => ({...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight})}
 				initialRoute={this.props.initialRoute}
-		        style={{width:Dimensions.get('window').width}}
+		    style={{width:Dimensions.get('window').width}}
 				renderScene={(route,navigator) => this._renderScene(route,navigator)}
 			/>
 		);
