@@ -12,36 +12,63 @@ import { CheckBox, Container, Content, InputGroup, Input, Icon, Text, Button } f
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 
+import LoginLogo from './Partials/LoginLogo'
+
 import theme from '../../themes/bonus';
 
-export default class Login extends React.Component
-{
+export default class Login extends React.Component {
 
 	constructor( props ){
+
 		super( props );
+
 		this.state = {
-			loggedIn: false,
-		};
+			idType: null,
+			userid: null,
+			password: null,
+		}
+
+	}
+
+	componentWillReceiveProps( nextProps ){
+
+		if( nextProps.session.loggedIn ) {
+
+			this.props.navigator.push({
+				name: "Home",
+				sceneConfig: Navigator.SceneConfigs.FloatFromRight
+			});
+
+		}
+
 	}
 
 	render(){
 
 		return (
-
 			<Grid>
-				<Row size={4} style={styles.row}>
-					<View style={styles.logoContainer} >
-						<Image style={styles.logo} source={require('../../img/bonus-logoBlanco300.png')} />
-					</View>
+				<Row size={4}>
+					<LoginLogo />
 				</Row>
-				<Row size={11} style={styles.row}>
+				<Row size={11}>
 					<Container style={styles.formContainer} theme={theme}>
 						<Content>
 							<InputGroup style={styles.inputGroup} borderType={'regular'}>
-								<Input style={styles.textInput} placeholder="Usuario" />
+								<Input 
+									onChangeText={( userid ) => this.setState({ userid })}
+									style={styles.textInput} 
+									placeholder="Usuario" 
+									value={this.state.userid}
+								/>
 							</InputGroup>
 							<InputGroup style={styles.inputGroup} borderType={'regular'}>
-								<Input style={styles.textInput} placeholder="Clave" secureTextEntry/>
+								<Input 
+									onChangeText={( password ) => this.setState({ password })}
+									style={styles.textInput} 
+									placeholder="Clave" 
+									secureTextEntry
+									value={this.state.password}
+								/>
 							</InputGroup>
 							<Grid>
 								<Col style={{flexDirection: 'row'}}>
@@ -58,12 +85,15 @@ export default class Login extends React.Component
 							</Grid>
 							<Grid>
 								<Col>
-									<Button onPress={(event) => {
+									<Button onPress={() => {
 
-											this.props.navigator.push({
-												name: "Home",
-												sceneConfig: Navigator.SceneConfigs.FloatFromBottom
-											});
+											this.props.dispatch( this.props.sessionActions.requestLogin({
+
+												userId: 80653260,
+												password: 'p3rs301!',
+												idType: '01'
+
+											}));
 
 										}}
 									textStyle={styles.loginButtonText}
@@ -76,16 +106,12 @@ export default class Login extends React.Component
 									</Button>
 								</Col>
 							</Grid>
-				    	</Content>
-				    </Container>
-			    </Row>
-			    <Row size={3} style={styles.row}>
-					
-			    </Row>
+						</Content>
+					</Container>
+				</Row>
+			    <Row size={3}></Row>
 			</Grid>
-
 		);
-
 	}
 }
 
@@ -102,7 +128,6 @@ let styles = StyleSheet.create({
 		backgroundColor: 'transparent',borderRadius: 3
 	},
 	formContainer: {
-		// backgroundColor: 'green',
 		marginTop: 24 ,
 		marginRight: 40,
 		marginBottom: 0,
@@ -128,25 +153,6 @@ let styles = StyleSheet.create({
 	},
 	textInput: {
 		fontSize: 11
-	},
-	logo: {
-		resizeMode: 'contain',
-		height: 58/1.7, // 58
-		width: 300/1.7, // 300
-		// alignSelf: 'center',
-		marginTop: 34,
-	},
-	logoContainer: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		flexDirection: 'row',
-		alignSelf: 'center',
-		paddingLeft: 100,
-		paddingRight: 100,
-	},
-	row: {
-
 	},
 });
 /*

@@ -17,31 +17,29 @@ export default class AppNavigator extends React.Component
 
 	_renderScene( route , navigator ) {
 
-		const globalNavigatorProps = {navigator}
+		route.name = this.props.session.loggedIn ? route.name : this.props.session.redirectTo
 
-		switch(route.name) {
+		switch ( route.name ) {
 
-			case "Catalog":
-				return <CatalogContainer navigator={navigator}/>;
+			case 'Catalog':
+				return <CatalogContainer  	{ ...this.props } navigator={ navigator }/>;
 
-			case "Home":
-				return <HomeContainer { ...this.props } navigator={navigator}/>;
+			case 'Home':
+				return <HomeContainer 		{ ...this.props } navigator={ navigator }/>;
 
-			case "Login":
-				return <SessionContainer show="login" navigator={navigator}/>;
+			case 'Login':
+				return <SessionContainer 	{ ...this.props } navigator={ navigator } show="login"/>;
 
-			case "Register":
-				return <SessionContainer show="register" navigator={navigator}/>;
+			case 'Register':
+				return <SessionContainer 	{ ...this.props } navigator={ navigator } show="register"/>;
 
-			case "Wallet":
-				return <WalletContainer { ...this.props } navigator={navigator}/>;
+			case 'Wallet':
+				return <WalletContainer 	{ ...this.props } navigator={ navigator }/>;
 
 			default:
-				return (
-					<Text style={{marginTop:25, texAlign: 'center'}}>
-						{`Navigator went to undefiend route ${route.name}`}
-					</Text>
-				);
+				return <Text style={ { marginTop: 25 , texAlign: 'center' } }>
+					{`Navigator went to undefiend route ${route.name}`}
+				</Text>
 
 		}
 
@@ -51,10 +49,10 @@ export default class AppNavigator extends React.Component
 
 		return(
 			<Navigator
-				configureScene={(route) => ({...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight})}
-				initialRoute={this.props.initialRoute}
-		        style={{width:Dimensions.get('window').width}}
-				renderScene={(route,navigator) => this._renderScene(route,navigator)}
+				configureScene={ (route) => ({ ...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight }) }
+				initialRoute={ { name: this.props.session.loggedIn ? 'Home' : 'Login' } }
+				renderScene={ (route , navigator ) => this._renderScene( route , navigator )}
+		        style={ { width: Dimensions.get('window').width } }
 			/>
 		);
 
