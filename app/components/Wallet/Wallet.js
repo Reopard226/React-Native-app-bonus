@@ -6,33 +6,52 @@ import {
 	View,
 	Dimensions,
 	Text,
+	Image
 } from 'react-native';
 
-import {Button, Icon, Thumbnail , Header,Container, Content} from 'native-base';
+import {Button, Icon} from 'native-base';
 
 import BackIcon from '../Partials/BackIcon';
 
 export default ( props ) => (
-<Container>
-    <Content>
+
 		
 		<View style={styles.container}>
-                <Header style={styles.header}>
-                	<Button transparent>
-                    	<BackIcon/> 
-                    </Button>	                   	                    
-                    <Thumbnail square source={ require( '../../img/bonus-logoBlanco300.png' ) } style={ styles.logo }/>                
-                    <Button transparent>
-                        <Icon name='ios-refresh' color='white'/>
-                    </Button>
+                <View style={styles.header}>
+                	<View style={{width:Dimensions.get('window').width,
+                				  flexDirection:'row',
+                				  justifyContent:'center'}}>
+                		<BackIcon/>
+                		<Image source={require('../../img/bonus-logoBlanco300.png')}
+                			   style={{ 
+                			   			height:25,
+		                			   	resizeMode: 'contain',
+		                			   	margin:10,
+		                			   	
+		                			   }} 	
+        				/>
+        				<Icon name='ios-refresh' style={{color:'white',padding:5}}/>
+                	</View>
+            		<Text style={{
 
-                </Header>
-                <Text style={{fontSize:20,color:'#FFF',alignSelf:'center',padding:20}}>MI SALDO</Text>
+            			fontSize:25,
+						color:'#FFF',
+						textAlign:'center',
+					}}>
+            		MI SALDO
+            		</Text>
+                </View>               
 
                 <View style={styles.main}>
                 	<Text style={styles.balance}>S./564812</Text>
 					<Text style={styles.body}>Saldo disponible</Text>
-					<Text style={{color: 'black',padding:10,fontSize:18}}>
+					<Text style={{
+						color: 'black',
+						padding:20,
+						fontSize:18,textAlign:'center',
+						borderTopWidth:2,
+						borderColor:'#eee'
+					}}>
  					Para pagar con Bonus, necesitas tener saldo en tu cuenta Bonus.
 					</Text>
  					<Text style={styles.body}>Si no tienes saldo, puedes recargar saldo con tu tarjeta vinculada,
@@ -41,60 +60,69 @@ export default ( props ) => (
 					<Button block rounded style={styles.button}> Añadir Dinero </Button>	
                 </View>
         </View>
-    </Content>    
-</Container>
+        
+
     
 );
 
 let styles = StyleSheet.create({
+	container:{
+
+		height:Dimensions.get('window').height,
+		flexDirection:'column',
+		justifyContent:'space-between',
+		alignItems:'center'
+				
+	},
+	header:{
+
+		flex:1,
+		flexDirection:'column',
+		justifyContent:'space-around',
+		alignItems:'center'
+		
+	},	
+	main:{
+		flex:9,
+		flexDirection:'column',
+		backgroundColor:'white',		
+		alignItems:'center',		
+		justifyContent:'flex-start',
+		padding:20,		
+	},
 	logo:{
 		resizeMode: 'contain',
 		alignSelf:'center',
 		height:40
 	},
-	header:{
-	
-		backgroundColor:'transparent',
-		flexDirection:'row',
-		justifyContent:'space-between',
-		padding:20,
-
-
-	},
-	container:{
-		flex:1,
-		flexDirection:'column',
-		alignItems:'center',
-		justifyContent:'center'			
-				
-	},
-	main:{
-		flex:1,
-		backgroundColor:'white',
-		padding:20,
-		alignItems:'center',
-		justifyContent:'center'
-		
-	},
 	body:{
 		fontSize: 14,
-		color: 'gray',
+		color: 'gray',		
+		textAlign:'center',
+		justifyContent:'center',
 		padding:40,
-		alignSelf:'center',
-		justifyContent:'center'
+		fontFamily: 'Oswald'
 	},
 	balance:{
 		fontSize: 56,
 		color: 'rgb(32,76,165)',
 		alignSelf:'center',
-		paddingTop:30		
+		padding:30,
+		
 	},
-	button:{
+	button:{		
 		backgroundColor: 'rgb(32,76,165)', 
 		borderRadius: 20,
-		shadowColor: 'transparent',
-		padding:10,
+		shadowColor: 'transparent',		
 		width: Dimensions.get('window').width*0.8,
 		alignSelf:'center'
 	}
 });
+
+ // 				   <Button transparent>
+ //                    	<BackIcon/> 
+ //                    </Button>	                   	                    
+ //                    <Thumbnail square source={ require( '../../img/bonus-logoBlanco300.png' ) } style={ styles.logo }/>                
+ //                    <Button transparent>
+ //                        <Icon name='ios-refresh' color='white'/>
+ //                    </Button>
