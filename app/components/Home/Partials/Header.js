@@ -67,7 +67,8 @@ let styles = StyleSheet.create({
 	boxLabel: {
 		textAlign: 'center',
 		color: 'rgba(0,0,0,.3)', 
-		fontSize: 13
+		fontSize: 13,
+		fontFamily: 'Varela Round'
 	},
 	boxValue: {
 		textAlign: 'center',
@@ -96,10 +97,11 @@ let styles = StyleSheet.create({
 		paddingTop:26
 	},
 	userIdText: {
-		color: 'rgba(255,255,255,.9)',
+		color: 'rgba(255,255,255,.8)',
 		fontSize: 10,
 		top: -2,
-		left: 2
+		left: 2,
+		fontFamily: 'Varela Round'
 	},
 	userImage: {
 		top:34,left:35,
@@ -110,12 +112,13 @@ let styles = StyleSheet.create({
 	},
 	userInfo: {
 		padding:6,
-		marginTop: 10,
+		marginTop: 16,
 		marginLeft: 74
 	},
 	userNameText: {
 		color: 'rgba(255,255,255,.9)',
 		fontSize: 18,
-		lineHeight: 18
+		lineHeight: 18,
+		fontFamily: 'Varela Round'
 	},
 });

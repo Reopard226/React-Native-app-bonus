@@ -36,7 +36,7 @@ let styles = StyleSheet.create({
 		color: '#FFF',
 		fontSize: 12,
 		textAlign: 'center',
-		fontFamily: 'Oswald',
+		fontFamily: 'Varela Round',
 	},
 	titleSection: {
 		paddingBottom: 0
@@ -44,6 +44,8 @@ let styles = StyleSheet.create({
 	titleText: {
 		color: '#FFF',
 		fontSize: 22,
-		textAlign: 'center'
+		textAlign: 'center',
+		fontFamily: 'Varela Round',
+		lineHeight: 22,
 	}
 });

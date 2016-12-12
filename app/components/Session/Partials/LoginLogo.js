@@ -18,7 +18,7 @@ let styles = StyleSheet.create({
 		resizeMode: 'contain',
 		height: 58/1.7, // 58
 		width: 300/1.7, // 300
-		marginTop: 34,
+		marginTop: 2,
 	},
 	logoContainer: {
 		flex: 1,

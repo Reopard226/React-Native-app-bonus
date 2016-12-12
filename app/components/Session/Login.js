@@ -8,7 +8,7 @@ import {
 	View
 } from 'react-native';
 
-import { CheckBox, Container, Content, InputGroup, Input, Icon, Text, Button } from 'native-base';
+import { CheckBox, Container, Content, InputGroup, Input, Icon, Text, Button , Picker , Spinner } from 'native-base';
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 
@@ -23,9 +23,9 @@ export default class Login extends React.Component {
 		super( props );
 
 		this.state = {
-			idType: null,
-			userid: null,
-			password: null,
+			idType: '01',
+			userId: '80653260',
+			password: 'p3rs301!',
 		}
 
 	}
@@ -43,22 +43,49 @@ export default class Login extends React.Component {
 
 	}
 
+	_renderSpinner = () => {
+
+		if( this.props.session.loading )
+			return <Spinner color="#FFF" />;
+
+		return <Text></Text>;
+
+	}
+
 	render(){
 
 		return (
 			<Grid>
-				<Row size={4}>
+				<Row size={3}>
 					<LoginLogo />
 				</Row>
+				{ this._renderSpinner() }
 				<Row size={11}>
 					<Container style={styles.formContainer} theme={theme}>
 						<Content>
+							<View style={{ alignSelf: 'stretch' ,borderWidth: 1 , borderColor: 'rgba(255,255,255,.15)', borderRadius: 6, marginBottom: 10, }}>
+								<Picker
+									iosHeader="Escoge uno"
+									mode="dialog"
+									selectedValue={ this.state.idType }
+									onValueChange={ ( idType ) => this.setState({ idType }) }
+									style={{ left: 12 }}
+									textStyle={{color: '#FFF' , fontSize: 11}}
+									enabled={ !this.props.session.loading }
+								>
+										<Picker.Item key={0} label="D.N.I." value="01" />
+										<Picker.Item key={1} label="C.I." value="02" />
+										<Picker.Item key={2} label="C.E." value="03" />
+										<Picker.Item key={3} label="PASAPORTE" value="04" />
+								</Picker>
+							</View>
 							<InputGroup style={styles.inputGroup} borderType={'regular'}>
 								<Input 
-									onChangeText={( userid ) => this.setState({ userid })}
+									onChangeText={( userId ) => this.setState({ userId })}
 									style={styles.textInput} 
-									placeholder="Usuario" 
-									value={this.state.userid}
+									placeholder="Ej: 412321649" 
+									value={this.state.userId}
+									disabled={ this.props.session.loading }
 								/>
 							</InputGroup>
 							<InputGroup style={styles.inputGroup} borderType={'regular'}>
@@ -68,17 +95,18 @@ export default class Login extends React.Component {
 									placeholder="Clave" 
 									secureTextEntry
 									value={this.state.password}
+									disabled={ this.props.session.loading }
 								/>
 							</InputGroup>
-							<Grid>
+							<Grid style={{ marginTop: 12 }}>
 								<Col style={{flexDirection: 'row'}}>
 									<CheckBox style={styles.checkBox} checked={{ true }}/>
-									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF'}} small transparent>
+									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF', fontSize: 11}} small transparent>
 										Recordar usuario
 									</Button>
 								</Col>
 								<Col>
-									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF'}} small transparent>
+									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF', fontSize: 11}} small transparent>
 										¿Olvidó su clave?
 									</Button>
 								</Col>
@@ -86,22 +114,20 @@ export default class Login extends React.Component {
 							<Grid>
 								<Col>
 									<Button onPress={() => {
-
 											this.props.dispatch( this.props.sessionActions.requestLogin({
-
-												userId: 80653260,
-												password: 'p3rs301!',
-												idType: '01'
-
+												userId: this.state.userId, // 80653260,
+												password: this.state.password, // 'p3rs301!',
+												idType: this.state.idType // '01'
 											}));
-
 										}}
-									textStyle={styles.loginButtonText}
-									style={styles.loginButton} 
-									block>
+										textStyle={styles.loginButtonText}
+										style={styles.loginButton} 
+										block
+										disabled={ this.props.session.loading }
+									>
 										Ingresar
 									</Button>
-									<Button onPress={ () => this.props.changeScreen( 1 ) } textStyle={{color:'rgba(255,255,255,.7)',fontSize: 12}} style={{marginTop: 28,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgba(255,255,255,.2)'}} block bordered transparent>
+									<Button disabled={ this.props.session.loading } onPress={ () => this.props.changeScreen( 1 ) } textStyle={{color:'rgba(255,255,255,.7)',fontSize: 11}} style={{marginTop: 20,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgba(255,255,255,.2)'}} block bordered transparent>
 										Crear tu cuenta
 									</Button>
 								</Col>
@@ -109,7 +135,6 @@ export default class Login extends React.Component {
 						</Content>
 					</Container>
 				</Row>
-			    <Row size={3}></Row>
 			</Grid>
 		);
 	}
@@ -128,11 +153,11 @@ let styles = StyleSheet.create({
 		backgroundColor: 'transparent',borderRadius: 3
 	},
 	formContainer: {
-		marginTop: 24 ,
+		marginTop: 0 ,
 		marginRight: 40,
 		marginBottom: 0,
 		marginLeft: 40,
-		paddingTop: 32,
+		paddingTop: 28,
 		paddingRight: 18,
 		paddingBottom: 32,
 		paddingLeft: 18,
@@ -140,19 +165,21 @@ let styles = StyleSheet.create({
 	inputGroup: {
 		borderColor: 'rgba(255,255,255,.15)',
 		borderRadius: 6,
-		marginBottom: 10,
+		marginBottom: 14,
 	},
 	loginButton: {
-		marginTop: 32,
+		marginTop: 22,
 		backgroundColor: 'rgb(32,76,165)', 
 		borderRadius: 20,
 		shadowColor: 'transparent'
 	},
 	loginButtonText: {
 		fontSize: 11,
+		fontFamily: 'Varela Round'
 	},
 	textInput: {
-		fontSize: 11
+		fontSize: 11,
+		fontFamily: 'Varela Round'
 	},
 });
 /*

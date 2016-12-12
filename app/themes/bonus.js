@@ -12,7 +12,8 @@ export default {
 
 
     // Button
-    btnFontFamily: (Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'Roboto_medium',
+    // btnFontFamily: (Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'Roboto_medium',
+    btnFontFamily: (Platform.OS === 'ios' ) ? 'Varela Round' : 'Varela Round',
     btnDisabledBg: '#b5b5b5',
     btnDisabledClr: '#f1f1f1',
 

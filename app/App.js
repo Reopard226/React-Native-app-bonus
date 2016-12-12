@@ -31,20 +31,14 @@ class App extends Component
 	render()
 	{
 
-		return (
-			<AppNavigator
+		return <AppNavigator { ...this.props }
 
-				dispatch		= { this.props.dispatch }
+			closeDrawer 	= { () => this._closeDrawer() }
+			drawerOpened	= { this.state.drawerOpened }
+			openDrawer 		= { () => this._openDrawer() }
 
-				closeDrawer 	= { () => this._closeDrawer() }
-				drawerOpened	= { this.state.drawerOpened }
-				openDrawer 		= { () => this._openDrawer() }
-
-				session 		= { this.props.session }
-
-				sessionActions	= { sessionActions }
-			/>
-		);
+			sessionActions	= { sessionActions }
+		/>
 
 	}
 
