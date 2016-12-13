@@ -11,16 +11,16 @@ import { Text } from 'native-base';
 
 import { Col, Grid } from "react-native-easy-grid";
 
-export default () => (
+export default ( props ) => (
 
 	<View>
 		<View style={ styles.profile }>
 			<Image source={ require( '../../../img/home/foto-perfil2.png' ) } style={ styles.userImage }/>
 			<View style={ styles.userInfo }>
-				<Text style={ styles.userNameText }>Franco Paolo Carranza</Text>
+				<Text style={ styles.userNameText }>{ props.session.user.name }</Text>
 				<View style={{flex:1,flexDirection: 'row'}}>
 					<Image source={ require( '../../../img/home/icon-id.png' ) } style={{marginTop: 4, marginRight: 4, width: 10, height: 10}}/>
-					<Text style={ styles.userIdText }>001896379-1</Text>
+					<Text style={ styles.userIdText }>{ props.session.user.id }</Text>
 				</View>
 			</View>
 		</View>
@@ -28,19 +28,19 @@ export default () => (
 			<Grid style={ styles.boxwrapper }>
 				<Col>
 					<View style={ styles.box }>
-						<Text style={ styles.boxValue }>566</Text>
+						<Text style={ styles.boxValue }>{ props.session.user.accountableBalance }</Text>
 						<Text style={ styles.boxLabel }>Soles</Text>
 					</View>
 				</Col>
 				<Col>
 					<View style={ [ styles.box ,  styles.centerbox ]  }>
-						<Text style={ styles.boxValue }>167</Text>
+						<Text style={ styles.boxValue }>{ props.session.user.pointsCode }</Text>
 						<Text style={ styles.boxLabel }>Puntos</Text>
 					</View>
 				</Col>
 				<Col>
 					<View style={ styles.box }>
-						<Text style={ styles.boxValue }>0</Text>
+						<Text style={ styles.boxValue }>{ props.session.user.accountAutCnj }</Text>
 						<Text style={ styles.boxLabel }>Cupones</Text>
 					</View>
 				</Col>

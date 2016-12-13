@@ -30,19 +30,6 @@ export default class Login extends React.Component {
 
 	}
 
-	componentWillReceiveProps( nextProps ){
-
-		if( nextProps.session.loggedIn ) {
-
-			this.props.navigator.push({
-				name: "Home",
-				sceneConfig: Navigator.SceneConfigs.FloatFromRight
-			});
-
-		}
-
-	}
-
 	_renderSpinner = () => {
 
 		if( this.props.session.loading )

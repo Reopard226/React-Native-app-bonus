@@ -54,7 +54,9 @@ export default ( props ) => (
 					/>
 				</View>
 				<View style={styles.Item}>
-					<TouchableOpacity style={ styles.touchableOpacity }>
+					<TouchableOpacity style={ styles.touchableOpacity }
+						onPress={ () => props.dispatch( props.sessionActions.logout() ) }
+					>
 						<Image style={ [ styles.image , { width: 30 , height: 30 } ] } source={ require("../../../img/menu/icon-logout.png") }/>
 						<Text style={ [ styles.text , { paddingTop: 14 } ]  }> {"Cerrar Sesión"} </Text>
 					</TouchableOpacity>

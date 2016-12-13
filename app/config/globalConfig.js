@@ -2,6 +2,8 @@
 
 export default {
 	apiEntry: '/app-web/servlet',
+	productsRequestEndpoint: '/awslisprdc',
+	productsRequestFormat: null,
 	loginRequestEndpoint: '/awslogusuap',
 	loginRequestFormat: ( userId , password , idType ) => (
 

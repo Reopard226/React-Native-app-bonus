@@ -3,7 +3,7 @@
 export default {
 	error: null,
 	loading: false,
-	loggedIn: true,
+	loggedIn: false,
 	redirectTo: 'Login',
 	user: {},
 }

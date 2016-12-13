@@ -4,9 +4,12 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AppNavigator from './components/AppNavigator';
+import SessionContainer from './components/SessionContainer'
 
 // Actions
-import * as sessionActions from './actions/sessionActions';
+import sessionActions from './actions/sessionActions';
+
+console.log( sessionActions );
 
 class App extends Component
 {
@@ -31,14 +34,31 @@ class App extends Component
 	render()
 	{
 
-		return <AppNavigator { ...this.props }
+		if( this.props.session.loggedIn ){
+
+			return <AppNavigator { ...this.props }
+
+				closeDrawer 	= { () => this._closeDrawer() }
+				drawerOpened	= { this.state.drawerOpened }
+				openDrawer 		= { () => this._openDrawer() }
+
+				sessionActions	= { sessionActions }
+				
+			/>
+
+		}
+
+		return <SessionContainer { ...this.props } 
 
 			closeDrawer 	= { () => this._closeDrawer() }
 			drawerOpened	= { this.state.drawerOpened }
 			openDrawer 		= { () => this._openDrawer() }
 
 			sessionActions	= { sessionActions }
-		/>
+
+			show="login"
+			
+		/>;
 
 	}
 

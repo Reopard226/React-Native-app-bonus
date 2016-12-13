@@ -6,75 +6,77 @@ export default function reducer( state = _initialState , action ) {
 	
 	switch ( action.type ) {
 
-		case 'SESSION:LOGGED_IN':
+		// User is logged in
+		case 'SESSION::LOGGED_IN':
 			return {
 				...state, 
-				loggedIn: true
+				loggedIn: true,
+				loading: false
 			}
 
 			break
 
-		case 'SESSION:LOGGED_OUT':
+		// User is logged out
+		case 'SESSION::LOGGED_OUT':
 			return {
 				...state, 
-				loggedIn: false
+				loggedIn: false,
+				loading: false
 			}
 
 			break
 
-		case 'SESSION:LOGGED_IN_STATE_UNKOWN':
+		// User is in unknown loggin state
+		case 'SESSION::LOGGED_IN_STATE_UNKOWN':
 			return state
 
 			break
 
-		case 'SESSION:REQUEST_LOGIN_SUCCEEDED':
+		// User requests logout
+		case 'SESSION::REQUESTING_LOGOUT':
+			return {
+				...state, 
+				loggedIn: false,
+				loading: false,
+				user: {}
+			}
+
+			break
+
+		// Requested login in process
+		case 'SESSION::REQUESTING_LOGIN':
+			return {
+				...state,
+				loading: true
+			}
+
+			break
+
+		// User login request succeeded
+		case 'SESSION::REQUESTED_LOGIN_SUCCEEDED':
 			return {
 				...state,
 				user: {
 					...state.user,
 					id: action.payload
 				},
+				loading: false,
 				error: null
 			}
 
 			break
 
-		case 'SESSION:REQUEST_LOGIN_REJECTED':
+		// User login request failed
+		case 'SESSION::REQUESTED_LOGIN_REJECTED':
 			return {
 				...state,
-				error: action.payload
-			}
-
-			break
-
-		case 'SESSION:REQUEST_USER_INFO_SUCCEEDED':
-			return {
-				...state,
-				user: {
-					...state.user,
-					...action.payload
-				}
-			}
-
-			break
-
-		case 'SESSION:REQUESTING_LOGIN':
-			return {
-				...state,
-				loading: true
-			}
-
-			break
-
-		case 'SESSION:LOGIN_REQUESTED':
-			return {
-				...state,
+				error: action.payload,
 				loading: false
 			}
 
 			break
 
-		case 'SESSION:REQUESTING_USER_INFO':
+		case 'SESSION::REQUESTING_USER_INFO':
 			return {
 				...state,
 				loading: true
@@ -82,9 +84,27 @@ export default function reducer( state = _initialState , action ) {
 
 			break
 
-		case 'SESSION:USER_INFO_REQUESTED':
+		// User user info request succeeded 
+		case 'SESSION::REQUESTED_USER_INFO_SUCCEEDED':
 			return {
 				...state,
+				user: {
+					...state.user,
+					...action.payload
+				},
+				loading: false
+			}
+
+			break
+
+		// User user info request failed 
+		case 'SESSION::REQUESTED_USER_INFO_REJECTED':
+			return {
+				...state,
+				user: {
+					...state.user,
+					...action.payload
+				},
 				loading: false
 			}
 

@@ -17,8 +17,6 @@ export default class AppNavigator extends React.Component
 
 	_renderScene( route , navigator ) {
 
-		route.name = this.props.session.loggedIn ? route.name : this.props.session.redirectTo
-
 		switch ( route.name ) {
 
 			case 'Catalog':
@@ -26,12 +24,6 @@ export default class AppNavigator extends React.Component
 
 			case 'Home':
 				return <HomeContainer 		{ ...this.props } navigator={ navigator }/>;
-
-			case 'Login':
-				return <SessionContainer 	{ ...this.props } navigator={ navigator } show="login"/>;
-
-			case 'Register':
-				return <SessionContainer 	{ ...this.props } navigator={ navigator } show="register"/>;
 
 			case 'Wallet':
 				return <WalletContainer 	{ ...this.props } navigator={ navigator }/>;
@@ -50,7 +42,7 @@ export default class AppNavigator extends React.Component
 		return(
 			<Navigator
 				configureScene={ (route) => ({ ...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight }) }
-				initialRoute={ { name: this.props.session.loggedIn ? 'Home' : 'Login' } }
+				initialRoute={ { name: 'Home' } }
 				renderScene={ (route , navigator ) => this._renderScene( route , navigator )}
 		        style={ { width: Dimensions.get('window').width } }
 			/>

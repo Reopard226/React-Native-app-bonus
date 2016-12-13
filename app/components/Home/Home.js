@@ -19,9 +19,9 @@ import MenuIcon from './Partials/MenuIcon';
 export default ( props ) => (
 
 	<View>
-		<CartIcon />
+		<CartIcon { ...props } />
 		<MenuIcon { ...props } />
-		<Header />
+		<Header { ...props }/>
 		<ScrollableTabView 
 			style={ styles.scrollableTabView } 
 			tabBarUnderlineStyle={ styles.tabBarUnderlineStyle }
@@ -30,7 +30,7 @@ export default ( props ) => (
 			tabBarInactiveTextColor={ styles.tabBarInactiveTextColor.color }
 			renderTabBar={() => <CustomTabBar />}
 		>
-			<Catalogue tabLabel="CATÁLOGO" navigator={ props.navigator }/>
+			<Catalogue tabLabel="CATÁLOGO" { ...props }/>
 			<Text tabLabel="PROMOCIONES">PROMOCIONES</Text>
 			<Text tabLabel="CUPONES">CUPONES</Text>
 		</ScrollableTabView>
