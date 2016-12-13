@@ -22,32 +22,38 @@ const from_redux = {
 		{
 			name: 'PARA ELLAS',
 			number_of_articles: 34,
-			img: require('../../../img/home/ellas-bg350x100.jpg')
+			img: require('../../../img/home/ellas-bg350x100.jpg'),
+			categoryId: 11
 		},
 		{
 			name: 'PARA ELLOS',
 			number_of_articles: 24,
-			img: require('../../../img/home/ellos-bg350x100.jpg')
+			img: require('../../../img/home/ellos-bg350x100.jpg'),
+			categoryId: 12
 		},
 		{
 			name: 'INFANTIL Y JÓVENES',
 			number_of_articles: 123,
-			img: require('../../../img/home/infantil-bg350x100.png')
+			img: require('../../../img/home/infantil-bg350x100.png'),
+			categoryId: 10
 		},
 		{
 			name: 'PARA EL HOGAR',
 			number_of_articles: 46,
-			img: require('../../../img/home/home-bg350x100.jpg')
+			img: require('../../../img/home/home-bg350x100.jpg'),
+			categoryId: 42
 		},
 		{
 			name: 'FITNESS Y SALUD',
 			number_of_articles: 52,
-			img: require('../../../img/home/fitnnesbg350x100.jpg')
+			img: require('../../../img/home/fitnnesbg350x100.jpg'),
+			categoryId: 72
 		},
 		{
 			name: 'NAVIDAD',
 			number_of_articles: 52,
-			img: require('../../../img/home/navidad-bg350x100.png')
+			img: require('../../../img/home/navidad-bg350x100.png'),
+			categoryId: 23
 		}
 	]
 }
@@ -66,6 +72,11 @@ export default ( props ) => {
 
 						props.navigator.push({
 							name: "Catalog",
+							category: { 
+								id: item.categoryId,
+								name: item.name,
+								numberOfArticles: item.number_of_articles
+							},
 							sceneConfig: Navigator.SceneConfigs.FloatFromRight
 						});
 

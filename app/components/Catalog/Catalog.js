@@ -20,7 +20,7 @@ export default ( props ) => (
 	<View style={ styles.container }>
 		<BackIcon navigator={ props.navigator } />
 		<CartIcon />
-		<Header />
+		<Header { ...props } />
 		<ScrollableTabView 
 			style={ styles.scrollableTabView } 
 			tabBarUnderlineStyle={ styles.tabBarUnderline }
@@ -28,7 +28,7 @@ export default ( props ) => (
 			tabBarInactiveTextColor={ styles.tabBarInactiveText }
 			renderTabBar={() => <CustomTabBar />}
 		>
-			<ProductList tabLabel="TODOS"/>
+			<ProductList { ...props } tabLabel="TODOS"/>
 			<Text tabLabel="ROPA">ROPA</Text>
 			<Text tabLabel="CALZADO">CALZADO</Text>
 			<Text tabLabel="ACCESORIOS">ACCESORIOS</Text>

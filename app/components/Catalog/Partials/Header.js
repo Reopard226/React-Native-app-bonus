@@ -16,8 +16,8 @@ export default ( props ) => (
 			<Image style={ styles.logo } source={ require('../../../img/bonus-logoBlanco300.png') } />
 		</View>
 		<View style={ styles.titleSection }>
-			<Text style={ styles.titleText }>Para Ellas</Text>
-			<Text style={ styles.itemCountText }>34 Articulos</Text>
+			<Text style={ styles.titleText }>{ props.category.name }</Text>
+			<Text style={ styles.itemCountText }>{ props.category.numberOfArticles } articulos</Text>
 		</View>
 	</View>
 

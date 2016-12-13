@@ -11,11 +11,11 @@ export default function requestProductList( params = { categoryId: '' } ) {
 
 	return function(dispatch){
 
-		dispatch({ type: 'SESSION::REQUESTING_LOGIN' })
+		dispatch({ type: 'PRODUCTS::REQUESTING_PRODUCTLIST' })
 
 		const requestSettings = { 
 			...axiosBaseConfig,
-			data: globalConfig.productsRequestFormat( credentials.categoryId ),
+			data: globalConfig.productsRequestFormat( params.categoryId ),
 			url: globalConfig.productsRequestEndpoint,
 		}
 
@@ -26,17 +26,32 @@ export default function requestProductList( params = { categoryId: '' } ) {
 			let doc = new DOMParser().parseFromString( response.data , 'text/xml' );
 			let responseMessage = doc.getElementsByTagName('Msjerror')[0].textContent;
 			let errorCode = doc.getElementsByTagName('Coderror')[0].textContent;
-			let userId = doc.getElementsByTagName('Prscod')[0].textContent;
+			let productNodes = doc.getElementsByTagName('Lisprdcj.LisprdcjItem');
+			let products = [];
+
+
+			for ( var i = 0; i < productNodes.length; ++i ) {
+
+				products.push({
+					code: productNodes[ i ].getElementsByTagName( 'CmsCodPro' )[0].textContent.replace(/ /g,''),
+					name: productNodes[ i ].getElementsByTagName( 'CmsDesPro' )[0].textContent.trim(),
+					points: productNodes[ i ].getElementsByTagName( 'CnfPagAdi' )[0].textContent.replace(/ /g,''),
+					plusValue: productNodes[ i ].getElementsByTagName( 'CnfNroPto' )[0].textContent.replace(/ /g,''),
+					points2: productNodes[ i ].getElementsByTagName( 'CnfPagAdi' )[1].textContent.replace(/ /g,''),
+					plusValue2: productNodes[ i ].getElementsByTagName( 'CnfNroPto' )[1].textContent.replace(/ /g,''),
+				});
+
+			}
 
 			if ( responseMessage == 'Exito' && errorCode == '0'  )
-				dispatch({ type: 'SESSION::REQUESTED_LOGIN_SUCCEEDED' , payload: userId })
+				dispatch({ type: 'PRODUCTS::REQUESTED_PRODUCTLIST_SUCCEEDED' , payload: products })
 			else
-				dispatch({ type: 'SESSION::REQUESTED_LOGIN_REJECTED' , payload: responseMessage })
+				dispatch({ type: 'PRODUCTS::REQUESTED_PRODUCTLIST_REJECTED' , payload: responseMessage })
 
 		})
 
 		.catch((err) => {
-			dispatch({ type: 'SESSION::REQUESTED_LOGIN_REJECTED' , payload: err })
+			dispatch({ type: 'PRODUCTS::REQUESTED_PRODUCTLIST_REJECTED' , payload: err })
 		})
 
 	}

@@ -1,6 +1,6 @@
 'use strict'
 
-import requestProductList from './session/requestProductList'
+import requestProductList from './products/requestProductList'
 
 export default {
 	requestProductList,

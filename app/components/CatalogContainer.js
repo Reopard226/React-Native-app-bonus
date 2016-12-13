@@ -7,6 +7,6 @@ import Catalog from './Catalog/Catalog';
 
 export default ( props ) => (
 	<BaseContainer>
-		<Catalog navigator={ props.navigator }/>
+		<Catalog { ...props }/>
 	</BaseContainer>
 );

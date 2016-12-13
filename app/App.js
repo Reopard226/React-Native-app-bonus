@@ -4,9 +4,10 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AppNavigator from './components/AppNavigator';
-import SessionContainer from './components/SessionContainer'
+import SessionContainer from './components/SessionContainer';
 
 // Actions
+import productsActions from './actions/productsActions';
 import sessionActions from './actions/sessionActions';
 
 console.log( sessionActions );
@@ -43,6 +44,7 @@ class App extends Component
 				openDrawer 		= { () => this._openDrawer() }
 
 				sessionActions	= { sessionActions }
+				productsActions	= { productsActions }
 				
 			/>
 
@@ -81,6 +83,7 @@ class App extends Component
 export default connect(( state ) => {
 
 	return {
+		products: state.products,
 		session: state.session,
 	}
 

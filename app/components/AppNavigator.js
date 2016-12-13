@@ -20,7 +20,7 @@ export default class AppNavigator extends React.Component
 		switch ( route.name ) {
 
 			case 'Catalog':
-				return <CatalogContainer  	{ ...this.props } navigator={ navigator }/>;
+				return <CatalogContainer    { ...this.props } navigator={ navigator } category={ route.category }/>;
 
 			case 'Home':
 				return <HomeContainer 		{ ...this.props } navigator={ navigator }/>;

@@ -3,7 +3,19 @@
 export default {
 	apiEntry: '/app-web/servlet',
 	productsRequestEndpoint: '/awslisprdc',
-	productsRequestFormat: null,
+	productsRequestFormat: ( categoryId ) => (
+		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'
+		+ '<soapenv:Header/>'
+		+ '<soapenv:Body>'
+		+ '<app:wslisprdc.Execute>'
+		+ '<app:Filtro>?</app:Filtro>'
+		+ '<app:Cmscodcat>' + categoryId + '</app:Cmscodcat>'
+		+ '<app:Prscod>?</app:Prscod>'
+		+ '<app:Dpwdespro>?</app:Dpwdespro>'
+		+ '</app:wslisprdc.Execute>'
+		+ '</soapenv:Body>'
+		+ '</soapenv:Envelope>'
+	),
 	loginRequestEndpoint: '/awslogusuap',
 	loginRequestFormat: ( userId , password , idType ) => (
 
