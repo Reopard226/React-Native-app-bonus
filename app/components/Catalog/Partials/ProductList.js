@@ -48,7 +48,7 @@ export default class ProductList extends React.Component
 
 	render() {
 
-		if( !this.props.products.products || !this.props.products.products.length )
+		if( this.props.products.loading || !this.props.products.products || !this.props.products.products.length )
 			return <Spinner color="#FFF" />
 
 		return (

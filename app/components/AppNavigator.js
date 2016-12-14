@@ -9,6 +9,7 @@ import {
 
 import CatalogContainer from './CatalogContainer';
 import HomeContainer from './HomeContainer';
+import PointsContainer from './PointsContainer';
 import SessionContainer from './SessionContainer';
 import WalletContainer from './WalletContainer';
 
@@ -27,6 +28,9 @@ export default class AppNavigator extends React.Component
 
 			case 'Wallet':
 				return <WalletContainer 	{ ...this.props } navigator={ navigator }/>;
+
+			case 'Points':
+				return <PointsContainer 	{ ...this.props } navigator={ navigator }/>;
 
 			default:
 				return <Text style={ { marginTop: 25 , texAlign: 'center' } }>

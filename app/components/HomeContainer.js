@@ -19,6 +19,9 @@ export default class HomeContainer extends React.Component {
 		if( this.props.session.user.name === undefined || this.props.session.user.name === null || this.props.session.user.name == '' )
 			this.props.dispatch( this.props.sessionActions.requestUserInfo( { userId: this.props.session.user.id } ) );
 
+		if( this.props.products.products && this.props.products.products.length )
+			this.props.dispatch( this.props.productsActions.clearProductList() );
+
 	}
 
 	render(){

@@ -54,6 +54,24 @@ const from_redux = {
 			number_of_articles: 52,
 			img: require('../../../img/home/navidad-bg350x100.png'),
 			categoryId: 23
+		},
+		{
+			name: 'VERANO',
+			number_of_articles: 32,
+			img: require('../../../img/home/verano-bg-350x100.png'),
+			categoryId: 8
+		},
+		{
+			name: 'ENTRETENIMIENTO',
+			number_of_articles: 12,
+			img: require('../../../img/home/entretenimiento-bg350x100.png'),
+			categoryId: 51
+		},
+		{
+			name: 'SERVICIOS',
+			number_of_articles: 71,
+			img: require('../../../img/home/servicios-bg-350x100.png'),
+			categoryId: 23
 		}
 	]
 }

@@ -33,6 +33,16 @@ export default function reducer( state = _initialState , action ) {
 
 			break
 
+
+		case 'PRODUCTS::CLEAR_PRODUCTLIST':
+			return {
+				...state,
+				loading: false,
+				products: new Array
+			}
+
+			break
+
 	}
 
 	return state

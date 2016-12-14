@@ -28,7 +28,16 @@ export default ( props ) => (
 					/>
 				</View>
 				<View style={styles.Item}>
-					<TouchableOpacity style={ styles.touchableOpacity }>
+					<TouchableOpacity style={ styles.touchableOpacity }
+						onPress={ ( event ) => {
+
+							props.navigator.push({
+								name: "Points",
+								sceneConfig: Navigator.SceneConfigs.FloatFromRight
+							});
+
+						}}
+					>
 						<Image style={ styles.image } source={ require("../../../img/menu/puntos.png") }/>
 						<Text style={ styles.text }> {"Mis Puntos"} </Text>
 					</TouchableOpacity>

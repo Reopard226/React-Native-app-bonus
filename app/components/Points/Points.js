@@ -14,7 +14,6 @@ import {Button, Icon} from 'native-base';
 import BackIcon from '../Partials/BackIcon';
 
 export default ( props ) => (
-
 		
 		<View style={styles.container}>
 				<BackIcon { ...props } />
@@ -41,13 +40,13 @@ export default ( props ) => (
 						marginTop: 0,
 						top: -10
 					}}>
-            		MI SALDO
+	            		MIS PUNTOS
             		</Text>
                 </View>               
 
                 <View style={styles.main}>
-                	<Text style={styles.balance}>S./ { props.session.user.pointsCode }</Text>
-					<Text style={styles.body}>Saldo disponible</Text>
+                	<Text style={styles.balance}>{ props.session.user.currentBalance }</Text>
+					<Text style={styles.body}>Puntos disponibles</Text>
 					<View style={{
 						paddingTop:25,
 						marginLeft:5,
@@ -57,12 +56,11 @@ export default ( props ) => (
 						borderTopWidth:2,
 						borderTopColor:'rgba(0,0,0,.15)'
 					}}>
- 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>Para pagar con Bonus, necesitas tener saldo en tu cuenta Bonus.</Text>
+ 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>¿Cómo gano un punto Bonus?</Text>
 					</View>
- 					<Text style={styles.body}>Si no tienes saldo, puedes recargar saldo con tu tarjeta vinculada,
- 					o a través de nuestros establecimientos colaboradores.
+ 					<Text style={[styles.body, {paddingLeft: 10, paddingRight: 10}]}>Acumulas 1 punto por cada $/. 7.50 de consumo en nuestras marcas asociadas presentando tu Bonus y listo! Empieza a disfrutar.
  					</Text>
-					<Button block rounded style={styles.button}> Añadir Dinero </Button>	
+					<Button block rounded style={styles.button}> Transferir Puntos </Button>	
                 </View>
         </View>
         

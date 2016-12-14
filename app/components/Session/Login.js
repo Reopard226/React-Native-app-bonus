@@ -24,8 +24,8 @@ export default class Login extends React.Component {
 
 		this.state = {
 			idType: '01',
-			userId: '80653260',
-			password: 'p3rs301!',
+			userId: '80653260', //80653260
+			password: 'p3rs301!', //p3rs301!
 		}
 
 	}
@@ -50,14 +50,16 @@ export default class Login extends React.Component {
 				<Row size={11}>
 					<Container style={styles.formContainer} theme={theme}>
 						<Content>
-							<View style={{ alignSelf: 'stretch' ,borderWidth: 1 , borderColor: 'rgba(255,255,255,.15)', borderRadius: 6, marginBottom: 10, }}>
+							<View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' , alignSelf: 'stretch' ,borderWidth: 1 , borderColor: 'rgba(255,255,255,.15)', borderRadius: 6, marginBottom: 10, }}>
+								<Image style={ styles.caret } source={ require( '../../img/arrow-select.png' ) }/>
 								<Picker
-									iosHeader="Escoge uno"
+									iosHeader="Tipo de Documento"
+									prompt="Tipo de Documento"
 									mode="dialog"
 									selectedValue={ this.state.idType }
 									onValueChange={ ( idType ) => this.setState({ idType }) }
-									style={{ left: 12 }}
-									textStyle={{color: '#FFF' , fontSize: 11}}
+									style={{ padding: 0 , margin: 0 , flex: 1 , alignSelf: 'stretch' , justifyContent: 'flex-start', alignItems: 'center', left: 0 }}
+									textStyle={{ marginLeft: 20 , color: '#FFF' , fontSize: 11}}
 									enabled={ !this.props.session.loading }
 								>
 										<Picker.Item key={0} label="D.N.I." value="01" />
@@ -70,7 +72,7 @@ export default class Login extends React.Component {
 								<Input 
 									onChangeText={( userId ) => this.setState({ userId })}
 									style={styles.textInput} 
-									placeholder="Ej: 412321649" 
+									placeholder="Núm. de Documento" 
 									value={this.state.userId}
 									disabled={ this.props.session.loading }
 								/>
@@ -128,6 +130,14 @@ export default class Login extends React.Component {
 }
 
 let styles = StyleSheet.create({
+	caret:{
+		position: 'absolute',
+		right: 14,
+		top: 14,
+		width:10,
+		height:10,
+		resizeMode: 'contain'
+	},
 	checkBox: {
 		marginTop:10,
 		paddingLeft:2,

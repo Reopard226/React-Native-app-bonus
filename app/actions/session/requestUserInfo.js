@@ -5,6 +5,8 @@ import axios from 'axios'
 import axiosBaseConfig from '../../config/axiosBaseConfig'
 import globalConfig from '../../config/globalConfig'
 
+import toTitleCase from '../../utils/toTitleCase'
+
 var DOMParser = require('xmldom').DOMParser
 
 export default function requestUserInfo( credentials = { userId: '' } ) {
@@ -29,7 +31,7 @@ export default function requestUserInfo( credentials = { userId: '' } ) {
 			let returnedUserId = doc.getElementsByTagName('Prsnrodoc')[0].textContent;
 
 			let user = {}
-			user.name = doc.getElementsByTagName('Prsnomape')[0].textContent;
+			user.name = toTitleCase( doc.getElementsByTagName('Prsnomape')[0].textContent );
 
 			user.accountType = doc.getElementsByTagName('PCtaTip')[0].textContent.replace(/ /g,'');
 			user.accountTypeName = doc.getElementsByTagName('PCtaTipNom')[0].textContent.replace(/ /g,'');
@@ -38,7 +40,7 @@ export default function requestUserInfo( credentials = { userId: '' } ) {
 
 			user.accountableBalance = doc.getElementsByTagName('CtaSalCon')[0].textContent.replace(/ /g,'');
 			user.availableBalance = doc.getElementsByTagName('CtaSalDsp')[0].textContent.replace(/ /g,'');
-			user.currentBalance = doc.getElementsByTagName('CtaSalVig')[0].textContent.replace(/ /g,'');
+			user.currentBalance = Math.floor( doc.getElementsByTagName('CtaSalVig')[0].textContent.replace(/ /g,'') );
 
 			user.pointsCode = doc.getElementsByTagName('TipPunCod')[0].textContent.replace(/ /g,'');
 

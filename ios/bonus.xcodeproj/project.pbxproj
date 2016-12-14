@@ -30,7 +30,6 @@
 		3AB041E437934D82A8CB2832 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 012A3041E4AC41E1920999B8 /* MaterialIcons.ttf */; };
 		3B3AB019AFD74382BD9A8CFA /* Georgia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E8E3E55D773456289BAD7B9 /* Georgia.ttf */; };
 		4559CD1914B04844AA8E3EF7 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D60249E89084AE5A19A97B5 /* Roboto.ttf */; };
-		4A6C27951DF52FF0008CCE0F /* VarelaRound-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4A6C27941DF52FF0008CCE0F /* VarelaRound-Regular.otf */; };
 		4A8575C81DFE60490076CB95 /* VarelaRound-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8575C71DFE60490076CB95 /* VarelaRound-Regular.ttf */; };
 		4AE653F51DF5273B00A09C3F /* Oswald-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AE653E61DF5273B00A09C3F /* Oswald-Bold.ttf */; };
 		4AE653F61DF5273B00A09C3F /* Oswald-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AE653E71DF5273B00A09C3F /* Oswald-BoldItalic.ttf */; };
@@ -244,7 +243,6 @@
 		2B239D030C1541EAA6A0E5CF /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
 		3AB6ED2AFA7C4AB199CF4F10 /* Andale Mono.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Andale Mono.ttf"; path = "../node_modules/native-base/Fonts/Andale Mono.ttf"; sourceTree = "<group>"; };
 		411E4CCFD3D84B299B2138D8 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		4A6C27941DF52FF0008CCE0F /* VarelaRound-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "VarelaRound-Regular.otf"; path = "../../../../Downloads/varela-round/VarelaRound-Regular.otf"; sourceTree = "<group>"; };
 		4A8575C71DFE60490076CB95 /* VarelaRound-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "VarelaRound-Regular.ttf"; path = "../../../../Downloads/Varela_Round/VarelaRound-Regular.ttf"; sourceTree = "<group>"; };
 		4AE653E61DF5273B00A09C3F /* Oswald-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-Bold.ttf"; path = "../../../../Downloads/oswald/Oswald-Bold.ttf"; sourceTree = "<group>"; };
 		4AE653E71DF5273B00A09C3F /* Oswald-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-BoldItalic.ttf"; path = "../../../../Downloads/oswald/Oswald-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -423,7 +421,6 @@
 			isa = PBXGroup;
 			children = (
 				4A8575C71DFE60490076CB95 /* VarelaRound-Regular.ttf */,
-				4A6C27941DF52FF0008CCE0F /* VarelaRound-Regular.otf */,
 				4AE653E61DF5273B00A09C3F /* Oswald-Bold.ttf */,
 				4AE653E71DF5273B00A09C3F /* Oswald-BoldItalic.ttf */,
 				4AE653E81DF5273B00A09C3F /* Oswald-Demi-BoldItalic.ttf */,
@@ -827,7 +824,6 @@
 				4AE653FD1DF5273B00A09C3F /* Oswald-Light.ttf in Resources */,
 				4AE654021DF5273B00A09C3F /* Oswald-RegularItalic.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				4A6C27951DF52FF0008CCE0F /* VarelaRound-Regular.otf in Resources */,
 				4AE653FF1DF5273B00A09C3F /* Oswald-Medium.ttf in Resources */,
 				4AE653FE1DF5273B00A09C3F /* Oswald-LightItalic.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,

@@ -15,7 +15,7 @@ export default ( props ) => (
 
 	<View>
 		<View style={ styles.profile }>
-			<Image source={ require( '../../../img/home/foto-perfil2.png' ) } style={ styles.userImage }/>
+			<Image source={ ( props.session.user.id == '0001896309' ? require( '../../../img/home/foto-perfil2.png' ) : require( '../../../img/home/sin-foto.png' ) ) } style={ styles.userImage }/>
 			<View style={ styles.userInfo }>
 				<Text style={ styles.userNameText }>{ props.session.user.name }</Text>
 				<View style={{flex:1,flexDirection: 'row'}}>
@@ -28,13 +28,13 @@ export default ( props ) => (
 			<Grid style={ styles.boxwrapper }>
 				<Col>
 					<View style={ styles.box }>
-						<Text style={ styles.boxValue }>{ props.session.user.accountableBalance }</Text>
+						<Text style={ styles.boxValue }>{ props.session.user.pointsCode }</Text>
 						<Text style={ styles.boxLabel }>Soles</Text>
 					</View>
 				</Col>
 				<Col>
 					<View style={ [ styles.box ,  styles.centerbox ]  }>
-						<Text style={ styles.boxValue }>{ props.session.user.pointsCode }</Text>
+						<Text style={ styles.boxValue }>{ props.session.user.currentBalance }</Text>
 						<Text style={ styles.boxLabel }>Puntos</Text>
 					</View>
 				</Col>
