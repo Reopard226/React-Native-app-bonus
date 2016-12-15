@@ -4,4 +4,5 @@ export default {
 	error: null,
 	loading: false,
 	products: [],
+	productDetail: null
 }

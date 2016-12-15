@@ -4,8 +4,10 @@ import React from 'react';
 import {
 	Dimensions,
 	Image,
+	Navigator,
 	ScrollView,
 	StyleSheet,
+	TouchableOpacity,
 	View
 } from 'react-native';
 
@@ -31,15 +33,30 @@ export default class ProductList extends React.Component
 		return this.props.products.products.map( ( item , index ) => {
 
 			return <View key={index} style={{ width: ( Dimensions.get('window').width / 2 ) , maxHeight: 280,paddingTop: 32}}>
-				<Text style={{ fontFamily: 'Varela Round' ,paddingBottom: 20,alignSelf:'center',textAlign: 'center',fontSize: 12,width: 120, lineHeight: 12}}>{ item.name }</Text>
-				<Image source={{ uri: ( 'http://www.bonus.com.pe/images/productos/' + item.code + '.jpg' ) }} style={{marginBottom: 20,alignSelf:'center',width:120,height:120,resizeMode: 'contain',}} />
-				<View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center',paddingBottom:5}}>
-					<Icon name="ios-star" size={10} color="gold" />
-					<Icon name="ios-star" size={10} color="gold" />
-					<Icon name="ios-star" size={10} color="gold" />
-				</View>
-				<Text style={{paddingBottom: 4,fontWeight: 'bold',alignSelf:'center',textAlign: 'center',fontSize: 12,width: 120, lineHeight: 12}}>{ item.points + 'pts. $/.' + item.plusValue }</Text>
-				<Text style={{alignSelf:'center',textAlign: 'center',fontSize: 10,width: 120, lineHeight: 9, color: 'rgba(0,0,0,.6)'}}>{ item.points2 + 'pts. $/.' + item.plusValue2 }</Text>
+				<TouchableOpacity
+					onPress={() => {
+
+						this.props.navigator.push({
+							name: "Product",
+							product: { 
+								id: item.code,
+								category: this.props.category.name
+							},
+							sceneConfig: Navigator.SceneConfigs.FloatFromRight
+						});
+
+					}}
+				>
+					<Text style={{ fontFamily: 'Varela Round' ,paddingBottom: 20,alignSelf:'center',textAlign: 'center',fontSize: 12,width: 120, lineHeight: 12}}>{ item.name }</Text>
+					<Image source={{ uri: ( 'http://www.bonus.com.pe/images/productos/' + item.code + '.jpg' ) }} style={{marginBottom: 20,alignSelf:'center',width:120,height:120,resizeMode: 'contain',}} />
+					<View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center',paddingBottom:5}}>
+						<Icon name="ios-star" size={10} color="gold" />
+						<Icon name="ios-star" size={10} color="gold" />
+						<Icon name="ios-star" size={10} color="gold" />
+					</View>
+					<Text style={{paddingBottom: 4,fontWeight: 'bold',alignSelf:'center',textAlign: 'center',fontSize: 12,width: 120, lineHeight: 12}}>{ item.points + 'pts. $/.' + item.plusValue }</Text>
+					<Text style={{alignSelf:'center',textAlign: 'center',fontSize: 10,width: 120, lineHeight: 9, color: 'rgba(0,0,0,.6)'}}>{ item.points2 + 'pts. $/.' + item.plusValue2 }</Text>
+				</TouchableOpacity>
 			</View>
 
 		});

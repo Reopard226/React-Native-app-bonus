@@ -6,6 +6,34 @@ export default function reducer( state = _initialState , action ) {
 	
 	switch ( action.type ) {
 
+		case 'PRODUCTS::REQUESTING_PRODUCTDETAIL':
+			return {
+				...state,
+				loading: true
+			}
+
+			break
+
+		case 'PRODUCTS::REQUESTED_PRODUCTDETAIL_SUCCEEDED':
+			return {
+				...state,
+				productDetail: action.payload,
+				loading: false,
+				error: null
+			}
+
+			break
+
+		case 'PRODUCTS::REQUESTED_PRODUCTDETAIL_REJECTED':
+			return {
+				...state,
+				productDetail: null,
+				error: action.payload,
+				loading: false
+			}
+
+			break
+
 		case 'PRODUCTS::REQUESTING_PRODUCTLIST':
 			return {
 				...state,

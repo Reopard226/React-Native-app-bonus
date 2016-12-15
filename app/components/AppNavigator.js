@@ -10,6 +10,7 @@ import {
 import CatalogContainer from './CatalogContainer';
 import HomeContainer from './HomeContainer';
 import PointsContainer from './PointsContainer';
+import ProductContainer from './ProductContainer';
 import SessionContainer from './SessionContainer';
 import WalletContainer from './WalletContainer';
 
@@ -31,6 +32,9 @@ export default class AppNavigator extends React.Component
 
 			case 'Points':
 				return <PointsContainer 	{ ...this.props } navigator={ navigator }/>;
+
+			case 'Product':
+				return <ProductContainer 	{ ...this.props } navigator={ navigator } product={ route.product }/>;
 
 			default:
 				return <Text style={ { marginTop: 25 , texAlign: 'center' } }>

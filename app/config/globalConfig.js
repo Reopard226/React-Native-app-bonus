@@ -2,6 +2,18 @@
 
 export default {
 	apiEntry: '/app-web/servlet',
+	productDetailEndpoint: '/awsoprdcnj',
+	productDetailFormat: ( productId ) => (
+		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'
+		+ '<soapenv:Header/>'
+		+ '<soapenv:Body>'
+		+ '<app:wsoprdcnj.Execute>'
+		+ '<app:Codprobon>' + productId + '</app:Codprobon>'
+		+ '<app:Idptoalmf>1</app:Idptoalmf>'
+		+ '</app:wsoprdcnj.Execute>'
+		+ '</soapenv:Body>'
+		+ '</soapenv:Envelope>'
+	),
 	productsRequestEndpoint: '/awslisprdc',
 	productsRequestFormat: ( categoryId ) => (
 		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'
