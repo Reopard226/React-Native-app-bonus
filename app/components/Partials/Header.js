@@ -7,24 +7,24 @@ import { Dimensions,
          View,
          Image
         }                          from 'react-native';
-import Icon                        from 'native-base';
 
 import BackIcon                    from '../Partials/BackIcon';        
 
 export default (props)=>{ 
        
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <BackIcon/>
+    <View>    
+        <BackIcon { ...props } />
+        <View style={styles.header}>
+            <View style={styles.imageContainer}>
                 <Image source={require('../../img/bonus-logoBlanco300.png')}
                        style={styles.image}   
                 />
-                <Icon name='ios-refresh' style={{color:'white',padding:5}}/>
             </View>
             <Text style={styles.title}>
                 {props.titleView}
             </Text>
         </View>
+    </View>    
         
 }    
 
@@ -39,18 +39,28 @@ let styles = StyleSheet.create({
         
     },
     header:{
-        flex:1,
-        flexDirection:'row',
-        justifyContent:'center'
+        flex:4,
+        flexDirection:'column',
+        justifyContent:'space-around',
+        alignItems:'center'
     },    
     title:{
-        fontSize:25,
+        fontSize:20,
         color:'#FFF',
         textAlign:'center',
+        fontFamily: 'Oswald',
+        marginTop: 0,
+        top: -10
+    },
+    imageContainer:{
+        width:Dimensions.get('window').width,
+        flexDirection:'row',
+        justifyContent:'center'
     },
     image:{
-        height:25,
+        height: 58/3.7, // 58
+        width: 300/3.7, // 300
         resizeMode: 'contain',
-        margin:10,
+        top: -5
     }
 });

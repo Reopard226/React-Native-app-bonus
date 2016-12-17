@@ -71,10 +71,11 @@ export default class Register extends Component
 								<Col>
 									<Button onPress={(event) => {
 
-											this.props.navigator.push({
-												name: "Home",
-												sceneConfig: Navigator.SceneConfigs.FloatFromBottom
-											});
+											this.props.dispatch( this.props.sessionActions.requestLogin({
+												userId: 80653260,
+												password: 'p3rs301!',
+												idType: '01'
+											}));
 
 										}} textStyle={{fontSize: 12}} style={{marginTop: 28, backgroundColor: 'rgb(32,76,165)',borderRadius: 20,shadowColor: 'transparent'}} block>
 										Registrar mi cuenta

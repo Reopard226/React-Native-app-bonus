@@ -8,88 +8,136 @@ import {
 	View
 } from 'react-native';
 
-import { CheckBox, Container, Content, InputGroup, Input, Icon, Text, Button } from 'native-base';
+import { CheckBox, Container, Content, InputGroup, Input, Icon, Text, Button , Picker , Spinner } from 'native-base';
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 
+import LoginLogo from './Partials/LoginLogo'
+
 import theme from '../../themes/bonus';
 
-export default class Login extends React.Component
-{
+export default class Login extends React.Component {
 
 	constructor( props ){
+
 		super( props );
+
 		this.state = {
-			loggedIn: false,
-		};
+			idType: '01',
+			userId: '', //80653260
+			password: '', //p3rs301!
+		}
+
+	}
+
+	_renderSpinner = () => {
+
+		if( this.props.session.loading )
+			return <Spinner color="#FFF" />;
+
+		return <Text></Text>;
+
 	}
 
 	render(){
 
 		return (
-
 			<Grid>
-				<Row size={4} style={styles.row}>
-					<View style={styles.logoContainer} >
-						<Image style={styles.logo} source={require('../../img/bonus-logoBlanco300.png')} />
-					</View>
+				<Row size={3}>
+					<LoginLogo />
 				</Row>
-				<Row size={11} style={styles.row}>
+				{ this._renderSpinner() }
+				<Row size={11}>
 					<Container style={styles.formContainer} theme={theme}>
 						<Content>
+							<View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' , alignSelf: 'stretch' ,borderWidth: 1 , borderColor: 'rgba(255,255,255,.15)', borderRadius: 6, marginBottom: 10, }}>
+								<Image style={ styles.caret } source={ require( '../../img/arrow-select.png' ) }/>
+								<Picker
+									iosHeader="Tipo de Documento"
+									prompt="Tipo de Documento"
+									mode="dialog"
+									selectedValue={ this.state.idType }
+									onValueChange={ ( idType ) => this.setState({ idType }) }
+									style={{ padding: 0 , margin: 0 , flex: 1 , alignSelf: 'stretch' , justifyContent: 'flex-start', alignItems: 'center', left: 0 }}
+									textStyle={{ marginLeft: 20 , color: '#FFF' , fontSize: 11}}
+									enabled={ !this.props.session.loading }
+								>
+										<Picker.Item key={0} label="D.N.I." value="01" />
+										<Picker.Item key={1} label="C.I." value="02" />
+										<Picker.Item key={2} label="C.E." value="03" />
+										<Picker.Item key={3} label="PASAPORTE" value="04" />
+								</Picker>
+							</View>
 							<InputGroup style={styles.inputGroup} borderType={'regular'}>
-								<Input style={styles.textInput} placeholder="Usuario" />
+								<Input 
+									onChangeText={( userId ) => this.setState({ userId })}
+									style={styles.textInput} 
+									placeholder="Núm. de Documento" 
+									value={this.state.userId}
+									disabled={ this.props.session.loading }
+								/>
 							</InputGroup>
 							<InputGroup style={styles.inputGroup} borderType={'regular'}>
-								<Input style={styles.textInput} placeholder="Clave" secureTextEntry/>
+								<Input 
+									onChangeText={( password ) => this.setState({ password })}
+									style={styles.textInput} 
+									placeholder="Clave" 
+									secureTextEntry
+									value={this.state.password}
+									disabled={ this.props.session.loading }
+								/>
 							</InputGroup>
-							<Grid>
+							<Grid style={{ marginTop: 12 }}>
 								<Col style={{flexDirection: 'row'}}>
 									<CheckBox style={styles.checkBox} checked={{ true }}/>
-									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF'}} small transparent>
+									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF', fontSize: 11}} small transparent>
 										Recordar usuario
 									</Button>
 								</Col>
 								<Col>
-									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF'}} small transparent>
+									<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF', fontSize: 11}} small transparent>
 										¿Olvidó su clave?
 									</Button>
 								</Col>
 							</Grid>
 							<Grid>
 								<Col>
-									<Button onPress={(event) => {
-
-											this.props.navigator.push({
-												name: "Home",
-												sceneConfig: Navigator.SceneConfigs.FloatFromBottom
-											});
-
+									<Button onPress={() => {
+											this.props.dispatch( this.props.sessionActions.requestLogin({
+												userId: this.state.userId, // 80653260,
+												password: this.state.password, // 'p3rs301!',
+												idType: this.state.idType // '01'
+											}));
 										}}
-									textStyle={styles.loginButtonText}
-									style={styles.loginButton} 
-									block>
+										textStyle={styles.loginButtonText}
+										style={styles.loginButton} 
+										block
+										disabled={ this.props.session.loading }
+									>
 										Ingresar
 									</Button>
-									<Button onPress={ () => this.props.changeScreen( 1 ) } textStyle={{color:'rgba(255,255,255,.7)',fontSize: 12}} style={{marginTop: 28,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgba(255,255,255,.2)'}} block bordered transparent>
+									<Button disabled={ this.props.session.loading } onPress={ () => this.props.changeScreen( 1 ) } textStyle={{color:'rgba(255,255,255,.7)',fontSize: 11}} style={{marginTop: 20,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgba(255,255,255,.2)'}} block bordered transparent>
 										Crear tu cuenta
 									</Button>
 								</Col>
 							</Grid>
-				    	</Content>
-				    </Container>
-			    </Row>
-			    <Row size={3} style={styles.row}>
-					
-			    </Row>
+						</Content>
+					</Container>
+				</Row>
 			</Grid>
-
 		);
-
 	}
 }
 
 let styles = StyleSheet.create({
+	caret:{
+		position: 'absolute',
+		right: 14,
+		top: 14,
+		width:10,
+		height:10,
+		resizeMode: 'contain'
+	},
 	checkBox: {
 		marginTop:10,
 		paddingLeft:2,
@@ -102,12 +150,11 @@ let styles = StyleSheet.create({
 		backgroundColor: 'transparent',borderRadius: 3
 	},
 	formContainer: {
-		// backgroundColor: 'green',
-		marginTop: 24 ,
+		marginTop: 0 ,
 		marginRight: 40,
 		marginBottom: 0,
 		marginLeft: 40,
-		paddingTop: 32,
+		paddingTop: 28,
 		paddingRight: 18,
 		paddingBottom: 32,
 		paddingLeft: 18,
@@ -115,38 +162,21 @@ let styles = StyleSheet.create({
 	inputGroup: {
 		borderColor: 'rgba(255,255,255,.15)',
 		borderRadius: 6,
-		marginBottom: 10,
+		marginBottom: 14,
 	},
 	loginButton: {
-		marginTop: 32,
+		marginTop: 22,
 		backgroundColor: 'rgb(32,76,165)', 
 		borderRadius: 20,
 		shadowColor: 'transparent'
 	},
 	loginButtonText: {
 		fontSize: 11,
+		fontFamily: 'Varela Round'
 	},
 	textInput: {
-		fontSize: 11
-	},
-	logo: {
-		resizeMode: 'contain',
-		height: 58/1.7, // 58
-		width: 300/1.7, // 300
-		// alignSelf: 'center',
-		marginTop: 34,
-	},
-	logoContainer: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		flexDirection: 'row',
-		alignSelf: 'center',
-		paddingLeft: 100,
-		paddingRight: 100,
-	},
-	row: {
-
+		fontSize: 11,
+		fontFamily: 'Varela Round'
 	},
 });
 /*

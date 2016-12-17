@@ -23,7 +23,7 @@ let styles = StyleSheet.create({
 		position: 'absolute',
 		top: 10,
 		left: 15,
-		zIndex:50
+		zIndex:5000
 	},
 	image:{
 		width:20,

@@ -16,8 +16,8 @@ export default ( props ) => (
 			<Image style={ styles.logo } source={ require('../../../img/bonus-logoBlanco300.png') } />
 		</View>
 		<View style={ styles.titleSection }>
-			<Text style={ styles.titleText }>Para Ellas</Text>
-			<Text style={ styles.itemCountText }>34 Articulos</Text>
+			<Text style={ styles.titleText }>{ props.category.name }</Text>
+			<Text style={ styles.itemCountText }>{ props.category.numberOfArticles } articulos</Text>
 		</View>
 	</View>
 
@@ -36,7 +36,7 @@ let styles = StyleSheet.create({
 		color: '#FFF',
 		fontSize: 12,
 		textAlign: 'center',
-		fontFamily: 'Oswald',
+		fontFamily: 'Varela Round',
 	},
 	titleSection: {
 		paddingBottom: 0
@@ -44,6 +44,8 @@ let styles = StyleSheet.create({
 	titleText: {
 		color: '#FFF',
 		fontSize: 22,
-		textAlign: 'center'
+		textAlign: 'center',
+		fontFamily: 'Varela Round',
+		lineHeight: 22,
 	}
 });

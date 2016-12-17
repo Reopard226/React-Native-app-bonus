@@ -11,16 +11,16 @@ import { Text } from 'native-base';
 
 import { Col, Grid } from "react-native-easy-grid";
 
-export default () => (
+export default ( props ) => (
 
 	<View>
 		<View style={ styles.profile }>
-			<Image source={ require( '../../../img/home/foto-perfil2.png' ) } style={ styles.userImage }/>
+			<Image source={ ( props.session.user.id == '0001896309' ? require( '../../../img/home/foto-perfil2.png' ) : require( '../../../img/home/sin-foto.png' ) ) } style={ styles.userImage }/>
 			<View style={ styles.userInfo }>
-				<Text style={ styles.userNameText }>Franco Paolo Carranza</Text>
+				<Text style={ styles.userNameText }>{ props.session.user.name }</Text>
 				<View style={{flex:1,flexDirection: 'row'}}>
 					<Image source={ require( '../../../img/home/icon-id.png' ) } style={{marginTop: 4, marginRight: 4, width: 10, height: 10}}/>
-					<Text style={ styles.userIdText }>001896379-1</Text>
+					<Text style={ styles.userIdText }>{ props.session.user.id }</Text>
 				</View>
 			</View>
 		</View>
@@ -28,19 +28,19 @@ export default () => (
 			<Grid style={ styles.boxwrapper }>
 				<Col>
 					<View style={ styles.box }>
-						<Text style={ styles.boxValue }>566</Text>
+						<Text style={ styles.boxValue }>{ props.session.user.pointsCode }</Text>
 						<Text style={ styles.boxLabel }>Soles</Text>
 					</View>
 				</Col>
 				<Col>
 					<View style={ [ styles.box ,  styles.centerbox ]  }>
-						<Text style={ styles.boxValue }>167</Text>
+						<Text style={ styles.boxValue }>{ props.session.user.currentBalance }</Text>
 						<Text style={ styles.boxLabel }>Puntos</Text>
 					</View>
 				</Col>
 				<Col>
 					<View style={ styles.box }>
-						<Text style={ styles.boxValue }>0</Text>
+						<Text style={ styles.boxValue }>{ props.session.user.accountAutCnj }</Text>
 						<Text style={ styles.boxLabel }>Cupones</Text>
 					</View>
 				</Col>
@@ -67,7 +67,8 @@ let styles = StyleSheet.create({
 	boxLabel: {
 		textAlign: 'center',
 		color: 'rgba(0,0,0,.3)', 
-		fontSize: 13
+		fontSize: 13,
+		fontFamily: 'Varela Round'
 	},
 	boxValue: {
 		textAlign: 'center',
@@ -96,10 +97,11 @@ let styles = StyleSheet.create({
 		paddingTop:26
 	},
 	userIdText: {
-		color: 'rgba(255,255,255,.9)',
+		color: 'rgba(255,255,255,.8)',
 		fontSize: 10,
 		top: -2,
-		left: 2
+		left: 2,
+		fontFamily: 'Varela Round'
 	},
 	userImage: {
 		top:34,left:35,
@@ -110,12 +112,13 @@ let styles = StyleSheet.create({
 	},
 	userInfo: {
 		padding:6,
-		marginTop: 10,
+		marginTop: 16,
 		marginLeft: 74
 	},
 	userNameText: {
 		color: 'rgba(255,255,255,.9)',
 		fontSize: 18,
-		lineHeight: 18
+		lineHeight: 18,
+		fontFamily: 'Varela Round'
 	},
 });

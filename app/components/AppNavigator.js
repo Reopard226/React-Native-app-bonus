@@ -9,6 +9,8 @@ import {
 
 import CatalogContainer from './CatalogContainer';
 import HomeContainer from './HomeContainer';
+import PointsContainer from './PointsContainer';
+import ProductContainer from './ProductContainer';
 import SessionContainer from './SessionContainer';
 import WalletContainer from './WalletContainer';
 
@@ -17,31 +19,27 @@ export default class AppNavigator extends React.Component
 
 	_renderScene( route , navigator ) {
 
-		const globalNavigatorProps = {navigator}
+		switch ( route.name ) {
 
-		switch(route.name) {
+			case 'Catalog':
+				return <CatalogContainer    { ...this.props } navigator={ navigator } category={ route.category }/>;
 
-			case "Catalog":
-				return <CatalogContainer navigator={navigator}/>;
+			case 'Home':
+				return <HomeContainer 		{ ...this.props } navigator={ navigator }/>;
 
-			case "Home":
-				return <HomeContainer { ...this.props } navigator={navigator}/>;
+			case 'Wallet':
+				return <WalletContainer 	{ ...this.props } navigator={ navigator }/>;
 
-			case "Login":
-				return <SessionContainer show="login" navigator={navigator}/>;
+			case 'Points':
+				return <PointsContainer 	{ ...this.props } navigator={ navigator }/>;
 
-			case "Register":
-				return <SessionContainer show="register" navigator={navigator}/>;
-
-			case "Wallet":
-				return <WalletContainer { ...this.props } navigator={navigator}/>;
+			case 'Product':
+				return <ProductContainer 	{ ...this.props } navigator={ navigator } product={ route.product }/>;
 
 			default:
-				return (
-					<Text style={{marginTop:25, texAlign: 'center'}}>
-						{`Navigator went to undefiend route ${route.name}`}
-					</Text>
-				);
+				return <Text style={ { marginTop: 25 , texAlign: 'center' } }>
+					{`Navigator went to undefiend route ${route.name}`}
+				</Text>
 
 		}
 
@@ -51,10 +49,10 @@ export default class AppNavigator extends React.Component
 
 		return(
 			<Navigator
-				configureScene={(route) => ({...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight})}
-				initialRoute={this.props.initialRoute}
-		    style={{width:Dimensions.get('window').width}}
-				renderScene={(route,navigator) => this._renderScene(route,navigator)}
+				configureScene={ (route) => ({ ...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight }) }
+				initialRoute={ { name: 'Home' } }
+				renderScene={ (route , navigator ) => this._renderScene( route , navigator )}
+		        style={ { width: Dimensions.get('window').width } }
 			/>
 		);
 

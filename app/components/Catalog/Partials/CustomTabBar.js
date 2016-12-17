@@ -61,6 +61,9 @@ const styles = StyleSheet.create({
 		paddingBottom: 16,
 		paddingLeft: 8,
 		paddingRight: 8,
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	tabs: {
 		flexDirection: 'row',
@@ -71,5 +74,6 @@ const styles = StyleSheet.create({
 		borderLeftWidth: 0,
 		borderRightWidth: 0,
 		borderTopColor: 'rgba(255,255,255,0.2)',
+		alignSelf: 'center',
 	},
 });

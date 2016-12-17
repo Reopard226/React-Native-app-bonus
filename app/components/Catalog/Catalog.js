@@ -16,25 +16,27 @@ import ProductList from './Partials/ProductList';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 
-export default ( props ) => (
-	<View style={ styles.container }>
-		<BackIcon navigator={ props.navigator } />
-		<CartIcon />
-		<Header />
-		<ScrollableTabView 
-			style={ styles.scrollableTabView } 
-			tabBarUnderlineStyle={ styles.tabBarUnderline }
-			tabBarActiveTextColor={ styles.tabBarActiveText.color }
-			tabBarInactiveTextColor={ styles.tabBarInactiveText }
-			renderTabBar={() => <CustomTabBar />}
-		>
-			<ProductList tabLabel="TODOS"/>
-			<Text tabLabel="ROPA">ROPA</Text>
-			<Text tabLabel="CALZADO">CALZADO</Text>
-			<Text tabLabel="ACCESORIOS">ACCESORIOS</Text>
-		</ScrollableTabView>
-	</View>
-);
+export default class Catalog extends React.Component {
+
+	render(){ 
+		return(
+			<View style={ styles.container }>
+				<BackIcon navigator={ this.props.navigator } />
+				<CartIcon />
+				<Header { ...this.props } />
+				<ScrollableTabView 
+					style={ styles.scrollableTabView } 
+					tabBarUnderlineStyle={ styles.tabBarUnderline }
+					tabBarActiveTextColor={ styles.tabBarActiveText.color }
+					tabBarInactiveTextColor={ styles.tabBarInactiveText }
+					renderTabBar={() => <CustomTabBar />}
+				>
+					<ProductList { ...this.props } tabLabel="CATALOGO BONUS"/>
+				</ScrollableTabView>
+			</View>
+		);
+	}
+}
 
 let styles = StyleSheet.create({
 	container: {
