@@ -31,7 +31,14 @@ export default (props)=>(
 	 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>Recuerda que no compartimos tu información financiera</Text>
 						</View>
 	 					<CardList />
-						<Modal  text="Recarga Automática" message="Some Text" />
+						<Modal  text="Recarga Automática" message="Some Text" transparent
+						textStyle={{color:'rgb(32,76,165)'}} 
+						style={{marginTop: 20,
+							    borderRadius: 20,
+							    backgroundColor:'transparent',
+							    //shadowColor: 'transparent',
+							    borderColor: 'rgba(255,255,255,.2)'
+							}} />
 						<Modal  text="Agregar Tarjeta" message="Some Text"    />
 						
 	                </View>

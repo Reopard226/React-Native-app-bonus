@@ -32,7 +32,7 @@ export default class PopUp extends React.Component{
 				 			 	<Text style={styles.message}>{this.props.message}</Text> 
 				 			 	<Button block rounded 
 				 			    onPress={ () => { this.setModalVisible(!this.state.modalVisible)} }
-				 			    style={styles.button}
+				 			    style={[styles.button,{width:window.width*0.4}]}
 				 			    > 
 				 			    	Continuar
 				 			    </Button>
@@ -40,9 +40,10 @@ export default class PopUp extends React.Component{
 		 			    </View> 
 
 	 			    </Modal> 
-	 			    <Button block rounded 
+	 			    <Button block rounded transparent={this.props.transparent}
 	 			    onPress={ () => { this.setModalVisible(true)} }
-	 			    style={styles.button}
+	 			    textStyle={this.props.textStyle}
+	 			    style={[styles.button,{top:this.props.top},this.props.style]}
 	 			    > 
 	 			    	{this.props.text}
 	 			    </Button>	 			    
@@ -56,12 +57,13 @@ var window = Dimensions.get('window');
 
 let styles = StyleSheet.create({
 	boxContainer:{
-
+		justifyContent:'space-between',
 		alignSelf:'center',
 		height: window.width*0.75,
 		width: window.width*0.75,
 		backgroundColor:'#eee',	
-		borderRadius:7
+		borderRadius:7,
+
 	},
 	message:{
 
@@ -83,9 +85,9 @@ let styles = StyleSheet.create({
 		backgroundColor: 'rgb(32,76,165)', 
 		borderRadius: 20,
 		shadowColor: 'transparent',		
-		width: window.width*0.8,
+		width: window.width * 0.8,
 		alignSelf:'center',
-		top: 130,
+		justifyContent:'center',
 		margin:20
 	}
 	

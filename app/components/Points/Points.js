@@ -36,7 +36,7 @@ export default ( props ) => (
 					</View>
  					<Text style={[styles.body, {paddingLeft: 10, paddingRight: 10}]}>Acumulas 1 punto por cada $/. 7.50 de consumo en nuestras marcas asociadas presentando tu Bonus y listo! Empieza a disfrutar.
  					</Text>
-					<Button block rounded style={styles.button}> Transferir Puntos </Button>	
+					<Modal message="Como transferir Puntos" text="Transferir Puntos" top={130}/>	
                 </View>
         </View>
         
@@ -91,14 +91,7 @@ let styles = StyleSheet.create({
 		fontStyle: 'italic',
 		fontWeight: '300'
 		
-	},
-	button:{		
-		backgroundColor: 'rgb(32,76,165)', 
-		borderRadius: 20,
-		shadowColor: 'transparent',		
-		width: Dimensions.get('window').width*0.8,
-		alignSelf:'center',
-		top: 130,
 	}
+	
 });
 
