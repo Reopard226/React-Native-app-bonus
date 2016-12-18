@@ -9,7 +9,7 @@ import {
 	View,
 } from 'react-native';
 
-import {Button, List, ListItem, Radio, Spinner} from 'native-base';
+import {Button, List, ListItem, Radio, Picker, Spinner} from 'native-base';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -86,16 +86,31 @@ export default class Product extends React.Component {
 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>{ this.props.products.productDetail.name }</Text>
 					</View>
 					<Text style={styles.body}>{ this.props.products.productDetail.description }</Text>
-					<View style={{flex: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', paddingLeft: 80, paddingRight: 80}}>
+					<View style={{ borderTopWidth: 1, borderTopColor:'rgba(0,0,0,.15)' , paddingTop: 10 , justifyContent: 'center', alignItems: 'center', flexDirection: 'row', paddingLeft: 80, paddingRight: 80}}>
 						<Radio style={{flex: 1}} selected={false} />
                         <Text style={{ alignSelf: 'center' ,flex: 5, fontFamily: 'Oswald', fontWeight: 'bold', fontSize: 18}}>{ this.props.products.productDetail.points + 'pts + $/.' + this.props.products.productDetail.plusValue }</Text>
 					</View>
-					<View style={{flex: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', paddingLeft: 80, paddingRight: 80}}>
+					<View style={{ borderBottomWidth: 1, borderBottomColor:'rgba(0,0,0,.15)' , paddingBottom: 15 , justifyContent: 'center', alignItems: 'center', flexDirection: 'row', paddingLeft: 80, paddingRight: 80}}>
 						<Radio style={{flex: 1}} selected={false} />
                         <Text style={{ alignSelf: 'center' ,flex: 5, fontFamily: 'Oswald', fontWeight: 'bold', fontSize: 18}}>{ this.props.products.productDetail.points2 + 'pts + $/.' + this.props.products.productDetail.plusValue2 }</Text>
 					</View>
-					<Button block rounded style={styles.button}> Añadir al carrito </Button>  
-					{ this._seeStock() } 
+					<View style={{ justifyContent: 'center' , alignItems: 'center', flexDirection: 'row' }}>
+						<View style={[ styles.button , { flex: 1 } ]}>
+							<Picker
+							iosHeader="Select one"
+							mode="dropdown"
+							selectedValue={"key0"}
+							onValueChange={()=> null}
+							>
+								<Picker.Item label="1" value="key0" />
+								<Picker.Item label="2" value="key1" />
+								<Picker.Item label="3" value="key2" />
+								<Picker.Item label="4" value="key3" />
+							</Picker>
+						</View>
+						<Button block rounded style={styles.button}> Añadir al carrito </Button>  
+					</View>
+						{ this._seeStock() } 
 				</View>
 			</View>
 		);
@@ -160,11 +175,12 @@ let styles = StyleSheet.create({
 		
 	},
 	button:{		
+		flex: 3,
 		backgroundColor: 'rgb(32,76,165)', 
 		borderRadius: 20,
 		shadowColor: 'transparent',		
 		width: Dimensions.get('window').width*0.8,
-		alignSelf:'center',
+		// alignSelf:'center',
 		marginTop: 20,
 	},
 	button2:{		
