@@ -1,18 +1,13 @@
 'use strict'
 
-import   React                     from 'react';
-import { Dimensions,
-         Text,
-         StyleSheet,
-         View,
-         Image
-        }                          from 'react-native';
+import   React                                  from 'react';
+import { Dimensions,Text,StyleSheet,View,Image} from 'react-native';
+import   BackIcon                               from '../Partials/BackIcon';
+        
 
-import BackIcon                    from '../Partials/BackIcon';        
+export default (props)=>( 
 
-export default (props)=>{ 
-       
-    <View>    
+    <View style={styles.container}>   
         <BackIcon { ...props } />
         <View style={styles.header}>
             <View style={styles.imageContainer}>
@@ -25,21 +20,22 @@ export default (props)=>{
             </Text>
         </View>
     </View>    
+       
         
-}    
+);    
 
 let styles = StyleSheet.create({
 
     container:{
         width:Dimensions.get('window').width,
-        flex:1,
+        flex:4,
         flexDirection:'column',
         justifyContent:'space-around',
         alignItems:'center'
         
     },
     header:{
-        flex:4,
+        flex:2,
         flexDirection:'column',
         justifyContent:'space-around',
         alignItems:'center'

@@ -54,6 +54,8 @@ export default ( props ) => (
 					<DrawIcon 
 						icon={require("../../../img/menu/icon-tarjetas.png")}
 						text="Mis Tarjetas"
+						goto="Cards"
+						{ ...props }
 					/>
 				</View>
 				<View style={styles.Item}>
