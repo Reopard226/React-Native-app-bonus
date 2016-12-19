@@ -41,11 +41,11 @@ export default class Product extends React.Component {
 
 		if( !this.state.init && nextProps.products.productDetail !== null ){
 
-			if( nextProps.products.productDetail.value1 !== null && nextProps.products.productDetail.points1 !== null ){
+			if( nextProps.products.productDetail.value !== null && nextProps.products.productDetail.points !== null ){
 
 				this.setState({
-					points: nextProps.products.productDetail.points1,
-					value: nextProps.products.productDetail.value1,
+					points: nextProps.products.productDetail.points,
+					value: nextProps.products.productDetail.plusValue,
 					init: true
 				});
 
@@ -155,8 +155,8 @@ export default class Product extends React.Component {
 						onPress={() => {
 							this.setState({ 
 								radioSelected: 1 , 
-								value: this.props.products.productDetail.plusValue1,
-								points: this.props.products.productDetail.points1 
+								value: this.props.products.productDetail.plusValue,
+								points: this.props.products.productDetail.points 
 							})
 						}}
 					>
@@ -207,7 +207,7 @@ export default class Product extends React.Component {
 							onPress={ () => {
 								this.props.dispatch( this.props.shoppingActions.addToCart({ 
 									id: this.props.product.id, 
-									name: this.props.product.name,
+									name: this.props.products.productDetail.name,
 									value: this.state.value,
 									points: this.state.points
 								}));

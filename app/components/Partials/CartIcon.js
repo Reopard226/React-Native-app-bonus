@@ -3,12 +3,19 @@
 import React from 'react';
 import {
 	Image,
+	Navigator,
 	StyleSheet,
 	TouchableOpacity,
 } from 'react-native';
 
 export default ( props ) => (
-	<TouchableOpacity style={ styles.touchable }>
+	<TouchableOpacity style={ styles.touchable }
+		onPress={ ( event ) => {
+			props.navigator.push({
+				name: "Cart",
+				sceneConfig: Navigator.SceneConfigs.FloatFromBottom
+		});
+	}}>
 		<Image style={ styles.image } source={ require( '../../img/lista-categoria/icon-cart.png' ) }/>
 	</TouchableOpacity>
 );

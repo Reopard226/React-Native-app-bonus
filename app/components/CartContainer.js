@@ -7,6 +7,6 @@ import Cart from './Cart/Cart';
 
 export default ( props ) => (
 	<BaseContainer>
-		<Cart { ...props } navigator={ props.navigator }/>
+		<Cart { ...props } />
 	</BaseContainer>
 );

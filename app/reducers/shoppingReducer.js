@@ -19,6 +19,19 @@ export default function reducer( state = _initialState , action ) {
 
 			break
 
+		case 'SHOPPING::REMOVE_FROM_CART':
+
+			var cart = state.cart.map( ( item ) => item );
+
+			cart.splice( action.payload , 1 );
+
+			return {
+				...state, 
+				cart
+			}
+
+			break
+
 	}
 
 	return state
