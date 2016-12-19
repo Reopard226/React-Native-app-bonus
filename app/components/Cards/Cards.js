@@ -23,21 +23,21 @@ export default (props)=>(
 	                <View style={styles.main}>
 	                						
 						<View style={{
-							paddingTop:25,
+							paddingTop:0,
 							marginLeft:5,
 							marginRight:5,
-							marginTop: 15,
-							marginBottom: 20,
-							borderBottomWidth:2,
-							borderBottomColor:'rgba(0,0,0,.15)'
+							marginTop: 20,
+							marginBottom: 10,
+							// borderBottomWidth:2,
+							// borderBottomColor:'rgba(0,0,0,.15)'
 						}}>
-	 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>Recuerda que no compartimos tu información financiera</Text>
+	 						<Text style={{fontFamily: 'Varela Round',textAlign:'left',fontSize:18,color: 'black', paddingBottom: 40}}>Recuerda que no compartimos tu información financiera</Text>
 						</View>
 	 					<CardList />
 						<Button 
 						onPress={ ()=>{ console.log("=3") }} 
 						textStyle={{color:'rgb(32,76,165)'}} 
-						style={{width:window.width*0.8,marginTop: 20,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgb(32,76,165)'}} 
+						style={{ marginLeft: 20 ,  marginRight: 20 ,  marginTop: 80,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgb(32,76,165)'}} 
 						block bordered transparent>
 										Recarga Automática
 						</Button>

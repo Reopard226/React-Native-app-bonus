@@ -5,7 +5,9 @@ import {
 	Image,
 	Navigator,
 	StyleSheet,
+	Text,
 	TouchableOpacity,
+	View,
 } from 'react-native';
 
 export default ( props ) => (
@@ -16,6 +18,9 @@ export default ( props ) => (
 				sceneConfig: Navigator.SceneConfigs.FloatFromBottom
 		});
 	}}>
+		<View style={{alignItems: 'center', justifyContent: 'center' , position: 'absolute' , top: -5, right: -10, backgroundColor: '#FFC300' , zIndex: 10000, width: 20, height:20 , borderRadius: 50,}}>
+			<Text style={{color: '#FFF' , textAlign: 'center'}}>{props.shopping && props.shopping.cart && props.shopping.cart.constructor === Array ? props.shopping.cart.length : 0}</Text>
+		</View>
 		<Image style={ styles.image } source={ require( '../../img/lista-categoria/icon-cart.png' ) }/>
 	</TouchableOpacity>
 );

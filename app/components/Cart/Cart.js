@@ -19,7 +19,7 @@ const items = ( props ) => {
 
 	return props.shopping.cart.map(( item , index ) => {
 
-		return <View key={index} style={{flexDirection: 'row', alignItems: 'center' , justifyContent: 'center'}}>
+		return <View key={index} style={{ paddingLeft: 20, paddingRight: 20 , flexDirection: 'row', alignItems: 'center' , justifyContent: 'center', paddingBottom: 10 , paddingTop: 10 , borderBottomWidth: 1, borderBottomColor: 'rgba(0,0,0,.15)'}}>
 			<Image style={{width: 80 , height: 80}} source={{ uri: ( 'http://www.bonus.com.pe/images/productos/' + item.id + '.jpg' ) }} />
 			<Text style={{flex:1, fontSize: 12, fontFamily: 'Varela Round', marginLeft: 10, marginRight: 10}}>{item.name}</Text>
 			<Text style={{flex:1,color: 'blue',fontSize: 12,fontFamily: 'Oswald'}}>{`${item.points} pts. + $/.${item.value}`}</Text>
@@ -47,7 +47,13 @@ const total = ( props ) => {
 		totalPoints += parseFloat( item.points );
 	});
 
-	return <Text style={{fontWeight: 'bold' , paddingTop: 10 , paddingBottom: 10}}>{`TOTAL ${totalPoints} pts. + $/. ${totalValue}`}</Text>
+	return <View style={{flexDirection: 'row' , justifyContent: 'center' , alignItems: 'center', paddingTop: 10 , paddingBottom: 10 , borderBottomWidth: 1, borderBottomColor: 'rgba(0,0,0,.15)'}}>
+	<Text style={{  paddingLeft: 40 , flex: 1 ,fontSize: 16, fontFamily: 'Oswald' , fontWeight: 'bold' , paddingTop: 10 , paddingBottom: 10, textAlign: 'left'}}>
+		TOTAL
+	</Text>
+	<Text style={{ paddingRight: 40 , flex: 1 , fontSize: 16, fontFamily: 'Oswald' , fontWeight: 'bold' , paddingTop: 10 , paddingBottom: 10, textAlign: 'right'}}>
+		{`${totalPoints} pts. + $/. ${totalValue}`}
+	</Text></View>
 
 }
 
@@ -57,6 +63,7 @@ export default ( props ) => <View style={styles.container}>
 	<View style={styles.main}>
 		{items( props )}
 		{total( props )}
+		<Button style={{width: 300, alignSelf: 'center', borderRadius: 24, marginTop: 40, backgroundColor: 'rgb(32,76,165)'}}>Canjear</Button>
 	</View>
 </View>;
 
@@ -83,7 +90,8 @@ let styles = StyleSheet.create({
 		backgroundColor:'white',		
 		alignItems:'center',		
 		justifyContent:'flex-start',
-		padding:20,		
+		padding:0,		
+		paddingTop: 0,
 		alignSelf: 'stretch'
 	},
 	logo:{

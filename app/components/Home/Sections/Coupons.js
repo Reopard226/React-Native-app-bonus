@@ -39,25 +39,25 @@ export default class Coupons extends React.Component
 
 			},
 			{
-				code: 2,
+				code: 3,
 				name: 'Vestuario / calzado',
 				image: require( '../../../img/cupones/vestuario.jpg' )
 
 			},
 			{
-				code: 2,
+				code: 4,
 				name: 'Puntos por soles',
 				image: require( '../../../img/cupones/bonus.jpg' )
 
 			},
 			{
-				code: 2,
+				code: 5,
 				name: 'Deportes / aire libre',
 				image: require( '../../../img/cupones/deporte.jpg' )
 
 			},
 			{
-				code: 2,
+				code: 6,
 				name: 'Accesorios',
 				image: require( '../../../img/cupones/accesorios.jpg' )
 
@@ -84,10 +84,8 @@ export default class Coupons extends React.Component
 
 		return this.categories.map( ( item , index ) => {
 
-			return <Image source={item.image} key={index} style={{ resizeMode: 'stretch' , width: ( Dimensions.get('window').width / 2 ) , height: 210, padding: 0}}>
-				<TouchableOpacity
-					style={{ flex: 1 , alignSelf: 'stretch' , flexDirection: 'column' , justifyContent: 'flex-end' , alignItems: 'center' }}
-					onPress={() => {
+			if ( item.code == 4 ){
+				var onp = () => {
 
 						this.props.navigator.push({
 							name: "Coupons",
@@ -98,7 +96,15 @@ export default class Coupons extends React.Component
 							sceneConfig: Navigator.SceneConfigs.FloatFromRight
 						});
 
-					}}
+					}
+			}else{
+				var onp = () => null;
+			}
+
+			return <Image source={item.image} key={index} style={{ resizeMode: 'stretch' , width: ( Dimensions.get('window').width / 2 ) , height: 210, padding: 0}}>
+				<TouchableOpacity
+					style={{ flex: 1 , alignSelf: 'stretch' , flexDirection: 'column' , justifyContent: 'flex-end' , alignItems: 'center' }}
+					onPress={onp}
 				>
 					<Text style={{ flex: 1 , width: ( Dimensions.get('window').width / 2 ) , maxHeight: 43 , paddingBottom: 18 , paddingTop: 18, paddingLeft: 25 , paddingRight: 5 , color: '#FFF' , backgroundColor: 'rgba(0,0,0,.5)' , fontFamily: 'Varela Round' , textAlign: 'left',fontSize: 15, lineHeight: 12}}>{ item.name }</Text>
 				</TouchableOpacity>

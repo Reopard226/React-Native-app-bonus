@@ -10,33 +10,26 @@ export default class CardList extends Component {
         var window = Dimensions.get('window');      
       
         return (
-                <View style={styles.container}>
-                    <View style={styles.boxContainer}>
-
-                        <Image source={require('../../img/cards/Visa.png')} style={styles.image}/>
-                        <View style={styles.textContainer}>
-                            <Text style={styles.title} >Visa </Text>                            
-                            <Text style={styles.body}>Tarjeta 2345 </Text>
-                        </View>    
-                        <Badge style={styles.badge}> > </Badge>                         
-                    </View>
-                    <View style={styles.boxContainer}>
-
-                        <Image source={require('../../img/cards/Masterdcard.png')} style={styles.image}/>
-                        <View style={styles.textContainer}>
-                            <Text style={styles.title} >Masterdcard </Text>                            
-                            <Text style={styles.body}>Tarjeta 2345 </Text>
+                <View style={{flexDirection: 'column' , alignItems: 'center' , justifyContent: 'center'}}>
+                    <View style={{ paddingBottom: 10 , paddingTop: 10 , borderTopWidth: 2, borderTopColor: 'rgba(0,0,0,.15)' , flexDirection: 'row', alignItems: 'center' , justifyContent: 'center', paddingLeft: 20, paddingRight: 20}}>
+                        <Image style={{flex: 2, width: 40, height: 40}} source={require('../../img/cards/Masterdcard.png')}/>
+                        <View style={{flex: 4}}>
+                            <Text>Masterdcard </Text>                            
+                            <Text style={{color: 'rgba(0,0,0,.6)', fontSize: 10}}>Tarjeta (2345) </Text>
                         </View>
-                        <Badge style={styles.badge}> > </Badge> 
+                        <View style={{flex: 1 , alignItems: 'center' , justifyContent: 'center'}}>
+                            <Badge style={{ color: '#FFF' , textAlign: 'center', backgroundColor: 'rgb(32,76,165)', height: 30, width: 30, borderRadius: 30}}>></Badge>
+                        </View> 
                     </View>
-                    <View style={styles.boxContainer}>
-
-                        <Image source={require('../../img/cards/Masterdcard.png')} style={styles.image}/>
-                        <View style={styles.textContainer}>
-                            <Text style={styles.title} >Visa </Text>                            
-                            <Text style={styles.body}>Tarjeta 2345 </Text>
+                    <View style={{ paddingBottom: 10 , paddingTop: 10 , borderTopWidth: 2, borderTopColor: 'rgba(0,0,0,.15)' , flexDirection: 'row', alignItems: 'center' , justifyContent: 'center', paddingLeft: 20, paddingRight: 20}}>
+                        <Image style={{flex: 2, width: 40, height: 40}} source={require('../../img/cards/Masterdcard.png')}/>
+                        <View style={{flex: 4}}>
+                            <Text>Masterdcard </Text>                            
+                            <Text style={{color: 'rgba(0,0,0,.6)', fontSize: 10}}>Tarjeta (2345) </Text>
                         </View>
-                        <Badge style={styles.badge}> > </Badge> 
+                        <View style={{flex: 1 , alignItems: 'center' , justifyContent: 'center'}}>
+                            <Badge style={{ color: '#FFF' , textAlign: 'center', backgroundColor: 'rgb(32,76,165)', height: 30, width: 30, borderRadius: 30}}>></Badge>
+                        </View> 
                     </View>
 
                 </View>
@@ -63,8 +56,9 @@ let styles = StyleSheet.create({
     },
     textContainer:{
         flexDirection:'column',
-        justifyContent:'flex-start'
-
+        justifyContent:'flex-start',
+        flex: 1,
+        width: 100,
     },
     title:{
         textAlign:'left',
@@ -76,12 +70,14 @@ let styles = StyleSheet.create({
     },
     image:{
         resizeMode:'contain',
-        width:60
+        width: 60,
+        height: 60,
     },
     badge:{
         backgroundColor:'rgb(32,76,165)',
         alignSelf:'center',
-        textAlign:'center'
+        textAlign:'center',
+        flex: 1,
     }
 });
 // <Container>

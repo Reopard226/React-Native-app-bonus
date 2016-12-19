@@ -2,20 +2,35 @@
 
 export default {
 	apiEntry: '/app-web/servlet',
-	couponRequestBonusCouponEndpoint: '/awsmecatps',
-	couponRequestBonusCouponFormat: ( userId ) => {
+	couponRegisterEndpoint: '/awstrfptso?wsdl',
+	couponRegisterFormat: ( couponId ) => (
 		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'
-		+ '<soapenv:Header/>'
-		+ '<soapenv:Body>'
-		+ '<app:wsmecatps.Execute>'
-		+ '<app:Mpstip>G</app:Mpstip>'
-		+ '<app:Mpsprscod>' + userId + '</app:Mpsprscod>'
-		+ '<app:Ctacod>1</app:Ctacod>'
-		+ '<app:Mpsesqcod>?</app:Mpsesqcod>'
-		+ '</app:wsmecatps.Execute>'
-		+ '</soapenv:Body>'
+		   +'<soapenv:Header/>'
+		   +'<soapenv:Body>'
+		      +'<app:wstrfptso.Execute>'
+		         +'<app:Ctaprscod>0003465850</app:Ctaprscod>'
+		         +'<app:Ctacod>1</app:Ctacod>'
+		         +'<app:Usuario>APPBONUS</app:Usuario>'
+		         +'<app:Mpscod>' + couponId + '</app:Mpscod>'
+		         +'<app:Mpsesqcod>0</app:Mpsesqcod>'
+		      +'</app:wstrfptso.Execute>'
+		   +'</soapenv:Body>'
+		+'</soapenv:Envelope>'
+	),
+	couponRequestBonusCouponEndpoint: '/awsmecatps',
+	couponRequestBonusCouponFormat: ( userId ) => (
+		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'
+		   + '<soapenv:Header/>'
+		   + '<soapenv:Body>'
+		      + '<app:wsmecatps.Execute>'
+		         + '<app:Mpstip>P</app:Mpstip>'
+		         + '<app:Mpsprscod>' + userId + '</app:Mpsprscod>'
+		         + '<app:Ctacod>1</app:Ctacod>'
+		         + '<app:Mpsesqcod>?</app:Mpsesqcod>'
+		      + '</app:wsmecatps.Execute>'
+		   + '</soapenv:Body>'
 		+ '</soapenv:Envelope>'
-	},
+	),
 	productDetailEndpoint: '/awsoprdcnj',
 	productDetailFormat: ( productId ) => (
 		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'

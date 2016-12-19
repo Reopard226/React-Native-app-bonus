@@ -19,6 +19,8 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import GoBack from '../Partials/GoBack';
+
 export default class Coupons extends React.Component
 {
 
@@ -29,25 +31,11 @@ export default class Coupons extends React.Component
 		this.state = {
 			modalVisible: false,
 			points: null,
-			value: null
+			value: null,
+			error: false,
+			code: null,
+			registered: false
 		}
-
-		this.coupons = [
-			{
-				id: 1,
-				name: 'Cupon 1000',
-				points: 1000,
-				image: require( '../../img/cupones/cupon1000.jpg' ),
-				value: '50.00'
-			},
-			{
-				id: 1,
-				name: 'Cupon 500',
-				points: 500,
-				image: require( '../../img/cupones/cupon500.jpg' ),
-				value: '25.00'
-			}
-		]
 
 	}
 
@@ -57,11 +45,29 @@ export default class Coupons extends React.Component
 
 	}
 
+	componentWillReceiveProps( nextProps ){
+
+		if( ! nextProps.coupons.error && this.state.registered ){
+
+			this.props.navigator.push({
+				name: "CouponConfirm",
+				sceneConfig: Navigator.SceneConfigs.FloatFromRight
+			});
+
+		}
+
+	}
+
 	_items(){
 
-		return this.coupons.map( ( item , index ) => {
+		if( ! this.props.coupons.bonusCoupons 
+			|| ! this.props.coupons.bonusCoupons.constructor === Array 
+			|| ! this.props.coupons.bonusCoupons.length )
+			return <Text style={{textAlign: 'center', padding: 40}}>No hay cupones disponibles</Text>;
 
-			return <Image source={item.image} key={index} style={{ resizeMode: 'stretch' , width: ( Dimensions.get('window').width / 2 ) , height: 210, padding: 0}}>
+		return this.props.coupons.bonusCoupons.map( ( item , index ) => {
+
+			return <Image source={{uri: 'http://200.62.147.186/images/productos/CUPP0000'+ item.code +'.jpg'}} key={index} style={{ resizeMode: 'stretch' , width: ( Dimensions.get('window').width / 2 ) , height: 210, padding: 0}}>
 				<TouchableOpacity
 					style={{ flex: 1 , alignSelf: 'stretch' , flexDirection: 'column' , justifyContent: 'flex-end' , alignItems: 'center' }}
 					onPress={() => {
@@ -69,7 +75,8 @@ export default class Coupons extends React.Component
 						this.setState({ 
 							modalVisible: !this.state.modalVisible,
 							points: item.points,
-							value: item.value
+							value: item.value,
+							code: item.code
 						});
 
 					}}
@@ -82,14 +89,37 @@ export default class Coupons extends React.Component
 
 	}
 
+	_text(){
+		if( this.props.coupons.error )
+			// return this.props.coupons.message;
+
+		return `Se procedera el descuento de ${this.state.points} puntos Bonus y se le asignara $\\.${this.state.value} a su tarjeta principal Bonus.`;
+	}
+
+	_btn(){
+		if( this.props.coupons.error )
+			return <Button
+				onPress={ () => {
+					this.setState({registered: true});
+					this.props.dispatch( this.props.couponsActions.registerCoupon( { couponId: this.state.code } ) );
+				}}
+				style={styles.modalButton}
+				title={"Aceptar"}>
+				Aceptar
+			</Button>;
+
+		return null;
+	}
+
 	render() {
 
-		if( ! this.coupons )
+		if( ! this.props.coupons )
 			return <Spinner color="#FFF" />
 
 		return (
 			<View>
 				<View style={styles.header}>
+					<GoBack {...this.props}/>
 					<View style={{width:Dimensions.get('window').width, flexDirection:'row',
 								  justifyContent:'center'}}>
 						<Image source={require('../../img/bonus-logoBlanco300.png')}
@@ -115,23 +145,9 @@ export default class Coupons extends React.Component
 					<View style={[styles.container, styles.modalBackgroundStyle]}>
 						<View style={[styles.innerContainer, styles.innerContainerTransparentStyle]}>
 						<Text>
-							{ `Se procedera el descuento de ${this.state.points} puntos Bonus y se le asignara $\\.${this.state.value} a su tarjeta principal Bonus.` }
+							{ this._text() }
 						</Text>
-						<Button
-							onPress={ () => {
-
-								this.setState({ modalVisible: false })
-
-								this.props.navigator.push({
-									name: "CouponConfirm",
-									sceneConfig: Navigator.SceneConfigs.FloatFromRight
-								});
-
-							}}
-							style={styles.modalButton}
-							title={"Aceptar"}>
-							Aceptar
-						</Button>
+						{ this._btn() }
 						<Button
 							onPress={ () => this.setState({ modalVisible: false }) }
 							style={styles.modalButton}
@@ -144,7 +160,7 @@ export default class Coupons extends React.Component
 				<ScrollView contentContainerStyle={{flexWrap:'wrap' , flexDirection: 'row' , alignItems: 'center' , justifyContent: 'center' ,}} tabLabel="TODOS" style={{ height: 621 ,backgroundColor: '#FFF'}}>
 					{ this._items() }
 				</ScrollView>
-				<Text>{ this.props.coupons.bonusCoupons[0] ? this.props.coupons.bonusCoupons[0].rawRequest : '' }</Text>
+				<Text>{ /*this.props.coupons.bonusCoupons && this.props.coupons.bonusCoupons.length ? this.props.coupons.bonusCoupons[0].rawRequest : '' */ }</Text>
 			</View>
 		);
 

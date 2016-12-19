@@ -15,8 +15,8 @@ export default function requestProductList( params = { userId: '' } ) {
 
 		const requestSettings = { 
 			...axiosBaseConfig,
-			data: globalConfig.productsRequestFormat( params.categoryId ),
-			url: globalConfig.productsRequestEndpoint,
+			data: globalConfig.couponRequestBonusCouponFormat( params.userId ),
+			url: globalConfig.couponRequestBonusCouponEndpoint,
 		}
 
 		axios( requestSettings )
@@ -27,11 +27,7 @@ export default function requestProductList( params = { userId: '' } ) {
 			let responseMessage = doc.getElementsByTagName('Msjerror')[0].textContent;
 			let errorCode = doc.getElementsByTagName('Coderror')[0].textContent;
 			let couponsNodes = doc.getElementsByTagName('Carritomec');
-			let coupons = [
-				{
-					rawRequest: response.data
-				}
-			];
+			let coupons = [];
 
 
 			for ( var i = 0; i < couponsNodes.length; ++i ) {
@@ -41,6 +37,7 @@ export default function requestProductList( params = { userId: '' } ) {
 					name: couponsNodes[ i ].getElementsByTagName( 'MpsCnf' )[0].textContent.trim(),
 					points: couponsNodes[ i ].getElementsByTagName( 'MpsPtos' )[0].textContent.replace(/ /g,''),
 					value: couponsNodes[ i ].getElementsByTagName( 'MpsSol' )[0].textContent.replace(/ /g,''),
+					rawRequest: response.data
 				});
 
 			}
