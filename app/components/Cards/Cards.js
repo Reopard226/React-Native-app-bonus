@@ -7,9 +7,12 @@ import {
 	Image
 } from 'react-native';
 
+import {Button} from 'native-base';
 import Header   from '../Partials/Header';
 import Modal   from '../Partials/Modal';
 import CardList from './CardList';
+
+var window = Dimensions.get('window');
 
 export default (props)=>(
 
@@ -31,14 +34,13 @@ export default (props)=>(
 	 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>Recuerda que no compartimos tu información financiera</Text>
 						</View>
 	 					<CardList />
-						<Modal  text="Recarga Automática" message="Some Text" transparent
+						<Button 
+						onPress={ ()=>{ console.log("=3") }} 
 						textStyle={{color:'rgb(32,76,165)'}} 
-						style={{marginTop: 20,
-							    borderRadius: 20,
-							    backgroundColor:'transparent',
-							    //shadowColor: 'transparent',
-							    borderColor: 'rgba(255,255,255,.2)'
-							}} />
+						style={{width:window.width*0.8,marginTop: 20,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgb(32,76,165)'}} 
+						block bordered transparent>
+										Recarga Automática
+						</Button>
 						<Modal  text="Agregar Tarjeta" message="Some Text"    />
 						
 	                </View>
