@@ -27,7 +27,7 @@ export default (props)=>(
 							marginLeft:5,
 							marginRight:5,
 							marginTop: 15,
-							marginBottom: 20,
+							marginBottom: 30,
 							borderBottomWidth:2,
 							borderBottomColor:'rgba(0,0,0,.15)'
 						}}>
