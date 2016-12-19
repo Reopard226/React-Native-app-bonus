@@ -67,7 +67,7 @@ let styles = StyleSheet.create({
 
     },
     title:{
-        textAlign:'left',
+   
         //flex:1
     },
     body:{
@@ -75,13 +75,11 @@ let styles = StyleSheet.create({
         color: '#eee'
     },
     image:{
-        resizeMode:'contain',
+        //resizeMode:'contain',
         width:60
     },
     badge:{
-        backgroundColor:'rgb(32,76,165)',
-        alignSelf:'center',
-        textAlign:'center'
+        backgroundColor:'rgb(32,76,165)'      
     }
 });
 // <Container>
