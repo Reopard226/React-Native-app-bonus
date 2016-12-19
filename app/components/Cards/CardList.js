@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import {Dimensions,View,Image,StyleSheet,Text,ListView} from 'react-native';
-import Badge from 'native-base';
+import {Badge} from 'native-base';
 export default class CardList extends Component {
     render() {
         
@@ -18,7 +18,7 @@ export default class CardList extends Component {
                             <Text style={styles.title} >Visa </Text>                            
                             <Text style={styles.body}>Tarjeta 2345 </Text>
                         </View>    
-                        <Badge style={styles.badge}> > </Badge>                         
+                        <Badge style={styles.badge}>></Badge>                         
                     </View>
                     <View style={styles.boxContainer}>
 
@@ -27,7 +27,7 @@ export default class CardList extends Component {
                             <Text style={styles.title} >Masterdcard </Text>                            
                             <Text style={styles.body}>Tarjeta 2345 </Text>
                         </View>
-                        <Badge style={styles.badge}> > </Badge> 
+                        <Badge style={styles.badge}>></Badge> 
                     </View>
                     <View style={styles.boxContainer}>
 
@@ -90,7 +90,10 @@ let styles = StyleSheet.create({
         alignSelf:'flex-start'
     },
     badge:{
-        backgroundColor:'rgb(32,76,165)',            
+        backgroundColor:'rgb(32,76,165)',
+        alignItems:'center',
+        justifyContent:'center',
+        alignSelf:'center'      
     }
 });
 // <Container>
