@@ -116,6 +116,8 @@ export default class Coupons extends React.Component
 
 	render() {
 
+		console.log( this.props.session.user );
+
 		if( ! this.categories )
 			return <Spinner color="#FFF" />
 
