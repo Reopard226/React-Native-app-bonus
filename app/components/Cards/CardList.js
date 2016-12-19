@@ -31,7 +31,7 @@ export default class CardList extends Component {
                     </View>
                     <View style={styles.boxContainer}>
 
-                        <Image source={require('../../img/cards/Masterdcard.png')} style={styles.image}/>
+                        <Image source={require('../../img/cards/Visa.png')} style={styles.image}/>
                         <View style={styles.textContainer}>
                             <Text style={styles.title} >Visa </Text>                            
                             <Text style={styles.body}>Tarjeta 2345 </Text>
@@ -46,17 +46,22 @@ export default class CardList extends Component {
 
 let styles = StyleSheet.create({
     container:{
-        width : window.width,
+
+        alignSelf:'stretch',
         flexDirection:'column',
         justifyContent:'flex-start',
         alignItems:'center',
+        marginBottom:60,
+        marginTop:20,
+        padding:20
         //backgroundColor:'yellow'
     },
     boxContainer:{
 
-        width : window.width,
+        //width : window.width,
         flexDirection:'row',
         alignSelf:'stretch',
+        alignItems:'stretch',
         justifyContent:'space-between',
         borderBottomWidth:2,
         borderColor:'#eee',
@@ -65,12 +70,12 @@ let styles = StyleSheet.create({
     },
     textContainer:{
         flexDirection:'column',
-        justifyContent:'flex-start'
+        alignItems:'flex-start'           
 
     },
     title:{
    
-        //flex:1
+        color:'black'
     },
     body:{
         fontSize: 11,
