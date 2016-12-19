@@ -2,6 +2,20 @@
 
 export default {
 	apiEntry: '/app-web/servlet',
+	couponRequestBonusCouponEndpoint: '/awsmecatps',
+	couponRequestBonusCouponFormat: ( userId ) => {
+		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'
+		+ '<soapenv:Header/>'
+		+ '<soapenv:Body>'
+		+ '<app:wsmecatps.Execute>'
+		+ '<app:Mpstip>G</app:Mpstip>'
+		+ '<app:Mpsprscod>' + userId + '</app:Mpsprscod>'
+		+ '<app:Ctacod>1</app:Ctacod>'
+		+ '<app:Mpsesqcod>?</app:Mpsesqcod>'
+		+ '</app:wsmecatps.Execute>'
+		+ '</soapenv:Body>'
+		+ '</soapenv:Envelope>'
+	},
 	productDetailEndpoint: '/awsoprdcnj',
 	productDetailFormat: ( productId ) => (
 		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'

@@ -5,6 +5,7 @@ import {
 	StyleSheet,
 	View,
 	Dimensions,
+	Navigator,
 	Text,
 	Image
 } from 'react-native';
@@ -40,28 +41,33 @@ export default ( props ) => (
 						marginTop: 0,
 						top: -10
 					}}>
-            		MI SALDO
+            		CUPONES
             		</Text>
                 </View>               
 
                 <View style={styles.main}>
-                	<Text style={styles.balance}>S./ { props.session.user.pointsCode }</Text>
-					<Text style={styles.body}>Saldo disponible</Text>
+                	<Image source={require('../../img/cupones/sucess.jpg')} style={{ alignSelf: 'center' , resizeMode: 'contain' , height: 170 }}/>
 					<View style={{
 						paddingTop:25,
 						marginLeft:5,
 						marginRight:5,
 						marginTop: 15,
-						marginBottom: 20,
-						borderTopWidth:2,
-						borderTopColor:'rgba(0,0,0,.15)'
+						marginBottom: 0,
+						// borderTopWidth:2,
+						// borderTopColor:'rgba(0,0,0,.15)'
 					}}>
- 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>Para pagar con Bonus, necesitas tener saldo en tu cuenta Bonus.</Text>
+ 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>Felicidades hemos procesado su orden satisfactoriamente</Text>
 					</View>
- 					<Text style={styles.body}>Si no tienes saldo, puedes recargar saldo con tu tarjeta vinculada,
- 					o a través de nuestros establecimientos colaboradores.
- 					</Text>
-					<Button block rounded style={styles.button}> Añadir Dinero </Button>	
+					<Button block rounded style={styles.button}
+						onPress={() => {
+
+							props.navigator.push({
+								name: "Home",
+								sceneConfig: Navigator.SceneConfigs.FloatFromLeft
+							});
+
+						}}
+					> Ir a mi cuenta </Button>	
                 </View>
         </View>
         
@@ -92,7 +98,7 @@ let styles = StyleSheet.create({
 		backgroundColor:'white',		
 		alignItems:'center',		
 		justifyContent:'flex-start',
-		padding:20,		
+		padding:40,		
 		alignSelf: 'stretch'
 	},
 	logo:{
@@ -123,7 +129,7 @@ let styles = StyleSheet.create({
 		shadowColor: 'transparent',		
 		width: Dimensions.get('window').width*0.8,
 		alignSelf:'center',
-		top: 130,
+		top: 60,
 	}
 });
 

@@ -11,6 +11,7 @@ import {
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import Catalogue from './Sections/Catalog';
+import Coupons from './Sections/Coupons';
 import CartIcon from '../Partials/CartIcon';
 import CustomTabBar from './Partials/CustomTabBar';
 import Header from './Partials/Header';
@@ -32,7 +33,7 @@ export default ( props ) => (
 		>
 			<Catalogue tabLabel="CATÁLOGO" { ...props }/>
 			<Text tabLabel="PROMOCIONES">PROMOCIONES</Text>
-			<Text tabLabel="CUPONES">CUPONES</Text>
+			<Coupons tabLabel="CUPONES" { ...props }/>
 		</ScrollableTabView>
 	</View>
 

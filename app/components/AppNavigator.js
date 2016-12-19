@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import CatalogContainer from './CatalogContainer';
+import CouponsContainer from './CouponsContainer';
 import HomeContainer from './HomeContainer';
 import PointsContainer from './PointsContainer';
 import ProductContainer from './ProductContainer';
@@ -35,6 +36,12 @@ export default class AppNavigator extends React.Component
 
 			case 'Product':
 				return <ProductContainer 	{ ...this.props } navigator={ navigator } product={ route.product }/>;
+
+			case 'Coupons':
+				return <CouponsContainer 	{ ...this.props } navigator={ navigator } category={ route.category } view="Coupon"/>
+
+			case 'CouponConfirm':
+				return <CouponsContainer 	{ ...this.props } navigator={ navigator } category={ route.category } view="Confirm"/>
 
 			default:
 				return <Text style={ { marginTop: 25 , texAlign: 'center' } }>

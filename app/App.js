@@ -7,6 +7,7 @@ import AppNavigator from './components/AppNavigator';
 import SessionContainer from './components/SessionContainer';
 
 // Actions
+import couponsActions from './actions/couponsActions';
 import productsActions from './actions/productsActions';
 import sessionActions from './actions/sessionActions';
 
@@ -43,8 +44,9 @@ class App extends Component
 				drawerOpened	= { this.state.drawerOpened }
 				openDrawer 		= { () => this._openDrawer() }
 
-				sessionActions	= { sessionActions }
+				couponsActions	= { couponsActions }
 				productsActions	= { productsActions }
+				sessionActions	= { sessionActions }
 				
 			/>
 
@@ -83,6 +85,7 @@ class App extends Component
 export default connect(( state ) => {
 
 	return {
+		coupons: state.coupons,
 		products: state.products,
 		session: state.session,
 	}
