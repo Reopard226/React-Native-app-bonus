@@ -10,8 +10,7 @@ import SessionContainer from './components/SessionContainer';
 import couponsActions from './actions/couponsActions';
 import productsActions from './actions/productsActions';
 import sessionActions from './actions/sessionActions';
-
-console.log( sessionActions );
+import shoppingActions from './actions/shoppingActions';
 
 class App extends Component
 {
@@ -47,6 +46,7 @@ class App extends Component
 				couponsActions	= { couponsActions }
 				productsActions	= { productsActions }
 				sessionActions	= { sessionActions }
+				shoppingActions	= { shoppingActions }
 				
 			/>
 
@@ -88,6 +88,7 @@ export default connect(( state ) => {
 		coupons: state.coupons,
 		products: state.products,
 		session: state.session,
+		shopping: state.shopping,
 	}
 
 })(App);

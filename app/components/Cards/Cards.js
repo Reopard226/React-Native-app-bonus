@@ -15,7 +15,7 @@ export default (props)=>(
 
 		<View style={styles.container}>
 
-					<Header titleView="MIS TARJETAS" />              
+					<Header titleView="MIS TARJETAS" {...props}/>              
 
 	                <View style={styles.main}>
 	                						

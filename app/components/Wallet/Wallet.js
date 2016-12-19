@@ -17,7 +17,7 @@ export default ( props ) => (
 		<View style={styles.container}>
 
 				
-				<Header titleView="MI SALDO" />              
+				<Header titleView="MI SALDO" {...props} />              
 
                 <View style={styles.main}>
                 	<Text style={styles.balance}>S./ { props.session.user.pointsCode }</Text>

@@ -4,8 +4,10 @@ import React from 'react';
 import {
 	Dimensions,
 	Image,
+	Modal,
 	StyleSheet,
 	Text,
+	TouchableOpacity,
 	View,
 } from 'react-native';
 
@@ -18,9 +20,38 @@ import BackIcon from '../Partials/BackIcon';
 
 export default class Product extends React.Component {
 
+	constructor(props){
+		super(props);
+		this.state = {
+			modalVisible: false,
+			points: null,
+			value: null,
+			radioSelected: 1,
+			init: false
+		}
+	}
+
 	componentDidMount(){
 
 		this.props.dispatch( this.props.productsActions.requestProductDetail( { productId: this.props.product.id } ) );
+
+	}
+
+	componentWillReceiveProps( nextProps ){
+
+		if( !this.state.init && nextProps.products.productDetail !== null ){
+
+			if( nextProps.products.productDetail.value1 !== null && nextProps.products.productDetail.points1 !== null ){
+
+				this.setState({
+					points: nextProps.products.productDetail.points1,
+					value: nextProps.products.productDetail.value1,
+					init: true
+				});
+
+			}
+
+		}
 
 	}
 
@@ -57,6 +88,42 @@ export default class Product extends React.Component {
 						{ this.props.product.category.toUpperCase() }
 					</Text>
 				</View>
+				<Modal
+					animationType={'slide'}
+					transparent={true}
+					visible={this.state.modalVisible}
+					onRequestClose={() => null}
+					supportedOrientations={ ['portrait'] }
+					>
+					<View style={[styles.container, styles.modalBackgroundStyle]}>
+						<View style={[styles.innerContainer, styles.innerContainerTransparentStyle]}>
+						<Text>
+							{ `Su producto se agregó con éxito al carrito.` }
+						</Text>
+						<Button
+							onPress={ () => {
+
+								this.setState({ modalVisible: false })
+
+								this.props.navigator.push({
+									name: "CouponConfirm",
+									sceneConfig: Navigator.SceneConfigs.FloatFromRight
+								});
+
+							}}
+							style={styles.modalButton}
+							title={"Aceptar"}>
+							Aceptar
+						</Button>
+						<Button
+							onPress={ () => this.setState({ modalVisible: false }) }
+							style={styles.modalButton}
+							title={"Cerrar"}>
+							Cerrar
+						</Button>
+						</View>
+					</View>
+				</Modal>
 				<View style={styles.main}>
 					<Image source={{ uri: ( 'http://www.bonus.com.pe/images/productos/' + this.props.product.id + '.jpg' ) }} 
 						style={{
@@ -84,14 +151,30 @@ export default class Product extends React.Component {
 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>{ this.props.products.productDetail.name }</Text>
 					</View>
 					<Text style={styles.body}>{ this.props.products.productDetail.description }</Text>
-					<View style={{ borderTopWidth: 1, borderTopColor:'rgba(0,0,0,.15)' , paddingTop: 10 , justifyContent: 'center', alignItems: 'center', flexDirection: 'row', paddingLeft: 80, paddingRight: 80}}>
-						<Radio style={{flex: 1}} selected={true} />
+					<TouchableOpacity style={{ borderTopWidth: 1, borderTopColor:'rgba(0,0,0,.15)' , paddingTop: 10 , justifyContent: 'center', alignItems: 'center', flexDirection: 'row', paddingLeft: 80, paddingRight: 80}}
+						onPress={() => {
+							this.setState({ 
+								radioSelected: 1 , 
+								value: this.props.products.productDetail.plusValue1,
+								points: this.props.products.productDetail.points1 
+							})
+						}}
+					>
+						<Radio style={{flex: 1}} selected={this.state.radioSelected == 1 ? true : false} />
                         <Text style={{ alignSelf: 'center' ,flex: 5, fontFamily: 'Oswald', fontWeight: 'bold', fontSize: 18}}>{ this.props.products.productDetail.points + 'pts + $/.' + this.props.products.productDetail.plusValue }</Text>
-					</View>
-					<View style={{ borderBottomWidth: 1, borderBottomColor:'rgba(0,0,0,.15)' , paddingBottom: 15 , justifyContent: 'center', alignItems: 'center', flexDirection: 'row', paddingLeft: 80, paddingRight: 80}}>
-						<Radio style={{flex: 1}} selected={false} />
+					</TouchableOpacity>
+					<TouchableOpacity style={{ borderBottomWidth: 1, borderBottomColor:'rgba(0,0,0,.15)' , paddingBottom: 15 , justifyContent: 'center', alignItems: 'center', flexDirection: 'row', paddingLeft: 80, paddingRight: 80}}
+						onPress={() => {
+							this.setState({ 
+								radioSelected: 2 , 
+								value: this.props.products.productDetail.plusValue2,
+								points: this.props.products.productDetail.points2 
+							})
+						}}
+					>
+						<Radio style={{flex: 1}} selected={this.state.radioSelected == 2 ? true : false} />
                         <Text style={{ alignSelf: 'center' ,flex: 5, fontFamily: 'Oswald', fontWeight: 'bold', fontSize: 18}}>{ this.props.products.productDetail.points2 + 'pts + $/.' + this.props.products.productDetail.plusValue2 }</Text>
-					</View>
+					</TouchableOpacity>
 					<View style={{ justifyContent: 'center' , alignItems: 'center', flexDirection: 'row' }}>
 						<View style={[ styles.button , { 
 							flex: 1 , borderRadius: 6 , backgroundColor: 'rgba(0,0,0,0)' , 
@@ -120,7 +203,16 @@ export default class Product extends React.Component {
 								<Picker.Item label="10" value="10" />
 							</Picker>
 						</View>
-						<Button block rounded style={styles.button}> Añadir al carrito </Button>  
+						<Button block rounded style={styles.button}
+							onPress={ () => {
+								this.props.dispatch( this.props.shoppingActions.addToCart({ 
+									id: this.props.product.id, 
+									name: this.props.product.name,
+									value: this.state.value,
+									points: this.state.points
+								}));
+							}}
+						> Añadir al carrito </Button>  
 					</View>
 					{ this._seeStock() } 
 				</View>

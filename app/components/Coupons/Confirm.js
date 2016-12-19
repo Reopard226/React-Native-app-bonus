@@ -17,7 +17,6 @@ import BackIcon from '../Partials/BackIcon';
 export default ( props ) => (
 
 		<View style={styles.container}>
-				<BackIcon { ...props } />
                 <View style={styles.header}>
                 	<View style={{width:Dimensions.get('window').width,
                 				  flexDirection:'row',

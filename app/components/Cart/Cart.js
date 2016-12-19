@@ -13,14 +13,12 @@ import {Button, Icon} from 'native-base';
 
 import BackIcon from '../Partials/BackIcon';
 import Header   from '../Partials/Header';
-import Modal from '../Partials/Modal';
 
 export default ( props ) => (
 		
 		<View style={styles.container}>
 
-				<Header titleView="MIS PUNTOS" {...props}/>              
-
+				<Header titleView="MIS PUNTOS" />              
                 <View style={styles.main}>
                 	<Text style={styles.balance}>{ props.session.user.currentBalance }</Text>
 					<Text style={styles.body}>Puntos disponibles</Text>
@@ -37,7 +35,6 @@ export default ( props ) => (
 					</View>
  					<Text style={[styles.body, {paddingLeft: 10, paddingRight: 10}]}>Acumulas 1 punto por cada $/. 7.50 de consumo en nuestras marcas asociadas presentando tu Bonus y listo! Empieza a disfrutar.
  					</Text>
-					<Modal message="Como transferir Puntos" text="Transferir Puntos" top={130}/>	
                 </View>
         </View>
         
