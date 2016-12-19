@@ -37,7 +37,7 @@ export default (props)=>(
 						<Button 
 						onPress={ ()=>{ console.log("=3") }} 
 						textStyle={{color:'rgb(32,76,165)'}} 
-						style={{width:window.width*0.8,marginTop: 20,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgb(32,76,165)'}} 
+						style={{alignSelf:'center',width:window.width*0.8,marginTop: 20,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgb(32,76,165)'}} 
 						block bordered transparent>
 										Recarga Automática
 						</Button>

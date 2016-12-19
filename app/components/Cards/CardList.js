@@ -53,12 +53,14 @@ let styles = StyleSheet.create({
         //backgroundColor:'yellow'
     },
     boxContainer:{
+
         width : window.width,
         flexDirection:'row',
         alignSelf:'stretch',
-        justifyContent:'space-around',
-        borderTopWidth:2,
-        borderColor:'#FFF',
+        justifyContent:'space-between',
+        borderBottomWidth:2,
+        borderColor:'#eee',
+        marginTop:10
         //backgroundColor:'red'
     },
     textContainer:{
@@ -75,11 +77,15 @@ let styles = StyleSheet.create({
         color: '#eee'
     },
     image:{
-        //resizeMode:'contain',
+        resizeMode:'contain',
+        height:60,
         width:60
     },
     badge:{
-        backgroundColor:'rgb(32,76,165)'      
+        backgroundColor:'rgb(32,76,165)',
+        alignItems:'center',
+        justifyContent:'center',
+        alignSelf:'center'      
     }
 });
 // <Container>
