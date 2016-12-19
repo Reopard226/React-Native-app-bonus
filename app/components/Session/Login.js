@@ -104,9 +104,9 @@ export default class Login extends React.Component {
 								<Col>
 									<Button onPress={() => {
 											this.props.dispatch( this.props.sessionActions.requestLogin({
-												userId: this.state.userId, // 80653260,
-												password: this.state.password, // 'p3rs301!',
-												idType: this.state.idType // '01'
+												userId:  80653260,
+												password:  'p3rs301!',
+												idType:  '01'
 											}));
 										}}
 										textStyle={styles.loginButtonText}

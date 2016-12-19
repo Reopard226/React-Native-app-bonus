@@ -12,37 +12,13 @@ import {
 import {Button, Icon} from 'native-base';
 
 import BackIcon from '../Partials/BackIcon';
+import Header   from '../Partials/Header';
 
 export default ( props ) => (
 		
 		<View style={styles.container}>
-				<BackIcon { ...props } />
-                <View style={styles.header}>
-                	<View style={{width:Dimensions.get('window').width,
-                				  flexDirection:'row',
-                				  justifyContent:'center'}}>
-                		<Image source={require('../../img/bonus-logoBlanco300.png')}
-                			   style={{ 
-                			   			height: 58/3.7, // 58
-                			   			width: 300/3.7, // 300
-		                			   	resizeMode: 'contain',
-		                			   	top: -5
-		                			   	
-		                			   }} 	
-        				/>
-                	</View>
-            		<Text style={{
 
-            			fontSize:20,
-						color:'#FFF',
-						textAlign:'center',
-						fontFamily: 'Oswald',
-						marginTop: 0,
-						top: -10
-					}}>
-	            		MIS PUNTOS
-            		</Text>
-                </View>               
+				<Header titleView="MIS PUNTOS" />              
 
                 <View style={styles.main}>
                 	<Text style={styles.balance}>{ props.session.user.currentBalance }</Text>
@@ -60,7 +36,7 @@ export default ( props ) => (
 					</View>
  					<Text style={[styles.body, {paddingLeft: 10, paddingRight: 10}]}>Acumulas 1 punto por cada $/. 7.50 de consumo en nuestras marcas asociadas presentando tu Bonus y listo! Empieza a disfrutar.
  					</Text>
-					<Button block rounded style={styles.button}> Transferir Puntos </Button>	
+					<Modal message="Como transferir Puntos" text="Transferir Puntos" top={130}/>	
                 </View>
         </View>
         
@@ -115,21 +91,7 @@ let styles = StyleSheet.create({
 		fontStyle: 'italic',
 		fontWeight: '300'
 		
-	},
-	button:{		
-		backgroundColor: 'rgb(32,76,165)', 
-		borderRadius: 20,
-		shadowColor: 'transparent',		
-		width: Dimensions.get('window').width*0.8,
-		alignSelf:'center',
-		top: 130,
 	}
+	
 });
 
- // 				   <Button transparent>
- //                    	<BackIcon/> 
- //                    </Button>	                   	                    
- //                    <Thumbnail square source={ require( '../../img/bonus-logoBlanco300.png' ) } style={ styles.logo }/>                
- //                    <Button transparent>
- //                        <Icon name='ios-refresh' color='white'/>
- //                    </Button>
