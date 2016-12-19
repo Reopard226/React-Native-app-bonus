@@ -50,15 +50,16 @@ let styles = StyleSheet.create({
         flexDirection:'column',
         justifyContent:'flex-start',
         alignItems:'center',
-        backgroundColor:'yellow'
+        //backgroundColor:'yellow'
     },
     boxContainer:{
-        //flexDirection:'row',
-        flex:1,
+        width : window.width,
+        flexDirection:'row',
+        alignSelf:'stretch',
         justifyContent:'space-around',
         borderTopWidth:2,
         borderColor:'#FFF',
-        backgroundColor:'red'
+        //backgroundColor:'red'
     },
     textContainer:{
         flexDirection:'column',
@@ -78,7 +79,9 @@ let styles = StyleSheet.create({
         width:60
     },
     badge:{
-        backgroundColor:'rgb(32,76,165)'
+        backgroundColor:'rgb(32,76,165)',
+        alignSelf:'center',
+        textAlign:'center'
     }
 });
 // <Container>
