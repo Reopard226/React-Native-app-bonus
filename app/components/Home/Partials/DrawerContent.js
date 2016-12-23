@@ -28,11 +28,11 @@ export default ( props ) => (
 					/>
 				</View>
 				<View style={styles.Item}>
-					<TouchableOpacity style={ styles.touchableOpacity }
+					<TouchableOpacity
 						onPress={ ( event ) => {
 
 							props.navigator.push({
-								name: "Points",
+								name: "Card",
 								sceneConfig: Navigator.SceneConfigs.FloatFromRight
 							});
 

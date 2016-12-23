@@ -7,9 +7,10 @@ import {
 	Image
 } from 'react-native';
 
-import Button from '../Partials/Button';
+
 import Header   from '../Partials/Header';
 import Modal   from '../Partials/Modal';
+import Button   from '../Partials/Button';
 import CardList from './CardList';
 
 var window = Dimensions.get('window');
@@ -22,20 +23,10 @@ export default (props)=>(
 
 	                <View style={styles.main}>
 	                						
-						<View style={{
-							paddingTop:25,
-							marginLeft:5,
-							marginRight:5,
-							marginTop: 15,
-							marginBottom: 30,
-							borderBottomWidth:2,
-							borderBottomColor:'rgba(0,0,0,.15)'
-						}}>
-	 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>Recuerda que no compartimos tu información financiera</Text>
-						</View>
-	 					<CardList />
-						<Button text="Editar Tarjeta" invert/>
-						<Modal  text="Agregar Tarjeta" message="Some Text" />
+						
+						<Button invert onPress={ ()=>{ console.log("Edit card router")}} text="Editar Tarjeta"  />
+						
+						<Modal  text="Agregar Tarjeta" message="Some Text" top={20} />
 						
 	                </View>
 	    </View>
