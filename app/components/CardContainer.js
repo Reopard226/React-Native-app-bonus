@@ -3,10 +3,10 @@
 import React from 'react';
 
 import BaseContainer from './Containers/BaseContainer';
-import Card from './Cards/Card';
+import Card from './Cards/Partials/Card';
 
 export default ( props ) => (
 	<BaseContainer>
-		<Card { ...props } navigator={ props.navigator }/>
+		<Card { ...props } />
 	</BaseContainer>
 );
