@@ -2,70 +2,42 @@
 
 import React from 'react';
 import {Button} from 'native-base';
-import { Modal, Text,StyleSheet,Dimensions,View } from 'react-native'; 
+import {Dimensions} from 'react-native';
 
+export default class Btn extends React.Component{
+	render(){
+		var window = Dimensions.get('window');
+		let bgcolor,textcolor
 
+		if (this.props.invert){
+			bgcolor='transparent';
+			textcolor='rgb(32,76,165)';
+		}else{
+			bgcolor='rgb(32,76,165)';
+			textcolor='#FFF';			
+		}
+		return(
 
-export default class Button extends React.Component{ 
+			<Button 
+			transparent={this.props.invert}
+			onPress={this.props.onPress} 
+			textStyle={{color:textcolor}} 
+			style={{
 
-	
-	render() { 
-		if (!this.props.invert) {
-		 	return (
+					alignSelf:'center',
+					width:window.width*0.8,
+					marginTop: 20,
+					borderRadius: 20,
+					shadowColor: 'transparent',
+					backgroundColor:bgcolor
+				}} 
+			block bordered>
+			{this.props.text}
+			</Button>
 
-		 			
-		 			    <Button block rounded transparent={this.props.transparent}
-		 			    onPress={ () => { this.setModalVisible(true)} }
-		 			    textStyle={this.props.textStyle}
-		 			    style={[styles.button,{top:this.props.top},this.props.style]}
-		 			    > 
-		 			    	{this.props.text}
-		 			    </Button>	 			    
-		 			
-		    );
-	    }else{
+			);
 
-	    } 
- 	} 
-
-}
-
-var window = Dimensions.get('window');
-
-let styles = StyleSheet.create({
-	boxContainer:{
-		justifyContent:'space-between',
-		alignSelf:'center',
-		height: window.width*0.75,
-		width: window.width*0.75,
-		backgroundColor:'#eee',	
-		borderRadius:7,
-
-	},
-	message:{
-
-		textAlign:'center',
-		fontSize:14,
-		padding:20
-	},
-	container:{	
-		flex:1,
-		
-		backgroundColor:'rgba(11,11,11,.5)',
-		flexDirection: 'column',
-		justifyContent:'center',
-		alignItems:'center',
-		
-		
-	},
-	button:{		
-		backgroundColor: 'rgb(32,76,165)', 
-		borderRadius: 20,
-		shadowColor: 'transparent',		
-		width: window.width * 0.8,
-		alignSelf:'center',
-		justifyContent:'center',
-		margin:20
 	}
 	
-});
+}
+

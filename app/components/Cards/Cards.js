@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-	StyleSheet,
-	View,
-	Dimensions,
-	Text,
-	Image
-} from 'react-native';
+import { StyleSheet, View, Dimensions, Text, Image } from 'react-native';
 
-import {Button} from 'native-base';
+
 import Header   from '../Partials/Header';
-import Modal   from '../Partials/Modal';
-import CardList from './CardList';
+import Button   from '../Partials/Button';
+import CardList from './Partials/CardList';
 
 var window = Dimensions.get('window');
 
@@ -23,25 +17,19 @@ export default (props)=>(
 	                <View style={styles.main}>
 	                						
 						<View style={{
-							paddingTop:25,
+							paddingTop:20,
 							marginLeft:5,
 							marginRight:5,
 							marginTop: 15,
-							marginBottom: 20,
+							paddingBottom: 30,
 							borderBottomWidth:2,
 							borderBottomColor:'rgba(0,0,0,.15)'
 						}}>
 	 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>Recuerda que no compartimos tu información financiera</Text>
 						</View>
-	 					<CardList />
-						<Button 
-						onPress={ ()=>{ console.log("=3") }} 
-						textStyle={{color:'rgb(32,76,165)'}} 
-						style={{width:window.width*0.8,marginTop: 20,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgb(32,76,165)'}} 
-						block bordered transparent>
-										Recarga Automática
-						</Button>
-						<Modal  text="Agregar Tarjeta" message="Some Text"    />
+	 					<CardList {...props}/>
+	 					<Button invert text="Recarga Automática"/>
+	 					<Button  text="Agregar Tarjeta"/>
 						
 	                </View>
 	    </View>
@@ -60,10 +48,11 @@ let styles = StyleSheet.create({
 	},
 	container:{
 
-		height:Dimensions.get('window').height,
+		height:window.height,
 		flexDirection:'column',
 		justifyContent:'space-between',
-		alignItems:'center'
+		alignItems:'center',
+		alignSelf:'stretch'
 				
 	},	
 });

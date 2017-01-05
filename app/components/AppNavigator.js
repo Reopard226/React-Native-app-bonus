@@ -16,6 +16,7 @@ import ProductContainer from './ProductContainer';
 import SessionContainer from './SessionContainer';
 import WalletContainer from './WalletContainer';
 import CardsContainer from './CardsContainer';
+import CardContainer from './CardContainer';
 
 export default class AppNavigator extends React.Component
 {
@@ -37,7 +38,10 @@ export default class AppNavigator extends React.Component
 				return <PointsContainer 	{ ...this.props } navigator={ navigator }/>;
 
 			case 'Cards':
-				return <CardsContainer 		{ ...this.props } navigator={ navigator }/>;	
+				return <CardsContainer 		{ ...this.props } navigator={ navigator }/>;
+
+			case 'Card':
+				return <CardContainer 		{ ...this.props } navigator={ navigator }/>;		
 
 			case 'Product':
 				return <ProductContainer 	{ ...this.props } navigator={ navigator } product={ route.product }/>;
