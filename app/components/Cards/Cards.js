@@ -25,12 +25,11 @@ export default (props)=>(
 							borderBottomWidth:2,
 							borderBottomColor:'rgba(0,0,0,.15)'
 						}}>
-	 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>Recuerda que no compartimos tu información financiera</Text>
+	 						<Text style={{fontFamily: 'Varela Round',textAlign:'left',fontSize:18,color: 'black', paddingBottom: 40}}>Recuerda que no compartimos tu información financiera</Text>
 						</View>
 	 					<CardList {...props}/>
 	 					<Button invert text="Recarga Automática"/>
-	 					<Button  text="Agregar Tarjeta"/>
-						
+	 					<Button  text="Agregar Tarjeta"/>	
 	                </View>
 	    </View>
 

@@ -16,7 +16,7 @@ import { Button, List, ListItem, Radio, Picker, Spinner } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import CartIcon from '../Partials/CartIcon';
-import BackIcon from '../Partials/BackIcon';
+import GoBack from '../Partials/GoBack';
 
 export default class Product extends React.Component {
 
@@ -62,7 +62,7 @@ export default class Product extends React.Component {
 
 		return (
 			<View style={styles.container}>
-				<BackIcon { ...this.props } />
+				<GoBack { ...this.props } />
 				<CartIcon { ...this.props } />
 				<View style={styles.header}>
 					<View style={{width:Dimensions.get('window').width,

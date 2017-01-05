@@ -2,11 +2,11 @@
 
 import   React                                  from 'react';
 import { Dimensions,Text,StyleSheet,View,Image} from 'react-native';
-import   BackIcon                               from './BackIcon';
+import   GoBack                               from './GoBack';
 
 const backBtn = (props) => {
     if( !props.noBackBtn )
-        return <BackIcon { ...props } />;
+        return <GoBack { ...props } />;
 
     return null;
 }        
