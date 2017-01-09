@@ -99,7 +99,8 @@ export default (props)=>{
 let styles = StyleSheet.create({
     
     container:{      
-        alignSelf:'stretch',       
+        alignSelf:'stretch',
+        height: 80,
     },
     body:{
         fontSize: 11,

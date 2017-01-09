@@ -2,87 +2,89 @@
 
 import React from 'react'
 import {
-	Dimensions,
 	Navigator,
 	Text,
+	View
 } from 'react-native';
 
-import CatalogContainer from './CatalogContainer';
-import CartContainer from './CartContainer';
-import CouponsContainer from './CouponsContainer';
-import HomeContainer from './HomeContainer';
-import PointsContainer from './PointsContainer';
-import ProductContainer from './ProductContainer';
-import SessionContainer from './SessionContainer';
-import WalletContainer from './WalletContainer';
-import CardsContainer from './CardsContainer';
-import CardContainer from './CardContainer';
-import EditCardContainer from './EditCardContainer';
-import AddCardContainer from './AddCardContainer';
+import AddCardContainer 					from './AddCardContainer';
+import CardContainer 						from './CardContainer';
+import CardsContainer 						from './CardsContainer';
+import CartContainer 						from './CartContainer';
+import CatalogContainer 					from './CatalogContainer';
+import CouponsContainer 					from './CouponsContainer';
+import EditCardContainer 					from './EditCardContainer';
+import HomeContainer 						from './HomeContainer';
+import PointsContainer 						from './PointsContainer';
+import ProductContainer 					from './ProductContainer';
+import SessionContainer 					from './SessionContainer';
+import TransferPointsContainer 				from './TransferPointsContainer';
+import TransferPointsContinuedContainer 	from './TransferPointsContinuedContainer';
+import WalletContainer 						from './WalletContainer';
 
 export default class AppNavigator extends React.Component
 {
 
-	_renderScene( route , navigator ) {
+	_renderScene = ( route , navigator ) => {
 
 		switch ( route.name ) {
 
-			case 'Catalog':
-				return <CatalogContainer    { ...this.props } navigator={ navigator } category={ route.category }/>;
-
-			case 'Home':
-				return <HomeContainer 		{ ...this.props } navigator={ navigator }/>;
-
-			case 'Wallet':
-				return <WalletContainer 	{ ...this.props } navigator={ navigator }/>;
-
-			case 'Points':
-				return <PointsContainer 	{ ...this.props } navigator={ navigator }/>;
-
-			case 'Cards':
-				return <CardsContainer 		{ ...this.props } navigator={ navigator }/>;
-
 			case 'AddCard':
-				return <AddCardContainer 		{ ...this.props } navigator={ navigator }/>;
+				return <AddCardContainer 					{ ...this.props } navigator={ navigator }/>;
 
 			case 'Card':
-				return <CardContainer 		{ ...this.props } navigator={ navigator } card={ route.card }/>;
+				return <CardContainer 						{ ...this.props } navigator={ navigator } card={ route.card }/>;
 
-			case 'EditCard':
-				return <EditCardContainer 	{ ...this.props } navigator={ navigator } card={ route.card }/>;			
-
-			case 'Product':
-				return <ProductContainer 	{ ...this.props } navigator={ navigator } product={ route.product }/>;
-
-			case 'Coupons':
-				return <CouponsContainer 	{ ...this.props } navigator={ navigator } category={ route.category } view="Coupon"/>
-
-			case 'CouponConfirm':
-				return <CouponsContainer 	{ ...this.props } navigator={ navigator } category={ route.category } view="Confirm"/>
+			case 'Cards':
+				return <CardsContainer 						{ ...this.props } navigator={ navigator }/>;
 
 			case 'Cart':
-				return <CartContainer	{ ...this.props } navigator={ navigator } />
+				return <CartContainer						{ ...this.props } navigator={ navigator }/>
+
+			case 'Catalog':
+				return <CatalogContainer    				{ ...this.props } navigator={ navigator } category={ route.category }/>;
+
+			case 'Coupons':
+				return <CouponsContainer 					{ ...this.props } navigator={ navigator } category={ route.category } view="Coupon"/>
+
+			case 'CouponConfirm':
+				return <CouponsContainer 					{ ...this.props } navigator={ navigator } category={ route.category } view="Confirm"/>
+
+			case 'EditCard':
+				return <EditCardContainer 					{ ...this.props } navigator={ navigator } card={ route.card }/>;			
+
+			case 'Home':
+				return <HomeContainer 						{ ...this.props } navigator={ navigator }/>;
+
+			case 'Points':
+				return <PointsContainer 					{ ...this.props } navigator={ navigator }/>;
+
+			case 'Product':
+				return <ProductContainer 					{ ...this.props } navigator={ navigator } product={ route.product }/>;
+
+			case 'TransferPoints':
+				return <TransferPointsContainer 			{ ...this.props } navigator={ navigator }/>;
+
+			case 'TransferPointsContinued':
+				return <TransferPointsContinuedContainer 	{ ...this.props } navigator={ navigator }/>;
+
+			case 'Wallet':
+				return <WalletContainer 					{ ...this.props } navigator={ navigator }/>;
 
 			default:
-				return <Text style={ { marginTop: 25 , texAlign: 'center' } }>
-					{`Navigator went to undefiend route ${route.name}`}
-				</Text>
-
+				return <View style={ { flex: 1 , justifyContent: 'center' , alignItems: 'center' } }>
+					<Text>{`Undefined route: ${route.name}`}</Text>
+				</View>
+				
 		}
-
 	}
 
 	render() {
-
-		return(
-			<Navigator
-				configureScene={ (route) => ({ ...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight }) }
-				initialRoute={ { name: 'Home' } }
-				renderScene={ (route , navigator ) => this._renderScene( route , navigator )}
-		        style={ { width: Dimensions.get('window').width } }
-			/>
-		);
-
+		return <Navigator
+			configureScene={ (route) => ({ ...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight }) }
+			initialRoute={ { name: 'Home' } }
+			renderScene={ (route , navigator ) => this._renderScene( route , navigator )}
+			style={ { flex: 1 } }
+		/>;
 	}
-
 }

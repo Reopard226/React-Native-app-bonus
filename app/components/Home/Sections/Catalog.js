@@ -5,17 +5,15 @@ import {
 	Image,
 	Navigator,
 	StyleSheet,
-	TouchableOpacity,
 	TouchableHighlight,
+	ScrollView
 } from 'react-native';
 
-import { Container, Content, List, ListItem, Text , Icon } from 'native-base';
-
-import { Col, Row, Grid } from "react-native-easy-grid";
+import { ListItem, Text , Icon } 				from 'native-base';
+import { Col, Row, Grid } 						from "react-native-easy-grid";
+import ScrollableTabView, { DefaultTabBar, } 	from 'react-native-scrollable-tab-view';
 
 import theme from '../../../themes/bonus';
-
-import ScrollableTabView, { DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 const from_redux = {
 	categories: [
@@ -77,17 +75,13 @@ const from_redux = {
 }
 
 export default ( props ) => {
-
 	const items = from_redux.categories.map( ( item , index ) => {
-		return (
-			<ListItem 
+		return <ListItem 
 				key={ index } 
 				style={ styles.listItem }
-				// iconRight
 			>
-				<Image style={{height:31,resizeMode: 'contain',position:'absolute', top: 35,right:13, zIndex: 5}} source={ require( '../../../img/home/btn-category.png' ) } />
+				<Image style={ styles.goToCategoryIcon } source={ require( '../../../img/home/btn-category.png' ) } />
 				<TouchableHighlight onPress={ ( event ) => {
-
 						props.navigator.push({
 							name: "Catalog",
 							category: { 
@@ -97,40 +91,29 @@ export default ( props ) => {
 							},
 							sceneConfig: Navigator.SceneConfigs.FloatFromRight
 						});
-
 					}}
 					underlayColor='rgba(0,0,0,.99)'
 				>
 					<Image source={ item.img } style={ styles.image }>
-					    <Text style={ styles.itemName }>
-					    	{ item.name }
-					    </Text>
-					    <Text style={ styles.itemCount }>
-					    	{ item.number_of_articles } articulos
-					    </Text>
+					    <Text style={ styles.itemName }>{ item.name }</Text>
+					    <Text style={ styles.itemCount }>{ item.number_of_articles } articulos</Text>
 				    </Image>
 			    </TouchableHighlight>
-			</ListItem>
-		);
+			</ListItem>;
 	});
-
-	return (
-		<Container style={ styles.container }>
-			<Content>
-				<List>
-					{ items }
-				</List>
-			</Content>
-		</Container>
-	)
-
+	return <ScrollView style = { {flex: 1 }}>
+		{items}
+	</ScrollView>;
 }
 
-//<Icon name="ios-arrow-dropright-circle" style={ styles.icon } />
-
 let styles = StyleSheet.create({
-	container: {
-		height:440
+	goToCategoryIcon: {
+		height:31,
+		resizeMode: 'contain',
+		position: 'absolute',
+		top: 35,
+		right:13,
+		zIndex: 5,
 	},
 	icon: {
 		color: 'rgb(31,75,164)',
@@ -142,7 +125,6 @@ let styles = StyleSheet.create({
 	},
 	itemCount: {
 		color: 'rgba(255,255,255,.9)',
-		// paddingLeft: 20,
 		fontSize: 13,
 		zIndex: 15,
 		position: 'absolute',
@@ -153,8 +135,6 @@ let styles = StyleSheet.create({
 		fontWeight: 'bold',
 		fontFamily: 'Oswald',
 		color: '#FFF',
-		// paddingTop: 30,
-		// paddingLeft: 20,
 		fontSize: 19,
 		zIndex: 15,
 		position: 'absolute',

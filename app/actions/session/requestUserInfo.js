@@ -45,8 +45,6 @@ export default function requestUserInfo( credentials = { userId: '' } ) {
 
 			user.pointsCode = doc.getElementsByTagName('TipPunCod')[0].textContent.replace(/ /g,'');
 
-			console.log( user );
-
 			if ( responseMessage == 'Exito' && errorCode == '0'  )
 				dispatch({ type: 'SESSION::REQUESTED_USER_INFO_SUCCEEDED' , payload: user })
 			else

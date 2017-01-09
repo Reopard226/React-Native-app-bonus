@@ -8,17 +8,13 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 
-export default ( props ) => (
-	<TouchableOpacity
-		style={ styles.touchable }
-		onPress={ ( event ) => {
-
-			props.navigator.pop();
-			
-		}}>
-		<Image style={ styles.image } source={ require( '../../img/lista-categoria/icon-back.png' ) }/>
-	</TouchableOpacity>
-);
+export default ( props ) => <TouchableOpacity
+	style={ styles.touchable }
+	onPress={ ( event ) => {
+		props.navigator.pop();
+	}}>
+	<Image style={ styles.image } source={ require( '../../img/lista-categoria/icon-back.png' ) }/>
+</TouchableOpacity>;
 
 let styles = StyleSheet.create({
 	touchable:{

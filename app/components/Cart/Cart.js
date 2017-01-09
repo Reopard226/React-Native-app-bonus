@@ -4,31 +4,30 @@ import React from 'react';
 import {
 	StyleSheet,
 	View,
-	Dimensions,
 	Text,
 	TouchableOpacity,
-	Image
+	Image,
 } from 'react-native';
 
-import {Button, Icon , List , ListItem} from 'native-base';
+import { Button } from 'native-base';
 
-import BackIcon from '../Partials/BackIcon';
-import Header   from '../Partials/Header';
+import ContentContainer from '../Containers/ContentContainer';
+import BackHeader from '../Partials/BackHeader';
 
 const items = ( props ) => {
 
 	return props.shopping.cart.map(( item , index ) => {
 
-		return <View key={index} style={{ paddingLeft: 20, paddingRight: 20 , flexDirection: 'row', alignItems: 'center' , justifyContent: 'center', paddingBottom: 10 , paddingTop: 10 , borderBottomWidth: 1, borderBottomColor: 'rgba(0,0,0,.15)'}}>
-			<Image style={{width: 80 , height: 80}} source={{ uri: ( 'http://www.bonus.com.pe/images/productos/' + item.id + '.jpg' ) }} />
-			<Text style={{flex:1, fontSize: 12, fontFamily: 'Varela Round', marginLeft: 10, marginRight: 10}}>{item.name}</Text>
-			<Text style={{flex:1,color: 'blue',fontSize: 12,fontFamily: 'Oswald'}}>{`${item.points} pts. + $/.${item.value}`}</Text>
+		return <View key={index} style={ styles.itemContainer }>
+			<Image style={ styles.itemImage } source={{ uri: ( 'http://www.bonus.com.pe/images/productos/' + item.id + '.jpg' ) }} />
+			<Text style={ styles.itemName }>{item.name}</Text>
+			<Text style={ styles.itemValue }>{`${item.points} pts. + $/.${item.value}`}</Text>
 			<TouchableOpacity
 				onPress={() => {
 					props.dispatch( props.shoppingActions.removeFromCart( index ) );
 				}}
 			>
-				<Image style={{width: 40 , height: 40}} source={require( '../../img/cupones/delete.png' )} />
+				<Image style={ styles.deleteIcon } source={require( '../../img/cupones/delete.png' )} />
 			</TouchableOpacity>
 		</View>
 
@@ -38,7 +37,6 @@ const items = ( props ) => {
 
 const total = ( props ) => {
 
-
 	var totalValue = 0;
 	var totalPoints = 0;
 
@@ -47,75 +45,99 @@ const total = ( props ) => {
 		totalPoints += parseFloat( item.points );
 	});
 
-	return <View style={{flexDirection: 'row' , justifyContent: 'center' , alignItems: 'center', paddingTop: 10 , paddingBottom: 10 , borderBottomWidth: 1, borderBottomColor: 'rgba(0,0,0,.15)'}}>
-	<Text style={{  paddingLeft: 40 , flex: 1 ,fontSize: 16, fontFamily: 'Oswald' , fontWeight: 'bold' , paddingTop: 10 , paddingBottom: 10, textAlign: 'left'}}>
-		TOTAL
-	</Text>
-	<Text style={{ paddingRight: 40 , flex: 1 , fontSize: 16, fontFamily: 'Oswald' , fontWeight: 'bold' , paddingTop: 10 , paddingBottom: 10, textAlign: 'right'}}>
-		{`${totalPoints} pts. + $/. ${totalValue}`}
-	</Text></View>
+	return <View style={ styles.totalContainer }>
+		<Text style={ styles.totalLabel }>
+			TOTAL
+		</Text>
+		<Text style={ styles.totalValues }>
+			{`${totalPoints} pts. + $/. ${totalValue}`}
+		</Text>
+	</View>
 
 }
 
-export default ( props ) => <View style={styles.container}>
-	<Header titleView="MI CARRITO" noBackBtn/> 
-	<BackIcon { ...props }/>             
-	<View style={styles.main}>
-		{items( props )}
-		{total( props )}
-		<Button style={{width: 300, alignSelf: 'center', borderRadius: 24, marginTop: 40, backgroundColor: 'rgb(32,76,165)'}}>Canjear</Button>
-	</View>
+export default ( props ) => <View style={ { flex: 1 } }>
+	<BackHeader title="MI CARRITO"/>
+	<ContentContainer>
+		<View style={ styles.main }>
+			{items( props )}
+			{total( props )}
+			<Button style={ styles.payButton }>Canjear</Button>
+		</View>
+	</ContentContainer>
 </View>;
 
 let styles = StyleSheet.create({
-	container:{
-
-		height:Dimensions.get('window').height,
-		flexDirection:'column',
-		justifyContent:'space-between',
-		alignItems:'center'
-				
+	deleteIcon: {
+		width: 40, 
+		height: 40,
 	},
-	header:{
-
-		flex:4,
-		flexDirection:'column',
-		justifyContent:'space-around',
-		alignItems:'center'
-		
-	},	
-	main:{
-		flex:21,
-		flexDirection:'column',
-		backgroundColor:'white',		
-		alignItems:'center',		
-		justifyContent:'flex-start',
-		padding:0,		
-		paddingTop: 0,
-		alignSelf: 'stretch'
+	itemContainer: {
+		paddingLeft: 20,
+		paddingRight: 20 ,
+		flexDirection: 'row',
+		alignItems: 'center' ,
+		justifyContent: 'center',
+		paddingBottom: 10 ,
+		paddingTop: 10 ,
+		borderBottomWidth: 1,
+		borderBottomColor: 'rgba(0,0,0,.15)'
 	},
-	logo:{
-		resizeMode: 'contain',
-		alignSelf:'center',
+	itemImage: {
+		width: 80,
+		height: 80,
 	},
-	body:{
-		fontSize: 13,
-		color: 'rgba(0,0,0,.3)',		
-		textAlign:'center',
-		justifyContent:'center',
-		paddingTop: 10,
-		fontFamily: 'Varela Round'
+	itemName: {
+		flex:1,
+		fontSize: 12,
+		fontFamily: 'Varela Round',
+		marginLeft: 10,
+		marginRight: 10,
 	},
-	balance:{
-		fontSize: 56,
-		color: '#194B7C',
-		alignSelf:'center',
-		paddingTop:30,
+	itemValue: {
+		flex:1,
+		color: 'blue',
+		fontSize: 12,
 		fontFamily: 'Oswald',
-		fontStyle: 'italic',
-		fontWeight: '300'
-		
-	}
-	
+	},
+	main:{
+		flex:1,
+		alignItems:'center',
+	},
+	payButton: {
+		width: 300,
+		alignSelf: 'center',
+		borderRadius: 24,
+		marginTop: 40,
+		backgroundColor: 'rgb(32,76,165)',
+	},
+	totalContainer: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		paddingTop: 10,
+		paddingBottom: 10,
+		borderBottomWidth: 1,
+		borderBottomColor: 'rgba(0,0,0,.15)',
+	},
+	totalLabel: {
+		paddingLeft: 40,
+		flex: 1,
+		fontSize: 16,
+		fontFamily: 'Oswald',
+		fontWeight: 'bold',
+		paddingTop: 10,
+		paddingBottom: 10,
+		textAlign: 'left',
+	},
+	totalValues: {
+		paddingRight: 40,
+		flex: 1,
+		fontSize: 16, fontFamily: 'Oswald',
+		fontWeight: 'bold',
+		paddingTop: 10,
+		paddingBottom: 10,
+		textAlign: 'right'
+	},
 });
 

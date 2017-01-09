@@ -241,7 +241,7 @@ let styles = StyleSheet.create({
 	},
 	container:{
 
-		height:Dimensions.get('window').height,
+		flex: 1,
 		flexDirection:'column',
 		justifyContent:'space-between',
 		alignItems:'center'
@@ -292,7 +292,6 @@ let styles = StyleSheet.create({
 		borderRadius: 20,
 		shadowColor: 'transparent',		
 		width: Dimensions.get('window').width*0.8,
-		// alignSelf:'center',
 		marginTop: 20,
 	},
 	button2:{		

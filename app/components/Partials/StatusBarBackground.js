@@ -7,7 +7,13 @@ export default class StatusBarBackground extends React.Component
 {
 	render() {
 		if (Platform.OS === 'ios')
-		  return (<View style={[styles.statusBarBackground, this.props.style || {}]}></View>);
+			return <View 
+				style={[
+					styles.statusBarBackground,
+					this.props.style || {}
+				]}
+				>
+			</View>;
 		else
 		  return null;
 	}

@@ -1,57 +1,63 @@
-import React from 'react';
-import { Navigator, StyleSheet, View, Dimensions, Text, Image } from 'react-native';
+'use strict'
 
-import Header   from '../Partials/Header';
+import React from 'react';
+import {
+	Navigator,
+	StyleSheet,
+	Text,
+	View
+} from 'react-native';
+
 import Button   from '../Partials/Button';
 import CardList from './Partials/CardList';
 
-var window = Dimensions.get('window');
+import ContentContainer 	from '../Containers/ContentContainer';
+import BackRefreshHeader 	from '../Partials/BackRefreshHeader';
 
-export default ( props ) => (
-	<View style={styles.container}>
-		<Header titleView="MIS TARJETAS" {...props} />              
-		<View style={styles.main}>
-			<View style={{
-				marginLeft:0,
-				marginRight:0,
-				marginTop: 0,
-				paddingBottom: 30,
-				// borderBottomWidth:2,
-				// borderBottomColor:'rgba(0,0,0,.15)'
-			}}>
-				<Text style={{fontFamily: 'Varela Round',textAlign:'left',fontSize:17,color: 'black'}}>
-					Recuerda que no compartimos tu información financiera
-				</Text>
-			</View>
-			<CardList {...props}/>
-			<Button invert text="Recarga Automática"/>
-			<Button  text="Agregar Tarjeta" onPress={
-				(event)=>{
-				props.navigator.push({
-					name: "AddCard",
-					sceneConfig: Navigator.SceneConfigs.FloatFromRight
-				});
-				}
-			}/>
-		</View>
-	</View>
-);
+export default class Cards extends React.Component {
+	render(){
+		return <View style={ { flex: 1 } }>
+			<BackRefreshHeader { ...this.props } title="MIS TARJETAS" refreshTarget="Cards"/>
+			<ContentContainer>        
+				<View style={ styles.main }>
+					<View style={ styles.disclaimerContainer }>
+						<Text style={ styles.disclaimerText }>
+							Recuerda que no compartimos tu información financiera
+						</Text>
+					</View>
+					<CardList { ...this.props }/>
+					<View style={ styles.spacer }></View>
+					<Button invert text="Recarga Automática"/>
+					<Button  text="Agregar Tarjeta" onPress={
+						( event ) => {
+							this.props.navigator.push({
+								name: "AddCard",
+								sceneConfig: Navigator.SceneConfigs.FloatFromRight
+							});
+						}
+					}/>
+				</View>
+			</ContentContainer>
+		</View>;
+	}
+}
 
 let styles = StyleSheet.create({
-	main: {
-		flex:21,
-		flexDirection:'column',
-		backgroundColor:'white',		
-		alignItems:'center',		
-		justifyContent:'flex-start',
-		padding:20,		
-		alignSelf: 'stretch'
+	disclaimerContainer: {
+		paddingBottom: 15,
 	},
-	container: {
-		height:window.height,
-		flexDirection:'column',
-		justifyContent:'space-between',
-		alignItems:'center',
-		alignSelf:'stretch'
-	},	
+	disclaimerText: {
+		color: 'black',
+		fontFamily: 'Varela Round',
+		fontSize:17,
+		textAlign:'left',
+	},
+	main: {
+		flex: 1,
+		alignItems: 'center',
+		padding: 20,
+	},
+	spacer: {
+		height: 20,
+	}
 });

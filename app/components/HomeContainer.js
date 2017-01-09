@@ -28,19 +28,15 @@ export default class HomeContainer extends React.Component {
 
 		if( this.props.session.user.name !== undefined && this.props.session.user.name !== null && this.props.session.user.name != '' )
 		{
-			return (
-				<DrawerContainer { ...this.props } content={ <DrawerContent { ...this.props } /> }>
-					<Home { ...this.props } navigator={ this.props.navigator }/>
-				</DrawerContainer>
-			);
+			return <DrawerContainer { ...this.props } content={ <DrawerContent { ...this.props } /> }>
+				<Home { ...this.props } navigator={ this.props.navigator }/>
+			</DrawerContainer>;
 
 		}
 
-		return (
-			<BaseContainer>
-				<Spinner color="#FFF" />
-			</BaseContainer>
-		);
+		return <BaseContainer>
+			<Spinner color="#FFF" />
+		</BaseContainer>;
 
 	}
 

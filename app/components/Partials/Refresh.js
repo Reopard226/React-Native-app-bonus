@@ -8,31 +8,33 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 
-export default ( props ) => (
-	<TouchableOpacity
-		style={ styles.touchable }
-		onPress={ ( event ) => {
+import { Button } from 'native-base';
+
+import Icon from 'react-native-vector-icons/Ionicons';
+
+export default ( props ) => <Button 
+	style={ styles.touchable }
+	onPress={ ( event ) => {
+		return null;
+		if( props.target ){
 			props.navigator.push({
-				name: "Wallet",
-				sceneConfig: Navigator.SceneConfigs.FloatFromLeft
+				name: props.target,
+				sceneConfig: Navigator.SceneConfigs.FadeAndroid
 			});
-		}}>
-		<Image style={ styles.image } source={ require( '../../img/lista-categoria/icon-back.png' ) }/>
-	</TouchableOpacity>
-);
+		}
+		return null;
+	}}
+	transparent>
+	<Icon name='ios-refresh' color='white' size={35}/>
+</Button>;
 
 let styles = StyleSheet.create({
 	touchable:{
-		width:20,
-		height:20,
+		width:35,
+		height:35,
 		position: 'absolute',
-		top: 10,
+		top: 8,
 		right: 15,
-		zIndex:50
+		zIndex:5000,
 	},
-	image:{
-		width:20,
-		height:20,
-		resizeMode: 'contain'
-	}
 });

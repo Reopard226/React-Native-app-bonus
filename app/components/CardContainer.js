@@ -3,10 +3,8 @@
 import React from 'react';
 
 import BaseContainer from './Containers/BaseContainer';
-import Card from './Cards/Partials/Card';
+import Card from './Cards/Card';
 
-export default ( props ) => (
-	<BaseContainer>
-		<Card { ...props } />
-	</BaseContainer>
-);
+export default ( props ) => <BaseContainer>
+	<Card { ...props } />
+</BaseContainer>;

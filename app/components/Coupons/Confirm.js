@@ -12,7 +12,7 @@ import {
 
 import {Button, Icon} from 'native-base';
 
-import BackIcon from '../Partials/BackIcon';
+import GoBack from '../Partials/GoBack';
 
 export default ( props ) => (
 
@@ -133,7 +133,7 @@ let styles = StyleSheet.create({
 });
 
  // 				   <Button transparent>
- //                    	<BackIcon/> 
+ //                    	<GoBack/> 
  //                    </Button>	                   	                    
  //                    <Thumbnail square source={ require( '../../img/bonus-logoBlanco300.png' ) } style={ styles.logo }/>                
  //                    <Button transparent>
