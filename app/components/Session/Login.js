@@ -24,8 +24,8 @@ export default class Login extends React.Component {
 
 		this.state = {
 			idType: '01',
-			userId: '', //80653260
-			password: '', //p3rs301!
+			userId: '49999990', //80653260
+			password: 'loyalty', //p3rs301!
 		}
 
 	}

@@ -29,6 +29,18 @@ const from_redux = {
             id:'5487',
             address:'other address',
             expDate:'05/19'      
+        },
+        {
+            type:'Masterdcard',
+            id:'5487',
+            address:'other address',
+            expDate:'05/19'      
+        },
+        {
+            type:'Masterdcard',
+            id:'5487',
+            address:'other address',
+            expDate:'05/19'      
         }
     ]
 }
@@ -52,7 +64,6 @@ export default (props)=>{
                 key={ index }
                 style={{height:90,justifyContent:'flex-start',alignItems:'center',flexDirection:'row'}}
                 onPress={ ( event ) => {
-
                         props.navigator.push({
                             name: "Card",
                             card: { 
@@ -63,17 +74,12 @@ export default (props)=>{
                             },
                             sceneConfig: Navigator.SceneConfigs.FloatFromRight
                         });
-
                     }}                  
-                >
-                
-                    <Image style={styles.img} source={source[item.type]} />
-                    <Text style={styles.text}> {item.type} </Text>
-                    <Text style={[styles.text,{top:25}]} note> Tarjeta {item.id} </Text>         
-                    <Badge backgroundColor='rgb(32,76,165)'style={{alignSelf:'center'}}>></Badge> 
-                    
-               
-
+            >
+                <Image style={styles.img} source={source[item.type]} />
+                <Text style={styles.text}> {item.type} </Text>
+                <Text style={[styles.text,{top:25, fontWeight: 'bold', fontSize: 12}]} note> Tarjeta ({item.id}) </Text>         
+                <Badge backgroundColor='rgb(32,76,165)'style={{alignSelf:'center'}}>></Badge> 
             </ListItem>
         );
     }); 
@@ -93,8 +99,7 @@ export default (props)=>{
 let styles = StyleSheet.create({
     
     container:{      
-        alignSelf:'stretch',
-        height:300       
+        alignSelf:'stretch',       
     },
     body:{
         fontSize: 11,
@@ -104,15 +109,13 @@ let styles = StyleSheet.create({
         resizeMode:'contain',
         alignSelf:'flex-start',
         justifyContent:'center',
-        width:70,
-        height:70
-
+        width:40,
+        height:40
     },
     text:{
         position: 'absolute',
         left: 80,
-        top:5     
-                
+        top:5
     }
 
 });
