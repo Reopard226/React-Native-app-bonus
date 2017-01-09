@@ -32,7 +32,7 @@ export default ( props ) => (
 						onPress={ ( event ) => {
 
 							props.navigator.push({
-								name: "Card",
+								name: "Points",
 								sceneConfig: Navigator.SceneConfigs.FloatFromRight
 							});
 

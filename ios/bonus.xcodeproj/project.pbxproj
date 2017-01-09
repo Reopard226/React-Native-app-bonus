@@ -969,6 +969,10 @@
 				DEVELOPMENT_TEAM = 4XX7LXU9AJ;
 				INFOPLIST_FILE = bonus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/bonus",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -989,6 +993,10 @@
 				DEVELOPMENT_TEAM = 4XX7LXU9AJ;
 				INFOPLIST_FILE = bonus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/bonus",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
