@@ -13,10 +13,7 @@ export default ( props ) => (
 		style={ styles.touchable }
 		onPress={ ( event ) => {
 
-			props.navigator.push({
-				name: "Home",
-				sceneConfig: Navigator.SceneConfigs.FloatFromLeft
-			});
+			props.navigator.pop();
 			
 		}}>
 		<Image style={ styles.image } source={ require( '../../img/lista-categoria/icon-back.png' ) }/>

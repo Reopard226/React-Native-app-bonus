@@ -6,41 +6,66 @@ import {
 	View,
 	Dimensions,
 	Text,
+	TouchableOpacity,
 	Image
 } from 'react-native';
 
-import {Button, Icon} from 'native-base';
+import {Button, Icon , List , ListItem} from 'native-base';
 
 import BackIcon from '../Partials/BackIcon';
 import Header   from '../Partials/Header';
 
-export default ( props ) => (
-		
-		<View style={styles.container}>
+const items = ( props ) => {
 
-				<Header titleView="MIS PUNTOS" />              
-                <View style={styles.main}>
-                	<Text style={styles.balance}>{ props.session.user.currentBalance }</Text>
-					<Text style={styles.body}>Puntos disponibles</Text>
-					<View style={{
-						paddingTop:25,
-						marginLeft:5,
-						marginRight:5,
-						marginTop: 15,
-						marginBottom: 20,
-						borderTopWidth:2,
-						borderTopColor:'rgba(0,0,0,.15)'
-					}}>
- 						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>¿Cómo gano un punto Bonus?</Text>
-					</View>
- 					<Text style={[styles.body, {paddingLeft: 10, paddingRight: 10}]}>Acumulas 1 punto por cada $/. 7.50 de consumo en nuestras marcas asociadas presentando tu Bonus y listo! Empieza a disfrutar.
- 					</Text>
-                </View>
-        </View>
-        
+	return props.shopping.cart.map(( item , index ) => {
 
-    
-);
+		return <View key={index} style={{ paddingLeft: 20, paddingRight: 20 , flexDirection: 'row', alignItems: 'center' , justifyContent: 'center', paddingBottom: 10 , paddingTop: 10 , borderBottomWidth: 1, borderBottomColor: 'rgba(0,0,0,.15)'}}>
+			<Image style={{width: 80 , height: 80}} source={{ uri: ( 'http://www.bonus.com.pe/images/productos/' + item.id + '.jpg' ) }} />
+			<Text style={{flex:1, fontSize: 12, fontFamily: 'Varela Round', marginLeft: 10, marginRight: 10}}>{item.name}</Text>
+			<Text style={{flex:1,color: 'blue',fontSize: 12,fontFamily: 'Oswald'}}>{`${item.points} pts. + $/.${item.value}`}</Text>
+			<TouchableOpacity
+				onPress={() => {
+					props.dispatch( props.shoppingActions.removeFromCart( index ) );
+				}}
+			>
+				<Image style={{width: 40 , height: 40}} source={require( '../../img/cupones/delete.png' )} />
+			</TouchableOpacity>
+		</View>
+
+	});
+
+}
+
+const total = ( props ) => {
+
+
+	var totalValue = 0;
+	var totalPoints = 0;
+
+	props.shopping.cart.forEach(( item , index ) => {
+		totalValue += parseFloat( item.value );
+		totalPoints += parseFloat( item.points );
+	});
+
+	return <View style={{flexDirection: 'row' , justifyContent: 'center' , alignItems: 'center', paddingTop: 10 , paddingBottom: 10 , borderBottomWidth: 1, borderBottomColor: 'rgba(0,0,0,.15)'}}>
+	<Text style={{  paddingLeft: 40 , flex: 1 ,fontSize: 16, fontFamily: 'Oswald' , fontWeight: 'bold' , paddingTop: 10 , paddingBottom: 10, textAlign: 'left'}}>
+		TOTAL
+	</Text>
+	<Text style={{ paddingRight: 40 , flex: 1 , fontSize: 16, fontFamily: 'Oswald' , fontWeight: 'bold' , paddingTop: 10 , paddingBottom: 10, textAlign: 'right'}}>
+		{`${totalPoints} pts. + $/. ${totalValue}`}
+	</Text></View>
+
+}
+
+export default ( props ) => <View style={styles.container}>
+	<Header titleView="MI CARRITO" noBackBtn/> 
+	<BackIcon { ...props }/>             
+	<View style={styles.main}>
+		{items( props )}
+		{total( props )}
+		<Button style={{width: 300, alignSelf: 'center', borderRadius: 24, marginTop: 40, backgroundColor: 'rgb(32,76,165)'}}>Canjear</Button>
+	</View>
+</View>;
 
 let styles = StyleSheet.create({
 	container:{
@@ -65,7 +90,8 @@ let styles = StyleSheet.create({
 		backgroundColor:'white',		
 		alignItems:'center',		
 		justifyContent:'flex-start',
-		padding:20,		
+		padding:0,		
+		paddingTop: 0,
 		alignSelf: 'stretch'
 	},
 	logo:{

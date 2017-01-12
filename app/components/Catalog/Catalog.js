@@ -8,7 +8,7 @@ import {
 
 import { Text } from 'native-base';
 
-import BackIcon from '../Partials/BackIcon';
+import GoBack from '../Partials/GoBack';
 import CartIcon from '../Partials/CartIcon';
 import CustomTabBar from './Partials/CustomTabBar'
 import Header from './Partials/Header';
@@ -21,7 +21,7 @@ export default class Catalog extends React.Component {
 	render(){ 
 		return(
 			<View style={ styles.container }>
-				<BackIcon navigator={ this.props.navigator } />
+				<GoBack {...this.props} />
 				<CartIcon />
 				<Header { ...this.props } />
 				<ScrollableTabView 

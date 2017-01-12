@@ -32,6 +32,7 @@ export default function requestUserInfo( credentials = { userId: '' } ) {
 
 			let user = {}
 			user.name = toTitleCase( doc.getElementsByTagName('Prsnomape')[0].textContent );
+			user.uniqId = returnedUserId;
 
 			user.accountType = doc.getElementsByTagName('PCtaTip')[0].textContent.replace(/ /g,'');
 			user.accountTypeName = doc.getElementsByTagName('PCtaTipNom')[0].textContent.replace(/ /g,'');

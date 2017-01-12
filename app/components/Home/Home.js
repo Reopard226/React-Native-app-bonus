@@ -32,7 +32,7 @@ export default ( props ) => (
 			renderTabBar={() => <CustomTabBar />}
 		>
 			<Catalogue tabLabel="CATÁLOGO" { ...props }/>
-			<Text tabLabel="PROMOCIONES">PROMOCIONES</Text>
+			<Text tabLabel="PROMOCIONES" style={{flex: 1, textAlign: 'center', paddingTop: 40, fontWeight: 'bold', fontFamily: 'Varela Round'}}>NO HAY PROMOCIONES EN ESTE MOMENTO</Text>
 			<Coupons tabLabel="CUPONES" { ...props }/>
 		</ScrollableTabView>
 	</View>

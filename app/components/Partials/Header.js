@@ -2,27 +2,28 @@
 
 import   React                                  from 'react';
 import { Dimensions,Text,StyleSheet,View,Image} from 'react-native';
-import   BackIcon                               from '../Partials/BackIcon';
-        
+import   GoBack                               from './GoBack';
 
-export default (props)=>( 
+const backBtn = (props) => {
+    if( !props.noBackBtn )
+        return <GoBack { ...props } />;
 
-    <View style={styles.container}>   
-        <BackIcon { ...props } />
-        <View style={styles.header}>
-            <View style={styles.imageContainer}>
-                <Image source={require('../../img/bonus-logoBlanco300.png')}
-                       style={styles.image}   
-                />
-            </View>
-            <Text style={styles.title}>
-                {props.titleView}
-            </Text>
+    return null;
+}        
+
+export default (props) => <View style={styles.container}>   
+    {backBtn( props )}
+    <View style={styles.header}>
+        <View style={styles.imageContainer}>
+            <Image source={require('../../img/bonus-logoBlanco300.png')}
+                   style={styles.image}   
+            />
         </View>
-    </View>    
-       
-        
-);    
+        <Text style={styles.title}>
+            {props.titleView}
+        </Text>
+    </View>
+</View>;
 
 let styles = StyleSheet.create({
 

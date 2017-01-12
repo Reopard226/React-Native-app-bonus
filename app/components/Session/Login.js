@@ -24,8 +24,8 @@ export default class Login extends React.Component {
 
 		this.state = {
 			idType: '01',
-			userId: '80653260', //80653260
-			password: 'p3rs301!', //p3rs301!
+			userId: '', //80653260
+			password: '', //p3rs301!
 		}
 
 	}
@@ -104,8 +104,8 @@ export default class Login extends React.Component {
 								<Col>
 									<Button onPress={() => {
 											this.props.dispatch( this.props.sessionActions.requestLogin({
-												userId:  80653260,
-												password:  'p3rs301!',
+												userId:  this.state.userId,
+												password:  this.state.password,
 												idType:  '01'
 											}));
 										}}

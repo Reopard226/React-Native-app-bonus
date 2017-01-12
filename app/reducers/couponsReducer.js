@@ -43,6 +43,35 @@ export default function reducer( state = _initialState , action ) {
 
 			break
 
+		case 'PRODUCTS::REGISTERING_COUPON':
+			return {
+				...state,
+				loading: true,
+				error: null
+			}
+
+			break
+
+		case 'PRODUCTS::REQUESTED_BONUSCOUPONS_SUCCEEDED':
+			return {
+				...state,
+				loading: false,
+				message: action.payload,
+				error: null,
+			}
+
+			break
+
+		case 'PRODUCTS::COUPON_REGISTRATION_REJECTED':
+			return {
+				...state,
+				loading: false,
+				message: action.payload,
+				error: action.payload,
+			}
+
+			break
+
 	}
 
 	return state
