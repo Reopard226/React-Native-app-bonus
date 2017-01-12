@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Dimensions, Text, Image } from 'react-native';
+import { Navigator, StyleSheet, View, Dimensions, Text, Image } from 'react-native';
 
 
 import Header   from '../Partials/Header';
@@ -29,7 +29,14 @@ export default (props)=>(
 						</View>
 	 					<CardList {...props}/>
 	 					<Button invert text="Recarga Automática"/>
-	 					<Button  text="Agregar Tarjeta"/>
+	 					<Button  text="Agregar Tarjeta" onPress={
+	 						(event)=>{
+                            props.navigator.push({
+                                name: "AddCard",                          
+                                sceneConfig: Navigator.SceneConfigs.FloatFromRight
+                            });
+                        }
+	 					}/>
 						
 	                </View>
 	    </View>

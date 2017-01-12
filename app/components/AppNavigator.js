@@ -16,6 +16,8 @@ import SessionContainer from './SessionContainer';
 import WalletContainer from './WalletContainer';
 import CardsContainer from './CardsContainer';
 import CardContainer from './CardContainer';
+import EditCardContainer from './EditCardContainer';
+import AddCardContainer from './AddCardContainer';
 
 export default class AppNavigator extends React.Component
 {
@@ -39,8 +41,14 @@ export default class AppNavigator extends React.Component
 			case 'Cards':
 				return <CardsContainer 		{ ...this.props } navigator={ navigator }/>;
 
+			case 'AddCard':
+				return <AddCardContainer 		{ ...this.props } navigator={ navigator }/>;
+
 			case 'Card':
-				return <CardContainer 		{ ...this.props } navigator={ navigator }/>;		
+				return <CardContainer 		{ ...this.props } navigator={ navigator } card={ route.card }/>;
+
+			case 'EditCard':
+				return <EditCardContainer 	{ ...this.props } navigator={ navigator } card={ route.card }/>;			
 
 			case 'Product':
 				return <ProductContainer 	{ ...this.props } navigator={ navigator } product={ route.product }/>;

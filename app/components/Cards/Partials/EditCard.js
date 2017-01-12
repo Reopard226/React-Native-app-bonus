@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigator, StyleSheet, Dimensions, View, Text, Image} from 'react-native';
+import { StyleSheet, Dimensions, View, Text, Image} from 'react-native';
 
 
 import Header   from '../../Partials/Header';
@@ -26,14 +26,7 @@ export default (props)=>(
                         <Text style={{width:120,alignSelf:'flex-start'}}>ksjdgfnf wñdfj wñlfnm wdpkf </Text>
                         <View style={styles.bar}/>    
                     </View>
-                    <Button invert text="Editar Tarjeta" onPress={
-                        (event)=>{
-                            props.navigator.push({
-                                name: "EditCard",                          
-                                sceneConfig: Navigator.SceneConfigs.FloatFromRight
-                            });
-                        }
-                    }/>
+                    <Button invert text="Editar Tarjeta"/>
                     <Button text="Eliminar Tarjeta"/>
                 </View>
     );
