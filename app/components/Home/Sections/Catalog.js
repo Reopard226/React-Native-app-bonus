@@ -15,6 +15,8 @@ import ScrollableTabView, { DefaultTabBar, } 	from 'react-native-scrollable-tab-
 
 import theme from '../../../themes/bonus';
 
+import Style from '../../../styles/Style';
+
 const from_redux = {
 	categories: [
 		{
@@ -76,15 +78,15 @@ const from_redux = {
 
 export default ( props ) => {
 	const items = from_redux.categories.map( ( item , index ) => {
-		return <ListItem 
-				key={ index } 
+		return <ListItem
+				key={ index }
 				style={ styles.listItem }
 			>
 				<Image style={ styles.goToCategoryIcon } source={ require( '../../../img/home/btn-category.png' ) } />
 				<TouchableHighlight onPress={ ( event ) => {
 						props.navigator.push({
 							name: "Catalog",
-							category: { 
+							category: {
 								id: item.categoryId,
 								name: item.name,
 								numberOfArticles: item.number_of_articles
@@ -117,11 +119,11 @@ let styles = StyleSheet.create({
 	},
 	icon: {
 		color: 'rgb(31,75,164)',
-		paddingRight: 20 
+		paddingRight: 20
 	},
 	image: {
 		height: 100,
-		width: 400
+		width: Style.DEVICE_WIDTH
 	},
 	itemCount: {
 		color: 'rgba(255,255,255,.9)',

@@ -13,35 +13,35 @@ var window = Dimensions.get('window');
 const from_redux = {
     cards:[
         {
+            type:'Masterdcard',
+            id:'5487',
+            address:'other address',
+            expDate:'05/19'
+        },
+        {
+            type:'Masterdcard',
+            id:'5487',
+            address:'other address',
+            expDate:'05/19'
+        },
+        {
+            type:'Masterdcard',
+            id:'5487',
+            address:'other address',
+            expDate:'05/19'
+        },
+        {
             type:'Visa',
             id:'4562',
             address:'Some address',
-            expDate:'07/17'       
+            expDate:'07/17'
         },
         {
             type:'Visa',
             id:'4852',
             address:'Another address',
-            expDate:'12/20'      
+            expDate:'12/20'
         },
-        {
-            type:'Masterdcard',
-            id:'5487',
-            address:'other address',
-            expDate:'05/19'      
-        },
-        {
-            type:'Masterdcard',
-            id:'5487',
-            address:'other address',
-            expDate:'05/19'      
-        },
-        {
-            type:'Masterdcard',
-            id:'5487',
-            address:'other address',
-            expDate:'05/19'      
-        }
     ]
 }
 
@@ -59,37 +59,37 @@ export default (props)=>{
         }
 
         return (
-            <ListItem 
+            <ListItem
                 button
                 key={ index }
                 style={{height:90,justifyContent:'flex-start',alignItems:'center',flexDirection:'row'}}
                 onPress={ ( event ) => {
                         props.navigator.push({
                             name: "Card",
-                            card: { 
+                            card: {
                                 type: item.type,
                                 id: item.id,
                                 date: item.expDate,
-                                address: item.address                        
+                                address: item.address
                             },
                             sceneConfig: Navigator.SceneConfigs.FloatFromRight
                         });
-                    }}                  
+                    }}
             >
                 <Image style={styles.img} source={source[item.type]} />
                 <Text style={styles.text}> {item.type} </Text>
-                <Text style={[styles.text,{top:25, fontWeight: 'bold', fontSize: 12}]} note> Tarjeta ({item.id}) </Text>         
-                <Badge backgroundColor='rgb(32,76,165)'style={{alignSelf:'center'}}>></Badge> 
+                <Text style={[styles.text,{top:25, fontWeight: 'bold', fontSize: 12}]} note> Tarjeta ({item.id}) </Text>
+                <Badge backgroundColor='rgb(32,76,165)'style={{alignSelf:'center'}}>></Badge>
             </ListItem>
         );
-    }); 
+    });
 
     return (
         <Container style={styles.container}>
             <Content >
                 <List >
                     {items}
-                </List> 
+                </List>
             </Content>
         </Container>
         );
@@ -97,8 +97,8 @@ export default (props)=>{
 }
 
 let styles = StyleSheet.create({
-    
-    container:{      
+
+    container:{
         alignSelf:'stretch',
         height: 80,
     },

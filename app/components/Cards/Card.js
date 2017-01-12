@@ -15,7 +15,7 @@ export default ( props ) => <View  style={ { flex: 1 } }>
 	<ContentContainer>
 		<View style={ { flex: 1 , padding: 20, alignItems: 'center' , justifyContent: 'center'} }>   	        
 			<View style={styles.imgContainer}>
-				<Image source={require('../../img/cards/Visa.png')} style={styles.img}/>
+				<Image source={require('../../img/cards/Masterdcard.png')} style={styles.img}/>
 				<Text>Tarjeta ..... 08/18</Text>
 			</View> 
 			<View style={styles.textContainer}>

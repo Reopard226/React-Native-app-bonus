@@ -9,12 +9,14 @@ import Drawer from 'react-native-drawer';
 
 import BaseContainer from './BaseContainer';
 
+import Style from '../../styles/Style';
+
 export default ( props ) => <Drawer
 	content=			{ props.content }
 	onClose=			{ () => props.closeDrawer() }
 	open=				{ props.drawerOpened }
-	openDrawerOffset=	{ 276 }
-	panCloseMask=		{ 276 }
+	openDrawerOffset=	{ Style.DEVICE_HEIGHT < 660 ? Style.DEVICE_WIDTH * .7 : ( Style.DEVICE_HEIGHT < 700 ? 300 : 315 ) }
+	panCloseMask=		{ Style.DEVICE_HEIGHT < 660 ? Style.DEVICE_WIDTH * .7 : ( Style.DEVICE_HEIGHT < 700 ? 300 : 315 )  }
 	styles={{
 		drawer: {
 			flex: 1,

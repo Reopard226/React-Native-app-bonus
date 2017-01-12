@@ -5,17 +5,17 @@ import { StyleSheet, View, Text, Image} from 'react-native';
 import Header   from '../Partials/Header';
 import Button   from '../Partials/Button';
 
-export default ( props ) => <View style={ styles.container }>        	        
+export default ( props ) => <View style={ styles.container }>
     <View style={ styles.imgContainer }>
-        <Image source={require('../../img/cards/Visa.png')} style={ styles.img }/>
+        <Image source={require('../../img/cards/Masterdcard.png')} style={ styles.img }/>
         <Text>Tarjeta ..... 08/18 </Text>
-    </View> 
+    </View>
     <View style={ styles.textContainer }>
         <View style={ styles.bar }/>
-        <View style={{flexDirection:'row',justifyContent:'space-between'}}>    
+        <View style={{flexDirection:'row',justifyContent:'space-between'}}>
             <Text >Fecha de vencimiento</Text>
             <Text >07/17</Text>
-        </View>                        
+        </View>
         <Text style={ styles.text }>Direccion de Facturación</Text>
         <Text style={ {width:120,alignSelf:'flex-start'} }>ksjdgfnf wñdfj wñlfnm wdpkf </Text>
         <View style={ styles.bar } />
@@ -31,7 +31,7 @@ let styles = StyleSheet.create({
         flex: 1,
         flexDirection:'column',
         justifyContent:'flex-start',
-        alignItems:'center',        
+        alignItems:'center',
         padding:20
     },
     imgContainer:{
@@ -58,7 +58,7 @@ let styles = StyleSheet.create({
         alignSelf:'stretch',
         width:window.width * 0.8,
         marginBottom:15
-        
+
     },
     text:{
         fontSize:12,
@@ -66,7 +66,7 @@ let styles = StyleSheet.create({
         paddingTop:10,
         paddingBottom:10,
         textAlign:'left'
-        
+
     }
 
 });

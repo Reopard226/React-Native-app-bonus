@@ -18,6 +18,8 @@ import BackIcon from './Partials/BackIcon';
 
 import theme from '../../themes/bonus';
 
+import RadiusButton from '../Utility/RadiusButton';
+
 export default class Register extends Component
 {
 
@@ -68,8 +70,8 @@ export default class Register extends Component
 								<Input style={styles.textInput} placeholder="Repetir Contraseña" />
 							</InputGroup>
 							<Grid>
-								<Col>
-									<Button onPress={(event) => {
+								<Col style={{ paddingTop: 28 }}>
+									<RadiusButton onPress={(event) => {
 
 											this.props.dispatch( this.props.sessionActions.requestLogin({
 												userId: 80653260,
@@ -77,9 +79,9 @@ export default class Register extends Component
 												idType: '01'
 											}));
 
-										}} textStyle={{fontSize: 12}} style={{marginTop: 28, backgroundColor: 'rgb(32,76,165)',borderRadius: 20,shadowColor: 'transparent'}} block>
-										Registrar mi cuenta
-									</Button>
+										}}
+										text="Registrar mi cuenta"
+									/>
 								</Col>
 							</Grid>
 							<View style={{alignSelf: 'center', padding: 30, paddingTop: 32}}>

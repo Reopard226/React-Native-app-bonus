@@ -19,32 +19,36 @@ import { Col, Grid } from "react-native-easy-grid";
 
 import { Text } from 'native-base';
 
+import MainFont from '../../Utility/MainFont';
+
+import Style from '../../../styles/Style';
+
 export default ( props ) => <ContentContainer>
-	<View style={ styles.summarySection }>
+	<View style={ Style.stylesheet.homeSummarySection }>
 		<Grid style={ styles.boxwrapper }>
 			<Col>
 				<View style={ styles.box }>
 					<Text style={ styles.boxValue }>{ props.session.user.pointsCode }</Text>
-					<Text style={ styles.boxLabel }>Soles</Text>
+					<MainFont center lines={1} fontSize='sm' color={ Style.GRAY0 }>Soles</MainFont>
 				</View>
 			</Col>
 			<Col>
 				<View style={ [ styles.box ,  styles.centerbox ]  }>
 					<Text style={ styles.boxValue }>{ props.session.user.currentBalance }</Text>
-					<Text style={ styles.boxLabel }>Puntos</Text>
+					<MainFont center lines={1} fontSize='sm' color={ Style.GRAY0 }>Puntos</MainFont>
 				</View>
 			</Col>
 			<Col>
 				<View style={ styles.box }>
 					<Text style={ styles.boxValue }>{ props.session.user.accountAutCnj }</Text>
-					<Text style={ styles.boxLabel }>Cupones</Text>
+					<MainFont center lines={1} fontSize='sm' color={ Style.GRAY0 }>Cupones</MainFont>
 				</View>
 			</Col>
 		</Grid>
 	</View>
-	<ScrollableTabView 
+	<ScrollableTabView
 		renderTabBar=			{() => <CustomTabBar />}
-		style=					{ styles.scrollableTabView } 
+		style=					{ styles.scrollableTabView }
 		tabBarUnderlineStyle=	{ styles.tabBarUnderlineStyle }
 		tabBarTextStyle=		{ styles.tabBarTextStyle }
 		tabBarActiveTextColor=	{ styles.tabBarActiveTextColor.color }
@@ -72,7 +76,7 @@ let styles = StyleSheet.create({
 	},
 	boxLabel: {
 		textAlign: 'center',
-		color: 'rgba(0,0,0,.3)', 
+		color: 'rgba(0,0,0,.3)',
 		fontSize: 13,
 		fontFamily: 'Varela Round'
 	},
@@ -92,13 +96,6 @@ let styles = StyleSheet.create({
 		backgroundColor: '#FFF',
 		paddingTop: 0,
 		flex: 1
-	},
-	summarySection: {
-		height: 100,
-		backgroundColor: '#FFF',
-		paddingLeft: 30,
-		paddingRight: 30,
-		paddingTop: 26
 	},
 	tabBarUnderlineStyle: {
 		height: 2,

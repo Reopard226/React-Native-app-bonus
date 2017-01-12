@@ -8,6 +8,10 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 
+import SecondaryFont from '../../Utility/SecondaryFont';
+
+import Style from '../../../styles/Style';
+
 export default React.createClass({
 
 	tabIcons: [],
@@ -45,31 +49,14 @@ export default React.createClass({
 	},
 
 	render() {
-		return <View style={[styles.tabs, this.props.style, ]}>
+		return <View style={[ Style.stylesheet.homeTabsWrapper, this.props.style, ]}>
 			{ this.props.tabs.map( ( tab , i ) => {
-				return <View key={tab} style={{marginBottom: 3,borderBottomWidth: 3, borderBottomColor: (this.props.activeTab === i ? 'rgb(31,75,164)' : 'transparent') }}><TouchableOpacity onPress={() => this.props.goToPage(i)} style={ styles.tab }>
-					<Text style={{fontSize: 12, fontFamily:'Oswald',color: (this.props.activeTab === i ? '#000' : 'rgba(0,0,0,.3)' ) }}>{tab}</Text>
-				</TouchableOpacity></View>;
+				return <View key={tab} style={[ Style.stylesheet.homeTabWrapper , { borderBottomColor: ( this.props.activeTab === i ? Style.MAIN_COLOR_ACCENT : 'transparent') } ]}>
+					<TouchableOpacity onPress={() => this.props.goToPage(i)} style={ Style.stylesheet.homeTabButton }>
+						<SecondaryFont fontSize='sm' color={ this.props.activeTab === i ? Style.BLACK : Style.GRAY0 }>{tab}</SecondaryFont>
+					</TouchableOpacity>
+				</View>;
 			}) }
 		</View>;
-	},
-});
-
-const styles = StyleSheet.create({
-	tab: {
-		paddingTop: 0,
-		paddingBottom: 10,
-		paddingLeft: 34,
-		paddingRight: 34,
-	},
-	tabs: {
-		flexDirection: 'row',
-		paddingTop: 8,
-		paddingLeft: 4,
-		borderWidth: 0,
-		borderTopWidth: 2,
-		borderLeftWidth: 0,
-		borderRightWidth: 0,
-		borderTopColor: 'rgba(255,255,255,0.2)',
 	},
 });

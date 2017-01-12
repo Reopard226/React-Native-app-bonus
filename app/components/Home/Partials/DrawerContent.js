@@ -14,6 +14,8 @@ import {
 import {Container, Content, List, ListItem, Thumbnail} from 'native-base';
 import DrawIcon from './DrawIcon';
 
+import Style from '../../../styles/Style';
+
 const imgW = 99;
 const imgH = 99 * 1.12060301508;
 
@@ -22,7 +24,7 @@ export default ( props ) => (
 		<Content>
 			<List>
 				<View>
-					<Image 
+					<Image
 						source={require("../../../img/menu/header-menu.png")}
 						style={{width: imgW, height: imgH ,resizeMode: 'stretch'}}
 					/>
@@ -43,7 +45,7 @@ export default ( props ) => (
 					</TouchableOpacity>
 				</View>
 				<View style={styles.Item}>
-					<DrawIcon 
+					<DrawIcon
 						icon={require("../../../img/menu/icon-saldo.png")}
 						text="Mi Saldo"
 						goto="Wallet"
@@ -51,7 +53,7 @@ export default ( props ) => (
 					/>
 				</View>
 				<View style={styles.Item}>
-					<DrawIcon 
+					<DrawIcon
 						icon={require("../../../img/menu/icon-tarjetas.png")}
 						text="Mis Tarjetas"
 						goto="Cards"
@@ -59,7 +61,7 @@ export default ( props ) => (
 					/>
 				</View>
 				<View style={styles.Item}>
-					<DrawIcon 
+					<DrawIcon
 						icon={require("../../../img/menu/icon-ajustes.png")}
 						text="Ajustes"
 					/>
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
 	},
 
 	Item:{
-		
+
 		flex:1,
 		flexDirection:'column',
 		alignItems:'center',

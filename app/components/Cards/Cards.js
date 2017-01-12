@@ -18,7 +18,7 @@ export default class Cards extends React.Component {
 	render(){
 		return <View style={ { flex: 1 } }>
 			<BackRefreshHeader { ...this.props } title="MIS TARJETAS" refreshTarget="Cards"/>
-			<ContentContainer>        
+			<ContentContainer>
 				<View style={ styles.main }>
 					<View style={ styles.disclaimerContainer }>
 						<Text style={ styles.disclaimerText }>
