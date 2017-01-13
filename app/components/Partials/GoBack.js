@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React from 'react';
 import {
@@ -10,7 +10,7 @@ import {
 
 export default ( props ) => <TouchableOpacity
 	style={ styles.touchable }
-	onPress={ ( event ) => {
+	onPress={ () => {
 		props.navigator.pop();
 	}}>
 	<Image style={ styles.image } source={ require( '../../img/lista-categoria/icon-back.png' ) }/>
@@ -18,12 +18,12 @@ export default ( props ) => <TouchableOpacity
 
 let styles = StyleSheet.create({
 	touchable:{
-		width:20,
-		height:20,
+		width:40,
+		height:40,
 		position: 'absolute',
 		top: 10,
 		left: 15,
-		zIndex:5000,
+		zIndex:5000
 	},
 	image:{
 		width:20,

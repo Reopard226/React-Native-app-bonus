@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React from 'react';
 import {
@@ -33,8 +33,8 @@ let styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingTop: 30,
-		paddingLeft:35,
-		paddingRight: 35,
+		// paddingLeft:35,
+		// paddingRight: 35,
 		flexDirection: 'row',
 	},
 });

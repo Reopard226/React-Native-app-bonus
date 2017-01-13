@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import globalConfig from '../config/globalConfig'
 

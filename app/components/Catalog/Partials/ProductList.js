@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React from 'react';
 import {
@@ -19,6 +19,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import ProductListToolbar from './ProductListToolbar';
 
+import Loader from '../../Utility/Loader';
+
 export default class ProductList extends React.Component
 {
 
@@ -38,7 +40,7 @@ export default class ProductList extends React.Component
 
 						this.props.navigator.push({
 							name: "Product",
-							product: { 
+							product: {
 								id: item.code,
 								category: this.props.category.name
 							},
@@ -66,7 +68,7 @@ export default class ProductList extends React.Component
 	render() {
 
 		if( this.props.products.loading || !this.props.products.products || !this.props.products.products.length )
-			return <Spinner color="#FFF" />
+			return <Loader color="#FFF" />
 
 		return (
 			<ScrollView contentContainerStyle={{flexWrap:'wrap' , flexDirection: 'row' , alignItems: 'center' , justifyContent: 'center' ,}} tabLabel="TODOS" style={{ height: 500 ,backgroundColor: '#FFF' }}>

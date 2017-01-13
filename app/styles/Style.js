@@ -1,4 +1,4 @@
-"use strict"
+// "use strict"
 
 import React from "react-native";
 import { StyleSheet } from 'react-native';
@@ -81,11 +81,12 @@ export default {
 			borderRadius: em(home.profileImageSize/2),
 			borderWidth: base.borderWidth,
 			borderColor: base.borderColor,
-			zIndex: 5000,
+			zIndex: 500,
 		},
 		homeUserInfo: {
 			marginTop: ( y < 570 ? .2 * em(1) : em(1) ),
-			marginLeft: em(5.5)
+			marginLeft: em(7.5),
+			maxWidth: x * .9
 		},
 		homeSummarySection: {
 			height: em(6.5),
@@ -116,6 +117,13 @@ export default {
 			borderLeftWidth: 0,
 			borderRightWidth: 0,
 			borderTopColor: 'rgba(255,255,255,0.2)',
+		},
+		productImage: {
+			alignSelf: 'center',
+			marginTop: x * .05,
+			resizeMode: 'contain',
+			height: y * .2,
+			width: x * .6,
 		}
 	})
 

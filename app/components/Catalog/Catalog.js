@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React from 'react';
 import {
@@ -18,23 +18,21 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 export default class Catalog extends React.Component {
 
-	render(){ 
-		return(
-			<View style={ styles.container }>
-				<GoBack {...this.props} />
-				<CartIcon />
-				<Header { ...this.props } />
-				<ScrollableTabView 
-					style={ styles.scrollableTabView } 
-					tabBarUnderlineStyle={ styles.tabBarUnderline }
-					tabBarActiveTextColor={ styles.tabBarActiveText.color }
-					tabBarInactiveTextColor={ styles.tabBarInactiveText }
-					renderTabBar={() => <CustomTabBar />}
-				>
-					<ProductList { ...this.props } tabLabel="CATALOGO BONUS"/>
-				</ScrollableTabView>
-			</View>
-		);
+	render() {
+		return <View style={ styles.container }>
+			<GoBack {...this.props} />
+			<CartIcon />
+			<Header { ...this.props } />
+			<ScrollableTabView
+				style={ styles.scrollableTabView }
+				tabBarUnderlineStyle={ styles.tabBarUnderline }
+				tabBarActiveTextColor={ styles.tabBarActiveText.color }
+				tabBarInactiveTextColor={ styles.tabBarInactiveText }
+				renderTabBar={() => <CustomTabBar />}
+			>
+				<ProductList { ...this.props } tabLabel="CATALOGO BONUS"/>
+			</ScrollableTabView>
+		</View>;
 	}
 }
 

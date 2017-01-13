@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React from 'react';
 import {
@@ -10,7 +10,7 @@ import BaseContainer from './Containers/BaseContainer'
 import Home from './Home/Home';
 import DrawerContent from './Home/Partials/DrawerContent';
 
-import { Spinner } from 'native-base';
+import Loader from './Utility/Loader'
 
 export default class HomeContainer extends React.Component {
 
@@ -35,7 +35,7 @@ export default class HomeContainer extends React.Component {
 		}
 
 		return <BaseContainer>
-			<Spinner color="#FFF" />
+			<Loader color="#FFF" />
 		</BaseContainer>;
 
 	}

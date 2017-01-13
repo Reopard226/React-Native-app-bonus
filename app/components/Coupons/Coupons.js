@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React from 'react';
 import {
@@ -60,8 +60,8 @@ export default class Coupons extends React.Component
 
 	_items(){
 
-		if( ! this.props.coupons.bonusCoupons 
-			|| ! this.props.coupons.bonusCoupons.constructor === Array 
+		if( ! this.props.coupons.bonusCoupons
+			|| ! this.props.coupons.bonusCoupons.constructor === Array
 			|| ! this.props.coupons.bonusCoupons.length )
 			return <Text style={{textAlign: 'center', padding: 40}}>No hay cupones disponibles</Text>;
 
@@ -72,7 +72,7 @@ export default class Coupons extends React.Component
 					style={{ flex: 1 , alignSelf: 'stretch' , flexDirection: 'column' , justifyContent: 'flex-end' , alignItems: 'center' }}
 					onPress={() => {
 
-						this.setState({ 
+						this.setState({
 							modalVisible: !this.state.modalVisible,
 							points: item.points,
 							value: item.value,
@@ -125,7 +125,7 @@ export default class Coupons extends React.Component
 						<Image source={require('../../img/bonus-logoBlanco300.png')}
 							style={{ height: 58/3.7, // 58
 								width: 300/3.7, // 300
-								resizeMode: 'contain', top: -5 }} 	
+								resizeMode: 'contain', top: -5 }}
 						/>
 					</View>
 					<Text style={{ fontSize:20, lineHeight: 40, color:'#FFF',

@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 export default {
 	error: null,
@@ -6,4 +6,9 @@ export default {
 	loggedIn: false,
 	redirectTo: 'Login',
 	user: {},
+	registerUserInfo: {
+		name: null,
+		uniqId: null,
+		email: null,
+	}
 }

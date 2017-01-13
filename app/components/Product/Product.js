@@ -1,10 +1,10 @@
-'use strict'
+// 'use strict'
 
 import React from 'react';
 import {
 	Dimensions,
 	Image,
-	Modal,
+	ScrollView,
 	StyleSheet,
 	Text,
 	TouchableOpacity,
@@ -15,13 +15,25 @@ import { Button, List, ListItem, Radio, Picker, Spinner } from 'native-base';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import globalConfig from '../../config/globalConfig';
+
 import CartIcon from '../Partials/CartIcon';
 import GoBack from '../Partials/GoBack';
 
-export default class Product extends React.Component {
+import ContentContainer from '../Containers/ContentContainer';
+import BackHeader from '../Partials/BackHeader';
+import MainFont from '../Utility/MainFont';
+import SecondaryFont from '../Utility/SecondaryFont';
 
-	constructor(props){
-		super(props);
+import RadiusButton from '../Utility/RadiusButton'
+
+import Style from '../../styles/Style';
+
+import Loader from '../Utility/Loader';
+
+export default class Product extends React.Component {
+	constructor(props) {
+		super( props );
 		this.state = {
 			modalVisible: false,
 			points: null,
@@ -31,13 +43,11 @@ export default class Product extends React.Component {
 		}
 	}
 
-	componentDidMount(){
-
+	componentDidMount() {
 		this.props.dispatch( this.props.productsActions.requestProductDetail( { productId: this.props.product.id } ) );
-
 	}
 
-	componentWillReceiveProps( nextProps ){
+	componentWillReceiveProps( nextProps ) {
 
 		if( !this.state.init && nextProps.products.productDetail !== null ){
 
@@ -55,141 +65,82 @@ export default class Product extends React.Component {
 
 	}
 
-	render(){
+	render() {
 
 		if( this.props.products.productDetail === null )
-			return <Spinner color="#FFF" />
+			return <Loader color="#FFF" />
 
-		return (
-			<View style={styles.container}>
-				<GoBack { ...this.props } />
-				<CartIcon { ...this.props } />
-				<View style={styles.header}>
-					<View style={{width:Dimensions.get('window').width,
-									flexDirection:'row',
-									justifyContent:'center'}}>
-						<Image source={require('../../img/bonus-logoBlanco300.png')}
-								 style={{ 
-								height: 58/3.7, // 58
-								width: 300/3.7, // 300
-										resizeMode: 'contain',
-										top: -5
-								 }}
-						/>
-					</View>
-					<Text style={{
-						fontSize:20,
-						color:'#FFF',
-						textAlign:'center',
-						fontFamily: 'Oswald',
-						marginTop: 0,
-						top: -10
-					}}>
-						{ this.props.product.category.toUpperCase() }
-					</Text>
+		return <View style={{flex: 1}}>
+			<CartIcon 	{ ...this.props } />
+			<BackHeader title={ this.props.product.category.toUpperCase() } { ...this.props } />
+			<ContentContainer>
+				<ScrollView>
+				<Image source={{ uri: globalConfig.getImageUri( this.props.product.id ) }}
+					style={ Style.stylesheet.productImage }
+				/>
+				<View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center',margin: Style.DEVICE_HEIGHT * .01}}>
+					<Icon name="ios-star" size={15} color="gold" />
+					<Icon name="ios-star" size={15} color="gold" />
+					<Icon name="ios-star" size={15} color="gold" />
 				</View>
-				<Modal
-					animationType={'slide'}
-					transparent={true}
-					visible={this.state.modalVisible}
-					onRequestClose={() => null}
-					supportedOrientations={ ['portrait'] }
-					>
-					<View style={[styles.container, styles.modalBackgroundStyle]}>
-						<View style={[styles.innerContainer, styles.innerContainerTransparentStyle]}>
-						<Text>
-							{ `Su producto se agregó con éxito al carrito.` }
-						</Text>
-						<Button
-							onPress={ () => {
-
-								this.setState({ modalVisible: false })
-
-								this.props.navigator.push({
-									name: "CouponConfirm",
-									sceneConfig: Navigator.SceneConfigs.FloatFromRight
-								});
-
-							}}
-							style={styles.modalButton}
-							title={"Aceptar"}>
-							Aceptar
-						</Button>
-						<Button
-							onPress={ () => this.setState({ modalVisible: false }) }
-							style={styles.modalButton}
-							title={"Cerrar"}>
-							Cerrar
-						</Button>
-						</View>
-					</View>
-				</Modal>
-				<View style={styles.main}>
-					<Image source={{ uri: ( 'http://www.bonus.com.pe/images/productos/' + this.props.product.id + '.jpg' ) }} 
-						style={{
-							alignSelf:'center',
-							marginTop: 10,
-							resizeMode: 'contain',
-							height:200,
-							width:200,
-						}}
-					/>
-					<View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center',paddingBottom:5}}>
-						<Icon name="ios-star" size={15} color="gold" />
-						<Icon name="ios-star" size={15} color="gold" />
-						<Icon name="ios-star" size={15} color="gold" />
-					</View>
-					<View style={{
-						paddingTop:8,
-						marginLeft:5,
-						marginRight:5,
-						marginTop: 0,
-						marginBottom: 10,
-						// borderTopWidth:2,
-						// borderTopColor:'rgba(0,0,0,.15)'
-					}}>
-						<Text style={{fontFamily: 'Varela Round',textAlign:'center',fontSize:18,color: 'black',}}>{ this.props.products.productDetail.name }</Text>
-					</View>
-					<Text style={styles.body}>{ this.props.products.productDetail.description }</Text>
-					<TouchableOpacity style={{ borderTopWidth: 1, borderTopColor:'rgba(0,0,0,.15)' , paddingTop: 10 , justifyContent: 'center', alignItems: 'center', flexDirection: 'row', paddingLeft: 80, paddingRight: 80}}
+				<View style={{ padding: Style.DEVICE_HEIGHT * .04 , paddingBottom: 0 }}>
+					<MainFont center fontSize='md'>{ this.props.products.productDetail.name }</MainFont>
+				</View>
+				<View style={{ padding: Style.DEVICE_HEIGHT * .04 }}>
+					<MainFont fontSize='xs'>{ this.props.products.productDetail.description.replace(/&quot;/g, '') }</MainFont>
+				</View>
+				<View style={{ padding: Style.DEVICE_HEIGHT * .04 , borderTopWidth: 1 , borderBottomWidth: 1 , borderColor:'rgba(0,0,0,.15)' , alignItems: 'center' , justifyContent: 'center' }}>
+					<TouchableOpacity style={{ padding: Style.DEVICE_WIDTH * .01 , flex: 1 , justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}
 						onPress={() => {
-							this.setState({ 
-								radioSelected: 1 , 
+							this.setState({
+								radioSelected: 1 ,
 								value: this.props.products.productDetail.plusValue,
-								points: this.props.products.productDetail.points 
+								points: this.props.products.productDetail.points
 							})
 						}}
 					>
-						<Radio style={{flex: 1}} selected={this.state.radioSelected == 1 ? true : false} />
-                        <Text style={{ alignSelf: 'center' ,flex: 5, fontFamily: 'Oswald', fontWeight: 'bold', fontSize: 18}}>{ this.props.products.productDetail.points + 'pts + $/.' + this.props.products.productDetail.plusValue }</Text>
+						<View  style={{flex: 1, alignItems: 'flex-end', justifyContent: 'center'}}>
+							<Radio selected={this.state.radioSelected == 1 ? true : false} />
+						</View>
+	                    <View  style={{flex: 3, alignItems: 'flex-start', justifyContent: 'center'}}>
+	                    	<SecondaryFont fontSize='lg' style={{paddingLeft: 10}}>{ this.props.products.productDetail.points + 'pts + $/.' + this.props.products.productDetail.plusValue }</SecondaryFont>
+                    	</View>
 					</TouchableOpacity>
-					<TouchableOpacity style={{ borderBottomWidth: 1, borderBottomColor:'rgba(0,0,0,.15)' , paddingBottom: 15 , justifyContent: 'center', alignItems: 'center', flexDirection: 'row', paddingLeft: 80, paddingRight: 80}}
+					<TouchableOpacity style={{ padding: Style.DEVICE_WIDTH * .01 , flex: 1 , justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}
 						onPress={() => {
-							this.setState({ 
-								radioSelected: 2 , 
+							this.setState({
+								radioSelected: 2 ,
 								value: this.props.products.productDetail.plusValue2,
-								points: this.props.products.productDetail.points2 
+								points: this.props.products.productDetail.points2
 							})
 						}}
 					>
-						<Radio style={{flex: 1}} selected={this.state.radioSelected == 2 ? true : false} />
-                        <Text style={{ alignSelf: 'center' ,flex: 5, fontFamily: 'Oswald', fontWeight: 'bold', fontSize: 18}}>{ this.props.products.productDetail.points2 + 'pts + $/.' + this.props.products.productDetail.plusValue2 }</Text>
+						<View  style={{flex: 1, alignItems: 'flex-end', justifyContent: 'center'}}>
+							<Radio selected={this.state.radioSelected == 2 ? true : false} />
+						</View>
+						<View  style={{flex: 3, alignItems: 'flex-start', justifyContent: 'center'}}>
+		                    <SecondaryFont fontSize='lg' style={{paddingLeft: 10}}>{ this.props.products.productDetail.points2 + 'pts + $/.' + this.props.products.productDetail.plusValue2 }</SecondaryFont>
+		                </View>
 					</TouchableOpacity>
-					<View style={{ justifyContent: 'center' , alignItems: 'center', flexDirection: 'row' }}>
-						<View style={[ styles.button , { 
-							flex: 1 , borderRadius: 6 , backgroundColor: 'rgba(0,0,0,0)' , 
+				</View>
+				<View style={{ padding: Style.DEVICE_HEIGHT * .04 , flexDirection: 'row' , paddingBottom: 0 }}>
+					<View style={{flex: 1 , alignItems: 'center' , justifyContent: 'center'}}>
+						<View style={{
+							backgroundColor: '#FFF',
+							flex: 1,
+							borderRadius: 6 , backgroundColor: 'rgba(0,0,0,0)' ,
 							borderWidth: 1, borderColor: 'rgba(0,0,0,.2)' ,
-							marginLeft: 10 , marginRight: 10 ,
-							flexDirection: 'row' , alignItems: 'center' , justifyContent: 'center',
-							alignSelf: 'stretch' } ]}>
+							alignSelf: 'stretch',
+							marginRight: 10
+							}}>
 							<Image style={ styles.caret } source={ require( '../../img/product/arrow-select.png' ) }/>
 							<Picker
 							iosHeader="Select one"
 							mode="dropdown"
 							selectedValue={"1"}
 							onValueChange={()=> null}
-							style={{ flex: 1 , alignSelf: 'stretch' , marginLeft: 10 }}
-							textStyle={{ flex: 1 , alignSelf: 'stretch' , textAlign: 'left' , fontSize: 12 , paddingLeft: 14 , paddingTop: 2}}
+							style={{ flex: 1 , alignSelf: 'stretch' }}
+							textStyle={{ flex: 1 , alignSelf: 'stretch' , textAlign: 'left' , fontSize: 12 , paddingLeft: 8 , paddingTop: 2}}
 							>
 								<Picker.Item label="1" value="1" />
 								<Picker.Item label="2" value="2" />
@@ -203,27 +154,37 @@ export default class Product extends React.Component {
 								<Picker.Item label="10" value="10" />
 							</Picker>
 						</View>
-						<Button block rounded style={styles.button}
+					</View>
+					<View style={{flex: 3 , justifyContent: 'center'}}>
+						<RadiusButton
 							onPress={ () => {
-								this.props.dispatch( this.props.shoppingActions.addToCart({ 
-									id: this.props.product.id, 
+								this.props.dispatch( this.props.shoppingActions.addToCart({
+									id: this.props.product.id,
 									name: this.props.products.productDetail.name,
 									value: this.state.value,
 									points: this.state.points
 								}));
 							}}
-						> Añadir al carrito </Button>  
+							text={'Añadir al carrito'}
+						/>
 					</View>
-					{ this._seeStock() } 
 				</View>
-			</View>
-		);
+				<View style={{ padding: Style.DEVICE_HEIGHT * .04 }}>
+					{ this._seeStock() }
+				</View>
+				</ScrollView>
+			</ContentContainer>
+		</View>;
 	}
 
-	_seeStock(){
+	_seeStock() {
 
 		if( true || this.props.products.productDetail.errorCode != '5' )
-			return <Button block rounded textStyle={{color: 'blue', fontSize: 12}} style={styles.button2}> Ver Stock </Button> ;
+			return <RadiusButton
+				inverted
+				onPress={ () => {}}
+				text={'Ver stock'}
+			/> ;
 
 		return null;
 
@@ -239,38 +200,9 @@ let styles = StyleSheet.create({
 		height:10,
 		resizeMode: 'contain'
 	},
-	container:{
-
-		flex: 1,
-		flexDirection:'column',
-		justifyContent:'space-between',
-		alignItems:'center'
-				
-	},
-	header:{
-
-		flex:4,
-		flexDirection:'column',
-		justifyContent:'space-around',
-		alignItems:'center'
-		
-	},	
-	main:{
-		flex:21,
-		flexDirection:'column',
-		backgroundColor:'white',		
-		alignItems:'center',		
-		justifyContent:'flex-start',
-		padding:20,		
-		alignSelf: 'stretch'
-	},
-	logo:{
-		resizeMode: 'contain',
-		alignSelf:'center',
-	},
 	body:{
 		fontSize: 13,
-		color: 'rgba(0,0,0,.3)',		
+		color: 'rgba(0,0,0,.3)',
 		textAlign:'center',
 		justifyContent:'center',
 		paddingTop: 10,
@@ -284,23 +216,23 @@ let styles = StyleSheet.create({
 		fontFamily: 'Oswald',
 		fontStyle: 'italic',
 		fontWeight: '300'
-		
+
 	},
-	button:{		
+	button:{
 		flex: 3,
-		backgroundColor: 'rgb(32,76,165)', 
+		backgroundColor: 'rgb(32,76,165)',
 		borderRadius: 20,
-		shadowColor: 'transparent',		
+		shadowColor: 'transparent',
 		width: Dimensions.get('window').width*0.8,
 		marginTop: 20,
 	},
-	button2:{		
+	button2:{
 		flex: 1,
-		backgroundColor: '#FFF', 
+		backgroundColor: '#FFF',
 		borderWidth: 2,
 		borderColor: 'rgba(0,0,255,.3)',
 		borderRadius: 20,
-		shadowColor: 'transparent',		
+		shadowColor: 'transparent',
 		alignSelf:'stretch',
 		marginTop: 20,
 		maxHeight: 60,

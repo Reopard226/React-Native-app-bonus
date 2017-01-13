@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 export default function updateLoggedInState( loggedInState = 'unknown' ) {
 

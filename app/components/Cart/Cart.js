@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React from 'react';
 import {
@@ -13,6 +13,8 @@ import { Button } from 'native-base';
 
 import ContentContainer from '../Containers/ContentContainer';
 import BackHeader from '../Partials/BackHeader';
+
+import Style from '../../styles/Style';
 
 const items = ( props ) => {
 
@@ -57,7 +59,7 @@ const total = ( props ) => {
 }
 
 export default ( props ) => <View style={ { flex: 1 } }>
-	<BackHeader title="MI CARRITO"/>
+	<BackHeader title="MI CARRITO" { ...props }/>
 	<ContentContainer>
 		<View style={ styles.main }>
 			{items( props )}
@@ -69,7 +71,7 @@ export default ( props ) => <View style={ { flex: 1 } }>
 
 let styles = StyleSheet.create({
 	deleteIcon: {
-		width: 40, 
+		width: 40,
 		height: 40,
 	},
 	itemContainer: {
@@ -96,7 +98,7 @@ let styles = StyleSheet.create({
 	},
 	itemValue: {
 		flex:1,
-		color: 'blue',
+		color: Style.MAIN_COLOR,
 		fontSize: 12,
 		fontFamily: 'Oswald',
 	},

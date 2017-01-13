@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 export default {
 	apiEntry: '/app-web/servlet',
@@ -31,6 +31,7 @@ export default {
 		   + '</soapenv:Body>'
 		+ '</soapenv:Envelope>'
 	),
+	getImageUri: ( imageId ) => 'http://www.bonus.com.pe/images/productos/' + imageId + '.jpg',
 	productDetailEndpoint: '/awsoprdcnj',
 	productDetailFormat: ( productId ) => (
 		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'
@@ -68,6 +69,35 @@ export default {
 		+ '<app:Prsnrodoc>' + userId + '</app:Prsnrodoc>'
 		+ '<app:Usucla>' + password + '</app:Usucla>'
 		+ '</app:wslogusuap.Execute>'
+		+ '</soapenv:Body>'
+		+ '</soapenv:Envelope>'
+
+	),
+	registerRequestEndpoint: '/awsregusuap',
+	registerRequestFormat: ( userId , password , phoneNumber ) => (
+
+		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'
+		+ '<soapenv:Header/>'
+		+ '<soapenv:Body>'
+		+ '<app:wsregusuap.Execute>'
+		+ '<app:Prscod>' + userId + '</app:Prscod>'
+		+ '<app:Prsusucla>' + password + '</app:Prsusucla>'
+		+ '<app:Prsnrocel>' + phoneNumber + '</app:Prsnrocel>'
+		+ '</app:wsregusuap.Execute>'
+		+ '</soapenv:Body>'
+		+ '</soapenv:Envelope>'
+
+	),
+	registerValidateEndpoint: '/awsodatclie',
+	registerValidateFormat: ( userId , idType ) => (
+
+		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'
+		+ '<soapenv:Header/>'
+		+ '<soapenv:Body>'
+		+ '<app:wsodatclie.Execute>'
+		+ '<app:Tipdoccod>' + idType + '</app:Tipdoccod>'
+		+ '<app:Prsnrodoc>' + userId + '</app:Prsnrodoc>'
+		+ '</app:wsodatclie.Execute>'
 		+ '</soapenv:Body>'
 		+ '</soapenv:Envelope>'
 

@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React from 'react'
 import {
@@ -51,7 +51,7 @@ export default class AppNavigator extends React.Component
 				return <CouponsContainer 					{ ...this.props } navigator={ navigator } category={ route.category } view="Confirm"/>
 
 			case 'EditCard':
-				return <EditCardContainer 					{ ...this.props } navigator={ navigator } card={ route.card }/>;			
+				return <EditCardContainer 					{ ...this.props } navigator={ navigator } card={ route.card }/>;
 
 			case 'Home':
 				return <HomeContainer 						{ ...this.props } navigator={ navigator }/>;
@@ -75,7 +75,7 @@ export default class AppNavigator extends React.Component
 				return <View style={ { flex: 1 , justifyContent: 'center' , alignItems: 'center' } }>
 					<Text>{`Undefined route: ${route.name}`}</Text>
 				</View>
-				
+
 		}
 	}
 

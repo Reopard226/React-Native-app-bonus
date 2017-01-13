@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import axios from 'axios'
 
@@ -15,7 +15,7 @@ export default function requestUserInfo( credentials = { userId: '' } ) {
 
 		dispatch({ type: 'SESSION::REQUESTING_USER_INFO' })
 
-		const requestSettings = { 
+		const requestSettings = {
 			...axiosBaseConfig,
 			data: globalConfig.userInfoRequestFormat( credentials.userId ),
 			url: globalConfig.userInfoRequestEndpoint,
@@ -36,7 +36,7 @@ export default function requestUserInfo( credentials = { userId: '' } ) {
 
 			user.accountType = doc.getElementsByTagName('PCtaTip')[0].textContent.replace(/ /g,'');
 			user.accountTypeName = doc.getElementsByTagName('PCtaTipNom')[0].textContent.replace(/ /g,'');
-			
+
 			user.accountAutCnj = doc.getElementsByTagName('PCtaAutCnj')[0].textContent.replace(/ /g,'');
 
 			user.accountableBalance = doc.getElementsByTagName('CtaSalCon')[0].textContent.replace(/ /g,'');

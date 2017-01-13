@@ -1,15 +1,15 @@
-'use strict'
+// 'use strict'
 
 import _initialState from '../initialstate/session'
 
 export default function reducer( state = _initialState , action ) {
-	
+
 	switch ( action.type ) {
 
 		// User is logged in
 		case 'SESSION::LOGGED_IN':
 			return {
-				...state, 
+				...state,
 				loggedIn: true,
 				loading: false
 			}
@@ -19,7 +19,7 @@ export default function reducer( state = _initialState , action ) {
 		// User is logged out
 		case 'SESSION::LOGGED_OUT':
 			return {
-				...state, 
+				...state,
 				loggedIn: false,
 				loading: false
 			}
@@ -35,7 +35,7 @@ export default function reducer( state = _initialState , action ) {
 		// User requests logout
 		case 'SESSION::REQUESTING_LOGOUT':
 			return {
-				...state, 
+				...state,
 				loggedIn: false,
 				loading: false,
 				user: {}
@@ -84,7 +84,7 @@ export default function reducer( state = _initialState , action ) {
 
 			break
 
-		// User user info request succeeded 
+		// User user info request succeeded
 		case 'SESSION::REQUESTED_USER_INFO_SUCCEEDED':
 			return {
 				...state,
@@ -97,12 +97,22 @@ export default function reducer( state = _initialState , action ) {
 
 			break
 
-		// User user info request failed 
+		// User user info request failed
 		case 'SESSION::REQUESTED_USER_INFO_REJECTED':
+		return {
+			...state,
+			error: action.payload,
+			loading: false
+		}
+
+			break
+
+		// Register user info succeeded
+		case 'SESSION::VALIDATING_REGISTER_SUCCEEDED':
 			return {
 				...state,
-				user: {
-					...state.user,
+				registerUserInfo: {
+					...state.registerUserInfo,
 					...action.payload
 				},
 				loading: false
@@ -114,4 +124,4 @@ export default function reducer( state = _initialState , action ) {
 
 	return state
 
-} 
+}

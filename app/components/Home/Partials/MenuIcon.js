@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React from 'react';
 import {
@@ -19,12 +19,12 @@ export default ( props ) => (
 
 let styles = StyleSheet.create({
 	touchable:{
-		width:20,
-		height:20,
+		width:40,
+		height:40,
 		position: 'absolute',
 		top: 8,
 		left: 15,
-		zIndex:50
+		zIndex:5000
 	},
 	image:{
 		width:20,

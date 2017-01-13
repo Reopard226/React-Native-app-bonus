@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React from 'react';
 import {
@@ -57,7 +57,7 @@ export default class Coupons extends React.Component
 			var onp = () => {
 				this.props.navigator.push({
 					name: "Coupons",
-					category: { 
+					category: {
 						id: item.code,
 						name: item.name
 					},
@@ -80,7 +80,7 @@ export default class Coupons extends React.Component
 		if( ! this.categories )
 			return <Spinner color="#FFF" />
 
-		return <ScrollView 
+		return <ScrollView
 				contentContainerStyle=	{ styles.contentContainerStyle }
 				tabLabel=				{ this.tabLabel }
 				style=					{ styles.scrollView }>
@@ -100,27 +100,28 @@ let styles = StyleSheet.create({
 		backgroundColor: '#FFF',
 		height: 621,
 	},
-	title: { 
+	title: {
 		flex: 1,
 		width: ( Dimensions.get('window').width / 2 ),
 		maxHeight: 43,
-		paddingBottom: 18,
+		// paddingBottom: 18,
 		paddingTop: 18,
-		paddingLeft: 25,
-		paddingRight: 5,
+		// paddingLeft: 25,
+		// paddingRight: 5,
+		alignSelf: 'center',
 		color: '#FFF',
 		backgroundColor: 'rgba(0,0,0,.5)',
 		fontFamily: 'Varela Round',
-		textAlign: 'left',
+		textAlign: 'center',
 		fontSize: 15,
 		lineHeight: 12
 	},
-	touchableOpacity: { 
+	touchableOpacity: {
 		flex: 1,
 		alignSelf: 'stretch' ,
 		flexDirection: 'column' ,
 		justifyContent: 'flex-end' ,
-		alignItems: 'center' 
+		alignItems: 'center'
 	},
 	contentContainerStyle: {
 		alignItems: 'center',

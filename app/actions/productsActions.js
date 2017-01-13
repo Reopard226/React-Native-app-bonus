@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import clearProductList from './products/clearProductList'
 import requestProductDetail from './products/requestProductDetail'

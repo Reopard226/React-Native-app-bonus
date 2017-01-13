@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React from 'react';
 import {
@@ -19,6 +19,10 @@ import theme from '../../themes/bonus';
 import MainFont from '../Utility/MainFont';
 import SecondaryFont from '../Utility/SecondaryFont';
 import RadiusButton from '../Utility/RadiusButton';
+import Loader from '../Utility/Loader';
+
+import Storage from '../../storage/Storage';
+const storage = new Storage();
 
 export default class Login extends React.Component {
 	constructor( props ){
@@ -27,12 +31,13 @@ export default class Login extends React.Component {
 			idType: '01',
 			userId: '49999990', //80653260
 			password: 'loyalty', //p3rs301!
+			remember: false,
 		}
 	}
 
 	_renderSpinner = () => {
 		if( this.props.session.loading )
-			return <Spinner color="#FFF" />;
+			return <Loader color="#FFF" />;
 		return <Text></Text>;
 	}
 
@@ -52,7 +57,7 @@ export default class Login extends React.Component {
 								selectedValue={ this.state.idType }
 								onValueChange={ ( idType ) => this.setState({ idType }) }
 								style={{ padding: 0 , margin: 0 , flex: 1 , alignSelf: 'stretch' , justifyContent: 'flex-start', alignItems: 'center', left: 0 }}
-								textStyle={{ marginLeft: 20 , color: '#FFF' , fontSize: 11}}
+								textStyle={{ marginLeft: 0 , color: '#FFF' , fontSize: 11}}
 								enabled={ !this.props.session.loading }
 							>
 									<Picker.Item key={0} label="D.N.I." value="01" />
@@ -82,8 +87,12 @@ export default class Login extends React.Component {
 						</InputGroup>
 						<Grid style={{ marginTop: 12 }}>
 							<Col style={{flexDirection: 'row'}}>
-								<CheckBox style={styles.checkBox} checked={{ true }}/>
-								<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF', fontSize: 11}} small transparent>
+								<CheckBox style={styles.checkBox} checked={this.state.remember}/>
+								<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF', fontSize: 11}} small transparent
+									onPress={() => {
+										this.setState({remember: !this.state.remember});
+									}}
+								>
 									Recordar usuario
 								</Button>
 							</Col>
@@ -96,8 +105,14 @@ export default class Login extends React.Component {
 						<Grid>
 							<Col style={ { paddingTop: 22 } }>
 								<RadiusButton onPress={() => {
+
+										if( this.state.remember ){
+											storage.save( 'idType' , this.state.idType );
+											storage.save( 'userId' , this.state.userId );
+										}
+
 										this.props.dispatch( this.props.sessionActions.requestLogin({
-											idType:  '01',
+											idType:  this.state.idType,
 											password:  this.state.password,
 											userId:  this.state.userId
 										}));

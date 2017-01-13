@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React from 'react';
 import {
@@ -28,15 +28,15 @@ export default class AddCard extends React.Component {
 	}
 
 	render(){
-		return <Container>				
+		return <Container>
 			<Content>
 				<Grid>
 					<Row style={{height:90}}>
 						<Header {...this.props} titleView="MIS TARJETAS"/>
 					</Row>
 					<Row style={styles.container}>
-						
-						<ScrollView 
+
+						<ScrollView
 	        		    style={{height:120}}
 	        		    contentContainerStyle={styles.imgContainer}
 	        		    horizontal
@@ -45,27 +45,26 @@ export default class AddCard extends React.Component {
 	                        <Image source={require('../../img/cards/Masterdcard.png')} style={styles.img}/>
 	                        <Image source={require('../../img/cards/Visa.png')} style={styles.img}/>
 
-	                    </ScrollView> 
+	                    </ScrollView>
 	                    <Button invert text="Escanear Tarjeta"/>
 	                    <Text style={{padding:15}}> ó </Text>
 	                    <InputGroup style={styles.inputGroup} borderType={'regular'}>
-							<Input 
+							<Input
 								onChangeText={( name ) => this.setState({ name })}
-								style={styles.textInput} 
-								placeholder="Nombre Completo" 
-								placeholderTextColor="gray" 
+								style={styles.textInput}
+								placeholder="Nombre Completo"
+								placeholderTextColor="gray"
 								value={this.state.name}
-								
 							/>
 						</InputGroup>
 						<InputGroup style={styles.inputGroup} borderType={'regular'}>
-							<Input 
+							<Input
 								onChangeText={( number ) => this.setState({ number })}
-								style={styles.textInput} 
+								style={styles.textInput}
 								placeholder="Número de Tarjeta"
-								placeholderTextColor="gray" 
+								placeholderTextColor="gray"
 								value={this.state.number}
-								
+
 							/>
 						</InputGroup>
 						<Row style={{alignSelf:'stretch',justifyContent:'space-between',alignItems:'center'}}>
@@ -78,7 +77,7 @@ export default class AddCard extends React.Component {
 											onValueChange={ ( month ) => this.setState({ month }) }
 											style={styles.picker}
 											textStyle={{ marginLeft: 20 , color: 'gray' , fontSize: 11}}
-										>	
+										>
 										<Picker.Item key={0} label="MM" value="MM" />
 										<Picker.Item key={1} label="01" value="01" />
 										<Picker.Item key={2} label="02" value="02" />
@@ -94,7 +93,7 @@ export default class AddCard extends React.Component {
 										<Picker.Item key={12} label="12" value="12" />
 
 									</Picker>
-							</View>	
+							</View>
 
 							<View style={styles.inputContainer}>
 									<Picker
@@ -105,9 +104,9 @@ export default class AddCard extends React.Component {
 											onValueChange={ ( year ) => this.setState({ year }) }
 											style={styles.picker}
 											textStyle={{ marginLeft: 20 , color: '#FFF' , fontSize: 11}}
-											
+
 										>
-										<Picker.Item key={0} label="YYYY" value="YYYY" />	
+										<Picker.Item key={0} label="YYYY" value="YYYY" />
 										<Picker.Item key={1} label="2017" value="2017" />
 										<Picker.Item key={2} label="2018" value="2018" />
 										<Picker.Item key={3} label="2019" value="2019" />
@@ -118,23 +117,23 @@ export default class AddCard extends React.Component {
 
 									</Picker>
 								</View>
-								
+
 								<InputGroup style={styles.inputGroup}>
-									<Input 
+									<Input
 										onChangeText={( cvv ) => this.setState({ cvv })}
-										style={styles.textInput} 
+										style={styles.textInput}
 										placeholder="CVV"
-										placeholderTextColor="grey" 
+										placeholderTextColor="grey"
 										value={this.state.cvv}
-										
+
 									/>
 								</InputGroup>
-								
-							
+
+
 						</Row>
 						<Row style={{alignSelf:'flex-start'}}>
 							<CheckBox style={styles.checkBox} checked={ true }/>
-							<Text style={{fontSize:11,color:'gray',fontFamily:'Varela',paddingLeft:10}}>Utilizar como tarjeta principal</Text>
+							<Text style={{fontSize:11,color:'gray',fontFamily:'Varela Round',paddingLeft:10}}>Utilizar como tarjeta principal</Text>
 						</Row>
 						<Button text="Verificar"/>
 
@@ -157,7 +156,7 @@ let styles = StyleSheet.create({
 		borderWidth: 1 ,
 		borderColor: 'rgba(255,255,255,.15)',
 		borderRadius: 6,
-		marginBottom: 10		  
+		marginBottom: 10
 
 	},
 	picker:{
@@ -167,17 +166,17 @@ let styles = StyleSheet.create({
 		alignSelf: 'stretch' ,
 		justifyContent: 'center',
 		alignItems: 'center',
-		left: 0 
+		left: 0
 	},
     container:{
 	    backgroundColor:'white',
 	    flex:1,
 	    flexDirection:'column',
 	    justifyContent:'center',
-	    alignItems:'center',        
+	    alignItems:'center',
 	    padding:20,
 	    alignSelf:'stretch'
-        
+
     },
     imgContainer:{
         alignSelf:'stretch',

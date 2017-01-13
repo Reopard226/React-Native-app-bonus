@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 import React, { Component } from 'react';
 import {
@@ -27,6 +27,11 @@ export default class Register extends Component
 		super( props );
 		this.state = {
 			loggedIn: false,
+			idType: '01',
+			userId: null,
+			phoneNumber: null,
+			password: null,
+			passwordConfimation: null,
 		};
 	}
 
@@ -47,33 +52,57 @@ export default class Register extends Component
 				</Row>
 				<Row size={12} style={styles.row}>
 					<Container style={[styles.formContainer,{paddingTop: 6}]} theme={theme}>
-						<Content>
+						<Content style={ {paddingRight: 30, paddingLeft: 30} }>
 							<View style={{marginBottom: 10}}>
 								<Text style={{textAlign: 'center', color: 'rgba(255,255,255,.9)', fontSize: 18}}>Crear Cuenta</Text>
 							</View>
+							<View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' , alignSelf: 'stretch' ,borderWidth: 1 , borderColor: 'rgba(255,255,255,.15)', borderRadius: 6, marginBottom: 10, }}>
+								<Image style={ styles.caret } source={ require( '../../img/arrow-select.png' ) }/>
+								<Picker
+									iosHeader="Tipo de Documento"
+									prompt="Tipo de Documento"
+									mode="dialog"
+									selectedValue={ this.state.idType }
+									onValueChange={ ( idType ) => this.setState({ idType }) }
+									style={{ padding: 0 , margin: 0 , flex: 1 , alignSelf: 'stretch' , justifyContent: 'flex-start', alignItems: 'center', left: 0 }}
+									textStyle={{ marginLeft: 0 , color: '#FFF' , fontSize: 11}}
+									enabled={ !this.props.session.loading }
+								>
+										<Picker.Item key={0} label="D.N.I." value="01" />
+										<Picker.Item key={1} label="C.I." value="02" />
+										<Picker.Item key={2} label="C.E." value="03" />
+										<Picker.Item key={3} label="PASAPORTE" value="04" />
+								</Picker>
+							</View>
 							<InputGroup style={styles.inputGroup} borderType={'regular'}>
-								<Input style={styles.textInput} placeholder="Nombre Completo" />
+								<Input style={styles.textInput} placeholder="Ej: 41231649" onChangeText={( userId ) => {
+									this.setState({ userId })
+									this.props.dispatch( this.props.sessionActions.validateRegisterInfo({
+										idType:  userId,
+										userId:  textValue
+									}));
+								}}/>
+							</InputGroup>
+							<InputGroup style={[ styles.inputGroup  , { backgroundColor: 'rgba(255,255,255,.1)' } ]} borderType={'regular'} disabled>
+								<Input style={styles.textInput } placeholder="Nombre Completo" disabled value={ this.props.session.registerUserInfo.name }/>
+							</InputGroup>
+							<InputGroup style={[ styles.inputGroup  , { backgroundColor: 'rgba(255,255,255,.1)' } ]} borderType={'regular'} disabled>
+								<Input style={styles.textInput} placeholder="Email" disabled value={ this.props.session.registerUserInfo.email }/>
 							</InputGroup>
 							<InputGroup style={styles.inputGroup} borderType={'regular'}>
-								<Input style={styles.textInput} placeholder="D.N.I." />
-							</InputGroup>
-							<InputGroup style={styles.inputGroup} borderType={'regular'}>
-								<Input style={styles.textInput} placeholder="Email" />
-							</InputGroup>
-							<InputGroup style={styles.inputGroup} borderType={'regular'}>
-								<Input style={styles.textInput} placeholder="Teléfono" />
+								<Input style={styles.textInput} placeholder="Teléfono" onChangeText={( phoneNumber ) => this.setState({ phoneNumber })} />
 							</InputGroup>
 							<InputGroup style={styles.inputGroup} borderType={'regular'} secureTextEntry >
-								<Input style={styles.textInput} placeholder="Contraseña" />
+								<Input style={styles.textInput} placeholder="Contraseña" onChangeText={( password ) => this.setState({ password })} />
 							</InputGroup>
 							<InputGroup style={styles.inputGroup} borderType={'regular'}>
-								<Input style={styles.textInput} placeholder="Repetir Contraseña" />
+								<Input style={styles.textInput} placeholder="Repetir Contraseña" onChangeText={( passwordConfimation ) => this.setState({ passwordConfimation })} />
 							</InputGroup>
 							<Grid>
 								<Col style={{ paddingTop: 28 }}>
 									<RadiusButton onPress={(event) => {
 
-											this.props.dispatch( this.props.sessionActions.requestLogin({
+											this.props.dispatch( this.props.sessionActions.requestRegister({
 												userId: 80653260,
 												password: 'p3rs301!',
 												idType: '01'
@@ -101,9 +130,9 @@ let styles = StyleSheet.create({
 	formContainer: {
 		// backgroundColor: 'green',
 		marginTop: 0,
-		marginRight: 40,
+		// marginRight: 40,
 		marginBottom: 0,
-		marginLeft: 40,
+		// marginLeft: 40,
 		paddingTop: 32,
 		paddingRight: 18,
 		paddingBottom: 32,
@@ -116,6 +145,14 @@ let styles = StyleSheet.create({
 	},
 	textInput: {
 		fontSize: 11
+	},
+	caret:{
+		position: 'absolute',
+		right: 14,
+		top: 14,
+		width:10,
+		height:10,
+		resizeMode: 'contain'
 	},
 	logo: {
 		resizeMode: 'contain',
