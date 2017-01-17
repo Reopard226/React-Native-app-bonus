@@ -1,13 +1,17 @@
 // 'use strict'
 
+// Libraries
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
 
+// Components
 import AppNavigator from './components/AppNavigator';
 import SessionContainer from './components/SessionContainer';
 
 // Actions
+import cardsActions from './actions/cardsActions';
 import couponsActions from './actions/couponsActions';
+import pointsActions from './actions/pointsActions';
 import productsActions from './actions/productsActions';
 import sessionActions from './actions/sessionActions';
 import shoppingActions from './actions/shoppingActions';
@@ -43,16 +47,18 @@ class App extends Component
 				drawerOpened	= { this.state.drawerOpened }
 				openDrawer 		= { () => this._openDrawer() }
 
+				cardsActions	= { cardsActions }
 				couponsActions	= { couponsActions }
+				pointsActions	= { pointsActions }
 				productsActions	= { productsActions }
 				sessionActions	= { sessionActions }
 				shoppingActions	= { shoppingActions }
-				
+
 			/>
 
 		}
 
-		return <SessionContainer { ...this.props } 
+		return <SessionContainer { ...this.props }
 
 			closeDrawer 	= { () => this._closeDrawer() }
 			drawerOpened	= { this.state.drawerOpened }
@@ -61,7 +67,7 @@ class App extends Component
 			sessionActions	= { sessionActions }
 
 			show="login"
-			
+
 		/>;
 
 	}
@@ -79,12 +85,13 @@ class App extends Component
 			this.setState({ drawerOpened: true });
 
 	}
-	
+
 }
 
 export default connect(( state ) => {
 
 	return {
+		cards: state.cards,
 		coupons: state.coupons,
 		products: state.products,
 		session: state.session,

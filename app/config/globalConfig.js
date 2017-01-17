@@ -2,6 +2,17 @@
 
 export default {
 	apiEntry: '/app-web/servlet',
+	cardsRequestUserCardsEndpoint: '/awslisctacj',
+	cardsRequestUserCardsFormat: ( userId ) => (
+		`<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">
+			<soapenv:Header/>
+			<soapenv:Body>
+				<app:wslisctacj.Execute>
+					<app:Ctaprscod>${ userId }</app:Ctaprscod>
+				</app:wslisctacj.Execute>
+			</soapenv:Body>
+		</soapenv:Envelope>`
+	),
 	couponRegisterEndpoint: '/awstrfptso?wsdl',
 	couponRegisterFormat: ( couponId ) => (
 		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'

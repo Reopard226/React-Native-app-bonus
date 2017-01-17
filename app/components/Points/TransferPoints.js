@@ -65,8 +65,8 @@ export default class TransferPoints extends React.Component {
 					</View>
 					<View style={ styles.inputsContainer }>
 						<View style={ styles.transferPointsContainer }>
-							<TextInput 
-								placeholder="Puntos a Transferir" 
+							<TextInput
+								placeholder="Puntos a Transferir"
 								style={ styles.textInput }
 							/>
 						</View>
@@ -79,7 +79,7 @@ export default class TransferPoints extends React.Component {
 									selectedValue={ this.state.idType }
 									onValueChange={ ( idType ) => this.setState({ idType }) }
 									style={{ padding: 0 , margin: 0 , flex: 1 , alignSelf: 'stretch' , justifyContent: 'flex-start', alignItems: 'center', left: 0 }}
-									textStyle={{ marginLeft: 15 , color: 'rgba(0,0,0,.15)' , fontSize: 12 }}
+									textStyle={{ marginLeft: 0 , color: 'rgba(0,0,0,.15)' , fontSize: 12 }}
 									enabled={ !this.props.session.loading }
 								>
 										<Picker.Item key={0} label="D.N.I." value="01" />
@@ -89,7 +89,7 @@ export default class TransferPoints extends React.Component {
 								</Picker>
 								<Image style={ styles.caret } source={ require( '../../img/arrow-select.png' ) }/>
 							</View>
-							<TextInput 
+							<TextInput
 								style={ [ styles.textInput, { flex: 3 } ] }
 							/>
 						</View>
@@ -183,7 +183,7 @@ let styles = StyleSheet.create({
 		minHeight: 40,
 		fontSize: 12,
 	},
-	authContainer: { 
+	authContainer: {
 		marginBottom: 10,
 		flex: 1,
 		flexDirection: 'row',

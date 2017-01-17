@@ -13,7 +13,7 @@ export default function requestLogin( credentials = { userId: '' , password: '' 
 
 		dispatch({ type: 'SESSION::REQUESTING_LOGIN' })
 
-		const requestSettings = { 
+		const requestSettings = {
 			...axiosBaseConfig,
 			data: globalConfig.loginRequestFormat( credentials.userId , credentials.password , credentials.idType ),
 			url: globalConfig.loginRequestEndpoint,

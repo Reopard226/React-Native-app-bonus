@@ -3,7 +3,7 @@
 import _initialState from '../initialstate/products'
 
 export default function reducer( state = _initialState , action ) {
-	
+
 	switch ( action.type ) {
 
 		case 'PRODUCTS::REQUESTING_PRODUCTDETAIL':
@@ -75,4 +75,4 @@ export default function reducer( state = _initialState , action ) {
 
 	return state
 
-} 
+}

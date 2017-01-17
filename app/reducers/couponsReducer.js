@@ -3,7 +3,7 @@
 import _initialState from '../initialstate/coupons'
 
 export default function reducer( state = _initialState , action ) {
-	
+
 	switch ( action.type ) {
 
 		case 'COUPONS::REQUESTING_BONUSCOUPONS':
@@ -76,4 +76,4 @@ export default function reducer( state = _initialState , action ) {
 
 	return state
 
-} 
+}

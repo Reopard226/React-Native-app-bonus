@@ -1,46 +1,26 @@
 // 'use strict'
-
+ // Libraries
 import React from 'react';
 import { StyleSheet, Dimensions, TouchableHighlight, Navigator, Image} from 'react-native';
 import { Container, Content, List, ListItem, Text , Badge} from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 
+// Components
 import Header   from '../../Partials/Header';
 import Button   from '../../Partials/Button';
+import Loader   from '../../Utility/Loader';
+
+// Utils
+import getCardTypeFromCardNumber from '../../../utils/getCardTypeFromCardNumber';
 
 var window = Dimensions.get('window');
 
 const from_redux = {
     cards:[
         {
-            type:'Masterdcard',
-            id:'5487',
+            cardNumber:'7027661000092867932',
             address:'other address',
             expDate:'05/19'
-        },
-        {
-            type:'Masterdcard',
-            id:'5487',
-            address:'other address',
-            expDate:'05/19'
-        },
-        {
-            type:'Masterdcard',
-            id:'5487',
-            address:'other address',
-            expDate:'05/19'
-        },
-        {
-            type:'Visa',
-            id:'4562',
-            address:'Some address',
-            expDate:'07/17'
-        },
-        {
-            type:'Visa',
-            id:'4852',
-            address:'Another address',
-            expDate:'12/20'
         },
     ]
 }
@@ -49,51 +29,50 @@ const from_redux = {
 
 export default (props)=>{
 
-    const items = from_redux.cards.map((item,index)=>{
+    if( props.cards.cards === null || props.cards.cards.constructor !== Array || props.cards.cards.length == 0  )
+        return <Loader color="#FFF" />
+
+    const items = props.cards.cards.map((item,index) => {
+
+        var type = getCardTypeFromCardNumber( item.cardNumber );
 
         var source = {
 
-            Visa:require('../../../img/cards/Visa.png'),
-            Masterdcard:require('../../../img/cards/Masterdcard.png')
+            Visa: require('../../../img/cards/Visa.png'),
+            Mastercard: require('../../../img/cards/Masterdcard.png'),
+            Desconocida: require('../../../img/cards/Masterdcard.png')
 
         }
 
-        return (
-            <ListItem
-                button
-                key={ index }
-                style={{height:90,justifyContent:'flex-start',alignItems:'center',flexDirection:'row'}}
-                onPress={ ( event ) => {
-                        props.navigator.push({
-                            name: "Card",
-                            card: {
-                                type: item.type,
-                                id: item.id,
-                                date: item.expDate,
-                                address: item.address
-                            },
-                            sceneConfig: Navigator.SceneConfigs.FloatFromRight
-                        });
-                    }}
-            >
-                <Image style={styles.img} source={source[item.type]} />
-                <Text style={styles.text}> {item.type} </Text>
-                <Text style={[styles.text,{top:25, fontWeight: 'bold', fontSize: 12}]} note> Tarjeta ({item.id}) </Text>
-                <Badge backgroundColor='rgb(32,76,165)'style={{alignSelf:'center'}}>></Badge>
-            </ListItem>
-        );
+        return <ListItem
+            button
+            key={ index }
+            style={{height:90,justifyContent:'flex-start',alignItems:'center',flexDirection:'row'}}
+            onPress={ ( event ) => {
+                    props.navigator.push({
+                        name: "Card",
+                        card: {
+                            type: type,
+                            id: item.cardNumber,
+                            date: item.expDate,
+                            address: item.address
+                        },
+                        sceneConfig: Navigator.SceneConfigs.FloatFromRight
+                    });
+                }}
+        >
+            <Image style={styles.img} source={source[type]} />
+            <Text style={styles.text}> {type} </Text>
+            <Text style={[styles.text,{top:25, fontWeight: 'bold', fontSize: 12}]} note> Tarjeta ({item.cardNumber.substr(item.cardNumber.length - 4)}) </Text>
+            <Badge backgroundColor='rgb(32,76,165)'style={{alignSelf:'center'}}>></Badge>
+        </ListItem>;
     });
 
-    return (
-        <Container style={styles.container}>
-            <Content >
-                <List >
-                    {items}
-                </List>
-            </Content>
-        </Container>
-        );
-
+    return <Container style={styles.container}>
+        <Content >
+            <List >{items}</List>
+        </Content>
+    </Container>;
 }
 
 let styles = StyleSheet.create({

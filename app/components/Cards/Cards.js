@@ -15,6 +15,9 @@ import ContentContainer 	from '../Containers/ContentContainer';
 import BackRefreshHeader 	from '../Partials/BackRefreshHeader';
 
 export default class Cards extends React.Component {
+	componentDidMount() {
+		this.props.dispatch( this.props.cardsActions.requestUserCards( { userId: this.props.session.user.id  } ) );
+	}
 	render(){
 		return <View style={ { flex: 1 } }>
 			<BackRefreshHeader { ...this.props } title="MIS TARJETAS" refreshTarget="Cards"/>
