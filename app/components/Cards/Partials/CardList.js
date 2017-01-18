@@ -62,7 +62,7 @@ export default (props)=>{
                 }}
         >
             <Image style={styles.img} source={source[type]} />
-            <Text style={styles.text}> {type} </Text>
+            <Text style={styles.text}> {item.cardName.substr(0,12) + '...'} </Text>
             <Text style={[styles.text,{top:25, fontWeight: 'bold', fontSize: 12}]} note> Tarjeta ({item.cardNumber.substr(item.cardNumber.length - 4)}) </Text>
             <Badge backgroundColor='rgb(32,76,165)'style={{alignSelf:'center'}}>></Badge>
         </ListItem>;

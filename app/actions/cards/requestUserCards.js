@@ -23,28 +23,28 @@ export default function requestLogin( credentials = { userId: '' } ) {
 
 		.then((response) => {
 
+			console.log( response.data );
+
 			let doc = new DOMParser().parseFromString( response.data , 'text/xml' );
 			let responseMessage = doc.getElementsByTagName('Msjerror')[0].textContent;
 			let errorCode = doc.getElementsByTagName('Coderror')[0].textContent;
-			let userId = doc.getElementsByTagName('CtaPrsCod')[0].textContent;
-			let cardNodes = doc.getElementsByTagName('Lisctacj.LisctacjItem');
+			let cardNodes = doc.getElementsByTagName('Listrjfin.ListrjfinItem');
 			let cards = [];
 
 			for ( var i = 0; i < cardNodes.length; ++i ) {
 
 				cards.push({
-					userId: cardNodes[ i ].getElementsByTagName( 'CtaPrsCod' )[0].textContent.replace(/ /g,''),
-					code: cardNodes[ i ].getElementsByTagName( 'CtaCod' )[0].textContent.replace(/ /g,''),
-					name: cardNodes[ i ].getElementsByTagName( 'CtaPrsNom' )[0].textContent.trim(),
-					acountNumber: cardNodes[ i ].getElementsByTagName( 'PCtaAsoCod' )[0].textContent.replace(/ /g,''),
-					accountType: cardNodes[ i ].getElementsByTagName( 'PCtaTipNom' )[0].textContent.trim(),
+					cardName: cardNodes[ i ].getElementsByTagName( 'TitTar' )[0].textContent.trim(),
 					cardNumber: cardNodes[ i ].getElementsByTagName( 'TarCod' )[0].textContent.replace(/ /g,''),
-					cardBalance: cardNodes[ i ].getElementsByTagName( 'CtaSalVig' )[0].textContent.replace(/ /g,''),
+					primary: cardNodes[ i ].getElementsByTagName( 'TarTipTar' )[0].textContent.trim(),
+					cardAlias: cardNodes[ i ].getElementsByTagName( 'TarAlias' )[0].textContent.trim(),
+					creditCardNumber: cardNodes[ i ].getElementsByTagName( 'TarFin' )[0].textContent.replace(/ /g,''),
+					cardBalance: cardNodes[ i ].getElementsByTagName( 'TarSdo' )[0].textContent.replace(/ /g,''),
 				});
 
 			}
 
-			if ( responseMessage == 'Exito' && errorCode == '0'  )
+			if ( responseMessage == 'Exito' || errorCode == '0'  )
 				dispatch({ type: 'CARDS::REQUESTED_USERCARDS_SUCCEEDED' , payload: cards })
 			else
 				dispatch({ type: 'CARDS::REQUESTED_USERCARDS_REJECTED' , payload: responseMessage })

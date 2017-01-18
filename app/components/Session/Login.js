@@ -20,6 +20,7 @@ import MainFont from '../Utility/MainFont';
 import SecondaryFont from '../Utility/SecondaryFont';
 import RadiusButton from '../Utility/RadiusButton';
 import Loader from '../Utility/Loader';
+import ForgotPassword from './Partials/ForgotPassword';
 
 import Storage from '../../storage/Storage';
 const storage = new Storage();
@@ -32,6 +33,7 @@ export default class Login extends React.Component {
 			userId: '49999990', //80653260
 			password: 'loyalty', //p3rs301!
 			remember: false,
+			modal: false
 		}
 	}
 
@@ -97,7 +99,9 @@ export default class Login extends React.Component {
 								</Button>
 							</Col>
 							<Col>
-								<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF', fontSize: 11}} small transparent>
+								<Button style={{alignSelf: 'center'}} textStyle={{color: '#FFF', fontSize: 11}} small transparent
+									onPress={() => this.setState({modal: true})}
+								>
 									¿Olvidó su clave?
 								</Button>
 							</Col>
@@ -122,6 +126,10 @@ export default class Login extends React.Component {
 								<Button disabled={ this.props.session.loading } onPress={ () => this.props.changeScreen( 1 ) } textStyle={{color:'rgba(255,255,255,.7)',fontSize: 11}} style={{marginTop: 20,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgba(255,255,255,.2)'}} block bordered transparent>
 									Crear tu cuenta
 								</Button>
+								<ForgotPassword
+									showModal={ () => this.setState({ modal: true }) }
+									closeModal={ () => this.setState({ modal: false }) }
+									modalVisible={this.state.modal}/>
 							</Col>
 						</Grid>
 					</Content>

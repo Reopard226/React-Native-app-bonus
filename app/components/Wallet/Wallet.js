@@ -17,7 +17,7 @@ export default ( props ) => <View style={ { flex: 1 } }>
 	<BackRefreshHeader { ...props } title="MI SALDO" refreshTarget="Wallet"/>
 	<ContentContainer>
 		<View style={ styles.mainContent }>
-			<Text style={ styles.balance }>S./ { props.session.user.pointsCode }</Text>
+			<Text style={ styles.balance }>S./ { props.cards[0].cardBalance }</Text>
 			<Text style={ styles.body }>Saldo disponible</Text>
 			<View style={ styles.bigTextContainer }>
 				<Text style={ styles.bigText }>
