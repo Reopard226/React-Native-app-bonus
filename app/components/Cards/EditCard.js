@@ -5,7 +5,7 @@ import { StyleSheet, View, Text, Image} from 'react-native';
 import Header   from '../Partials/Header';
 import Button   from '../Partials/Button';
 
-export default ( props ) => <View style={ styles.container }>
+( props ) => <View style={ styles.container }>
     <View style={ styles.imgContainer }>
         <Image source={require('../../img/cards/Masterdcard.png')} style={ styles.img }/>
         <Text>Tarjeta ..... 08/18 </Text>
@@ -24,6 +24,7 @@ export default ( props ) => <View style={ styles.container }>
     <Button text="Eliminar Tarjeta"/>
 </View>;
 
+export default () => null;
 
 let styles = StyleSheet.create({
 

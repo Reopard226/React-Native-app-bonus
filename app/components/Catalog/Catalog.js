@@ -21,7 +21,7 @@ export default class Catalog extends React.Component {
 	render() {
 		return <View style={ styles.container }>
 			<GoBack {...this.props} />
-			<CartIcon />
+			<CartIcon {...this.props}/>
 			<Header { ...this.props } />
 			<ScrollableTabView
 				style={ styles.scrollableTabView }

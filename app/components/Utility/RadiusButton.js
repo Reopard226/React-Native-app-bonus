@@ -30,11 +30,11 @@ const styles = StyleSheet.create({
 		shadowColor: 'transparent'
 	},
 	text: {
-		fontSize: Style.FONT_SIZE,
+		fontSize: Style.FONT_SIZE_SMALL,
 		fontFamily: Style.MAIN_FONT
 	},
 	invertedText: {
-		fontSize: Style.FONT_SIZE,
+		fontSize: Style.FONT_SIZE_SMALL,
 		fontFamily: Style.MAIN_FONT,
 		color: Style.MAIN_COLOR
 	}

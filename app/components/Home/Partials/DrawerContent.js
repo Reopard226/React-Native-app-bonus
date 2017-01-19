@@ -23,10 +23,10 @@ export default ( props ) => (
 	<Container>
 		<Content>
 			<List>
-				<View>
+				<View style={ {flexDirection: 'column' , alignItems: 'flex-start', justifyContent: 'flex-start'} }>
 					<Image
 						source={require("../../../img/menu/header-menu.png")}
-						style={{width: imgW, height: imgH ,resizeMode: 'stretch'}}
+						style={{width: (Style.DEVICE_WIDTH * .2), height: (Style.DEVICE_WIDTH * .2) ,resizeMode: 'stretch'}}
 					/>
 				</View>
 				<View style={styles.Item}>
@@ -49,14 +49,6 @@ export default ( props ) => (
 						icon={require("../../../img/menu/icon-saldo.png")}
 						text="Mi Saldo"
 						goto="Wallet"
-						{ ...props }
-					/>
-				</View>
-				<View style={styles.Item}>
-					<DrawIcon
-						icon={require("../../../img/menu/icon-tarjetas.png")}
-						text="Mis Tarjetas"
-						goto="Cards"
 						{ ...props }
 					/>
 				</View>
@@ -125,3 +117,14 @@ const styles = StyleSheet.create({
 	}
 
 });
+
+/*
+				<View style={styles.Item}>
+					<DrawIcon
+						icon={require("../../../img/menu/icon-tarjetas.png")}
+						text="Mis Tarjetas"
+						goto="Cards"
+						{ ...props }
+					/>
+				</View>
+ */

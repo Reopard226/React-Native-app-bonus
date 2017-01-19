@@ -22,6 +22,8 @@ import RadiusButton from '../Utility/RadiusButton';
 import Loader from '../Utility/Loader';
 import ForgotPassword from './Partials/ForgotPassword';
 
+import Style from '../../styles/Style';
+
 import Storage from '../../storage/Storage';
 const storage = new Storage();
 
@@ -59,7 +61,7 @@ export default class Login extends React.Component {
 								selectedValue={ this.state.idType }
 								onValueChange={ ( idType ) => this.setState({ idType }) }
 								style={{ padding: 0 , margin: 0 , flex: 1 , alignSelf: 'stretch' , justifyContent: 'flex-start', alignItems: 'center', left: 0 }}
-								textStyle={{ marginLeft: 0 , color: '#FFF' , fontSize: 11}}
+								textStyle={{ marginLeft: Style.DEVICE_WIDTH * .05 , color: '#FFF' , fontSize: 11}}
 								enabled={ !this.props.session.loading }
 							>
 									<Picker.Item key={0} label="D.N.I." value="01" />
@@ -123,7 +125,7 @@ export default class Login extends React.Component {
 									}}
 									text="Ingresar"
 								/>
-								<Button disabled={ this.props.session.loading } onPress={ () => this.props.changeScreen( 1 ) } textStyle={{color:'rgba(255,255,255,.7)',fontSize: 11}} style={{marginTop: 20,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgba(255,255,255,.2)'}} block bordered transparent>
+								<Button disabled={ this.props.session.loading } onPress={ () => this.props.changeScreen( 1 ) } textStyle={{color:'rgba(255,255,255,.7)',fontSize: Style.FONT_SIZE_SMALL}} style={{marginTop: 20,borderRadius: 20,shadowColor: 'transparent',borderColor: 'rgba(255,255,255,.2)'}} block bordered transparent>
 									Crear tu cuenta
 								</Button>
 								<ForgotPassword

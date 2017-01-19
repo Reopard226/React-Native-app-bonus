@@ -47,9 +47,9 @@ let styles = StyleSheet.create({
 		width: window.width * 0.6,
 		alignItems:'center',
 		justifyContent:'center',
-		borderRadius:5,
-		borderWidth:1,
-		borderColor:'rgba(0,0,0,.15)'
+		// borderRadius:5,
+		// borderWidth:1,
+		// borderColor:'rgba(0,0,0,.15)'
 	},
 	img:{
 		resizeMode:'contain',
