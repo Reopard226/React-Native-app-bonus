@@ -14,7 +14,7 @@ import ContentContainer 	from '../Containers/ContentContainer';
 import BackRefreshHeader 	from '../Partials/BackRefreshHeader';
 
 export default ( props ) => <View style={ { flex: 1 } }>
-	<BackRefreshHeader { ...props } title="MIS PUNTOS" refreshTarget="Points"/>
+	<BackRefreshHeader { ...props } title="ÚLTIMOS MOVIMIENTOS" refreshTarget="Points"/>
 	<ContentContainer>
 		<View style={ styles.main }>
 			<Text style={ styles.balance }>{ props.session.user.currentBalance ? props.session.user.currentBalance : '0' }</Text>
@@ -27,6 +27,14 @@ export default ( props ) => <View style={ { flex: 1 } }>
 			</Text>
 		</View>
 		<View style={ { flex: 1 } }>
+			<Button invert text="Últimos movimientos" onPress={
+				(event)=>{
+					props.navigator.push({
+						name: "PointsMovements",
+						sceneConfig: Navigator.SceneConfigs.FloatFromRight
+					});
+				}
+			}/>
 			<Button text="Transferir Puntos"
 				onPress={ ( event ) => {
 					props.navigator.push({
@@ -62,7 +70,7 @@ let styles = StyleSheet.create({
 		paddingRight: 10
 	},
 	main:{
-		flex: 3,
+		flex: 2,
 		alignItems:'center',
 		padding:20,
 	},

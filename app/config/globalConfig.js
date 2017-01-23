@@ -56,6 +56,18 @@ export default {
 		+ '</soapenv:Body>'
 		+ '</soapenv:Envelope>'
 	),
+	pointsMovementsRequestEndpoint: '/awsultmovpt',
+	pointsMovementsRequestFormat: ( userId ) => (
+		`<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">
+		   <soapenv:Header/>
+		   <soapenv:Body>
+		      <app:wsultmovpt.Execute>
+		         <app:Ctaprscod>${ userId }</app:Ctaprscod>
+		         <app:Ctacod>1</app:Ctacod>
+		      </app:wsultmovpt.Execute>
+		   </soapenv:Body>
+		</soapenv:Envelope>`
+	),
 	productsRequestEndpoint: '/awslisprdc',
 	productsRequestFormat: ( categoryId ) => (
 		'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">'

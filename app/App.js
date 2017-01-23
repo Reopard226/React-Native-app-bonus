@@ -93,6 +93,7 @@ export default connect(( state ) => {
 	return {
 		cards: state.cards,
 		coupons: state.coupons,
+		points: state.points,
 		products: state.products,
 		session: state.session,
 		shopping: state.shopping,

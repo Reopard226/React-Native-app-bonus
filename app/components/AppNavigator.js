@@ -17,6 +17,7 @@ import EditCardContainer 					from './EditCardContainer';
 import HomeContainer 						from './HomeContainer';
 import MovementsContainer 					from './MovementsContainer';
 import PointsContainer 						from './PointsContainer';
+import PointsMovementsContainer 			from './PointsMovementsContainer';
 import ProductContainer 					from './ProductContainer';
 import SessionContainer 					from './SessionContainer';
 import TransferPointsContainer 				from './TransferPointsContainer';
@@ -62,6 +63,9 @@ export default class AppNavigator extends React.Component
 
 			case 'Points':
 				return <PointsContainer 					{ ...this.props } navigator={ navigator }/>;
+
+			case 'PointsMovements':
+				return <PointsMovementsContainer 			{ ...this.props } navigator={ navigator }/>;
 
 			case 'Product':
 				return <ProductContainer 					{ ...this.props } navigator={ navigator } product={ route.product }/>;
