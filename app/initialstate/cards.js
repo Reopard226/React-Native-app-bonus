@@ -3,5 +3,6 @@
 export default {
 	error: null,
 	loading: false,
-	cards: []
+	cards: [],
+	movements: []
 }

@@ -35,7 +35,8 @@ export default ( props ) => <View  style={ { flex: 1 } }>
 			<Button invert text="Últimos movimientos" onPress={
 				(event)=>{
 					props.navigator.push({
-						name: "EditCard",
+						name: "Movements",
+						card: props.card,
 						sceneConfig: Navigator.SceneConfigs.FloatFromRight
 					});
 				}

@@ -15,6 +15,7 @@ import CatalogContainer 					from './CatalogContainer';
 import CouponsContainer 					from './CouponsContainer';
 import EditCardContainer 					from './EditCardContainer';
 import HomeContainer 						from './HomeContainer';
+import MovementsContainer 					from './MovementsContainer';
 import PointsContainer 						from './PointsContainer';
 import ProductContainer 					from './ProductContainer';
 import SessionContainer 					from './SessionContainer';
@@ -55,6 +56,9 @@ export default class AppNavigator extends React.Component
 
 			case 'Home':
 				return <HomeContainer 						{ ...this.props } navigator={ navigator }/>;
+
+			case 'Movements':
+				return <MovementsContainer 					{ ...this.props } navigator={ navigator } card={ route.card }/>;
 
 			case 'Points':
 				return <PointsContainer 					{ ...this.props } navigator={ navigator }/>;

@@ -85,6 +85,18 @@ export default {
 		+ '</soapenv:Envelope>'
 
 	),
+	movementsRequestEndpoint: '/awsultmovso',
+	movementsRequestFormat: ( bonusCardNumber ) => (
+		`<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="AppBonus">
+		   <soapenv:Header/>
+		   <soapenv:Body>
+		      <app:wsultmovso.Execute>
+		         <app:Tarcod>${bonusCardNumber}</app:Tarcod>
+		         <app:Usuario>bonusapp</app:Usuario>
+		      </app:wsultmovso.Execute>
+		   </soapenv:Body>
+		</soapenv:Envelope>`
+	),
 	registerRequestEndpoint: '/awsregusuap',
 	registerRequestFormat: ( userId , password , phoneNumber ) => (
 

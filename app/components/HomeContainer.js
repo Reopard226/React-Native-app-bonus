@@ -5,6 +5,8 @@ import {
 	Text,
 } from 'react-native';
 
+import MapView from 'react-native-maps';
+
 import DrawerContainer from './Containers/DrawerContainer'
 import BaseContainer from './Containers/BaseContainer'
 import Home from './Home/Home';

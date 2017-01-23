@@ -42,6 +42,42 @@ export default function reducer( state = _initialState , action ) {
 
 			break
 
+		case 'CARDS::REQUESTING_MOVEMENTS':
+			return {
+				...state,
+				loading: true
+			}
+
+			break
+
+		case 'CARDS::REQUESTED_MOVEMENTS_SUCCEEDED':
+			return {
+				...state,
+				movements: action.payload,
+				loading: false,
+				error: null
+			}
+
+			break
+
+		case 'CARDS::REQUESTED_MOVEMENTS_REJECTED':
+			return {
+				...state,
+				error: action.payload,
+				loading: false
+			}
+
+			break
+
+		case 'CARDS::CLEAR_MOVEMENTS':
+			return {
+				...state,
+				loading: false,
+				movements: new Array
+			}
+
+			break
+
 	}
 
 	return state
