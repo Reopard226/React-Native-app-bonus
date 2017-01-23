@@ -23,8 +23,6 @@ export default function requestLogin( credentials = { userId: '' } ) {
 
 		.then((response) => {
 
-			console.log( response.data );
-
 			let doc = new DOMParser().parseFromString( response.data , 'text/xml' );
 			let responseMessage = doc.getElementsByTagName('Msjerror')[0].textContent;
 			let errorCode = doc.getElementsByTagName('Coderror')[0].textContent;
@@ -43,6 +41,8 @@ export default function requestLogin( credentials = { userId: '' } ) {
 				});
 
 			}
+
+			cards.reverse();
 
 			if ( responseMessage == 'Exito' || errorCode == '0'  )
 				dispatch({ type: 'CARDS::REQUESTED_USERCARDS_SUCCEEDED' , payload: cards })

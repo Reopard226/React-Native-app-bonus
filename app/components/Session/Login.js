@@ -32,8 +32,8 @@ export default class Login extends React.Component {
 		super( props );
 		this.state = {
 			idType: '01',
-			userId: '49999990', //80653260
-			password: 'loyalty', //p3rs301!
+			userId: '07412470', //80653260
+			password: '123456', //p3rs301!
 			remember: false,
 			modal: false
 		}

@@ -27,15 +27,6 @@ export default class Cards extends React.Component {
 					</View>
 					<CardList { ...this.props }/>
 					<View style={ styles.spacer }></View>
-					<Button invert text="Recarga Automática"/>
-					<Button  text="Agregar Tarjeta" onPress={
-						( event ) => {
-							this.props.navigator.push({
-								name: "AddCard",
-								sceneConfig: Navigator.SceneConfigs.FloatFromRight
-							});
-						}
-					}/>
 				</View>
 			</ContentContainer>
 		</View>;

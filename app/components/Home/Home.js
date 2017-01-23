@@ -20,9 +20,6 @@ export default class Home extends React.Component {
 	}
 	render(){
 
-		if( this.props.cards.cards.constructor !== Array || this.props.cards.cards.length < 1 )
-			return <Loader color="#FFF" />;
-
 		return <View style={{ flex: 1 }}>
 			<CartIcon 	{ ...this.props } />
 			<MenuIcon 	{ ...this.props } />

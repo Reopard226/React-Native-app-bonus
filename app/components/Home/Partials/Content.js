@@ -30,7 +30,9 @@ export default class Content extends React.Component {
 				<Grid style={ styles.boxwrapper }>
 					<Col>
 						<View style={ styles.box }>
-							<Text style={ styles.boxValue }>{ this.props.cards.cards[0].cardBalance }</Text>
+							<Text style={ styles.boxValue }>{ 
+								this.props.cards.cards.constructor !== Array || this.props.cards.cards.length < 1 ? '---' : this.props.cards.cards[0].cardBalance 
+							}</Text>
 							<MainFont center lines={1} fontSize='sm' color={ Style.GRAY0 }>Soles</MainFont>
 						</View>
 					</Col>

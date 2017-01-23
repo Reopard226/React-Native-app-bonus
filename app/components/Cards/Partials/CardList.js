@@ -15,18 +15,6 @@ import getCardTypeFromCardNumber from '../../../utils/getCardTypeFromCardNumber'
 
 var window = Dimensions.get('window');
 
-const from_redux = {
-    cards:[
-        {
-            cardNumber:'7027661000092867932',
-            address:'other address',
-            expDate:'05/19'
-        },
-    ]
-}
-
-
-
 export default (props)=>{
 
     if( props.cards.cards === null || props.cards.cards.constructor !== Array || props.cards.cards.length == 0  )
@@ -51,18 +39,13 @@ export default (props)=>{
             onPress={ ( event ) => {
                     props.navigator.push({
                         name: "Card",
-                        card: {
-                            type: type,
-                            id: item.cardNumber,
-                            date: item.expDate,
-                            address: item.address
-                        },
+                        card: item,
                         sceneConfig: Navigator.SceneConfigs.FloatFromRight
                     });
                 }}
         >
             <Image style={styles.img} source={source[type]} />
-            <Text style={styles.text}> {item.cardName.substr(0,12) + '...'} </Text>
+            <Text style={styles.text}> {item.cardName} </Text>
             <Text style={[styles.text,{top:25, fontWeight: 'bold', fontSize: 12}]} note> Tarjeta ({item.cardNumber.substr(item.cardNumber.length - 4)}) </Text>
             <Badge backgroundColor='rgb(32,76,165)'style={{alignSelf:'center'}}>></Badge>
         </ListItem>;
@@ -94,8 +77,9 @@ let styles = StyleSheet.create({
     },
     text:{
         position: 'absolute',
-        left: 80,
-        top:5
+        left: 60,
+        top:5,
+        fontSize: 10
     }
 
 });

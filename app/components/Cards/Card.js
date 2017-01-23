@@ -15,20 +15,24 @@ export default ( props ) => <View  style={ { flex: 1 } }>
 	<ContentContainer>
 		<View style={ { flex: 1 , padding: 20, alignItems: 'center' , justifyContent: 'center'} }>
 			<View style={styles.imgContainer}>
-				<Image source={require('../../img/cards/Masterdcard.png')} style={styles.img}/>
-				<Text>Tarjeta ..... 08/18</Text>
+				<Image source={require('../../img/tar-bonus.png')} style={styles.img}/>
+				<Text>{props.card.cardName}</Text>
 			</View>
 			<View style={styles.textContainer}>
 				<View style={{flexDirection:'row',justifyContent:'space-between'}}>
-					<Text >Fecha de vencimiento</Text>
-					<Text >07/17</Text>
+					<Text>Número de tarjeta</Text>
+					<Text>{props.card.cardNumber}</Text>
 				</View>
 				<View style={styles.bar}/>
-				<Text style={styles.text}>Direccion de Facturación</Text>
-				<Text style={{width:120,alignSelf:'flex-start'}}>ksjdgfnf wñdfj wñlfnm wdpkf </Text>
+				<Text style={styles.text}>Alias</Text>
+				<Text >{props.card.cardAlias}</Text>
+				<Text style={styles.text}>Tarjeta de crédito asociada</Text>
+				<Text >{props.card.creditCardNumber}</Text>
+				<Text style={styles.text}>Balance</Text>
+				<Text >{props.card.cardBalance}</Text>
 				<View style={styles.bar}/>
 			</View>
-			<Button invert text="Editar Tarjeta" onPress={
+			<Button invert text="Últimos movimientos" onPress={
 				(event)=>{
 					props.navigator.push({
 						name: "EditCard",
@@ -36,7 +40,7 @@ export default ( props ) => <View  style={ { flex: 1 } }>
 					});
 				}
 			}/>
-			<Button text="Eliminar Tarjeta"/>
+			<Button text="Transferir Soles"/>
 		</View>
 	</ContentContainer>
 </View>;
